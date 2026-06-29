@@ -1,34 +1,123 @@
 (function(){
   'use strict';
+
   const phase = (document.body.dataset.phase || '01').padStart(2,'0');
+
   const DATA = {
-    '01': { name:'Empathise', title:'Explore and understand the user context', intro:'Use these templates to prepare interviews, observe real situations, capture evidence and build empathy before defining the problem.', next:'phase02-define.html', templates:[
-      ['T01','POEMS Observation Framework','Observe a real situation through People, Objects, Environments, Messages and Services.', 'Worksheet', [['grid','POEMS notes','People|Objects|Environments|Messages','t01_poems'],['textarea','Services','What services, support, steps or interactions shape the experience?','t01_services'],['textarea','Key pattern / insight','What keeps repeating? What surprised your team?','t01_key_insight']]],
-      ['T02','Interview Guide & Worksheet','Plan and record an interview using warm-up questions, story questions, notes and reflection.', 'Guide + Worksheet', [['textarea','Interview goal','What do you need to learn from this interview?','t02_goal'],['textarea','Interviewee profile','Who are you interviewing? Role, relationship to the problem and context.','t02_profile'],['textarea','Warm-up questions','Simple questions to build rapport.','t02_warmup'],['textarea','Main story questions','Open-ended questions that invite stories, actions, thoughts and feelings.','t02_main'],['textarea','Notes and body language','Record responses, tone, behaviour and important observations.','t02_notes'],['textarea','Reflection / insight','What is the most important insight from this interview?','t02_reflection']]],
-      ['T03','Audio-to-Text Transcription','Convert interview audio or notes into written evidence, quotes and meaning.', 'Worksheet', [['textarea','Audio information','File name, date, duration, speaker labels and permission status.','t03_audio_info'],['textarea','Clean transcript','Paste or type the cleaned transcript here.','t03_transcript'],['textarea','Important quotes','Capture exact words that reveal needs, pain points or emotions.','t03_quotes'],['textarea','What this means','Summarise the main meaning from the interview.','t03_meaning']]],
-      ['T04','Empathy Map','Organise evidence into Say, Do, Think and Feel to understand the user more deeply.', 'Guide + Worksheet', [['grid4','Empathy map areas','Say|Do|Think|Feel','t04_map'],['textarea','Strongest empathy insight','Write one meaningful statement from the map.','t04_insight']]]
-    ]},
-    '02': { name:'Define', title:'Turn research into a clear user need', intro:'Use these templates to build a persona and write a focused user insight and needs statement.', prev:'phase01-empathy.html', next:'phase03-ideation.html', templates:[
-      ['T05','User Persona Template','Create a representative user profile based on interview findings, motivations, pain points and needs.', 'Worksheet', [['textarea','Persona image / avatar notes','Describe or upload later: photo, drawing or avatar representing the user.','t05_image'],['textarea','Persona snapshot','Name or alias, age/range, role, background and context.','t05_snapshot'],['textarea','Goals and motivations','What matters most to this user? What drives them?','t05_goals'],['textarea','Pain points','What blocks, frustrates or worries this user?','t05_pain'],['textarea','Needs','What does this persona need to be successful?','t05_needs'],['textarea','Opportunity area','Where can your team help?','t05_opportunity']]],
-      ['T06','User Insight & Needs Statement','Turn interview evidence into a clear statement using User, Need and Insight.', 'Guide + Worksheet', [['textarea','User','Who are you designing for?','t06_user'],['textarea','Need','What does the user need help to do? Write a need, not a solution.','t06_need'],['textarea','Insight','Why does this need matter? What motivation, fear or challenge explains it?','t06_insight'],['textarea','Evidence quote','Add a quote or observation that supports your statement.','t06_quote'],['textarea','Final needs statement','[User] needs a way to [need] because [insight].','t06_statement']]]
-    ]},
-    '03': { name:'Ideate', title:'Generate, improve and select ideas', intro:'Use these templates to explore many possibilities, sketch ideas, improve them with SCAMPER and choose the strongest option.', prev:'phase02-define.html', next:'phase04-prototype.html', templates:[
-      ['T07','Ideation Techniques & Mind Map','Use ideation techniques and mind mapping to generate many possible solutions.', 'Guide + Worksheet', [['textarea','Central challenge / HMW question','Write your main design challenge or How Might We question.','t07_challenge'],['textarea','Mind map branches','List related themes, sub-ideas and possible solutions.','t07_branches'],['textarea','Promising ideas','Which ideas are most interesting or useful?','t07_promising'],['textarea','Best idea / reflection','Which idea should move forward and why?','t07_reflection']]],
-      ['T08','Sketching Template','Visualise one selected idea through quick sketches, key features and user flow.', 'Worksheet', [['textarea','Selected idea','Idea name, problem solved and target user.','t08_selected'],['textarea','Main sketch description','Describe the main sketch or attach/draw it outside the app.','t08_sketch'],['textarea','Detail sketches','Front/main view, user interaction and key feature close-up.','t08_details'],['textarea','How it works','Explain the user steps from start to finish.','t08_flow'],['textarea','Materials / tools needed','What do you need to build or present the idea?','t08_materials'],['textarea','Reflection / best idea','Why is this idea promising?','t08_reflection']]],
-      ['T09','SCAMPER Template','Improve one idea by substituting, combining, adapting, modifying, repurposing, eliminating and reversing.', 'Worksheet', [['textarea','Selected idea / problem focus','Idea name, user problem and target user.','t09_focus'],['textarea','S — Substitute / C — Combine','What can be replaced or combined?','t09_sc'],['textarea','A — Adapt / M — Modify','What can be adapted, enlarged, simplified or improved?','t09_am'],['textarea','P — Put to another use / E — Eliminate / R — Reverse','How else can it be used? What can be removed or rearranged?','t09_per'],['textarea','Best SCAMPER idea','Choose the strongest improvement.','t09_best'],['textarea','Why this idea is promising','Explain why the improved idea should move forward.','t09_reason']]],
-      ['T10','Idea Prioritisation Matrix','Compare ideas, vote and select the best solution using clear criteria.', 'Worksheet', [['textarea','Ideas to compare','List up to five ideas.','t10_ideas'],['textarea','Scoring notes','Score impact, feasibility, sustainability and user value from 1–5.','t10_scores'],['textarea','Team vote','Which idea received the most support?','t10_vote'],['textarea','Selected idea and justification','Explain why this idea has the best balance.','t10_selected']]]
-    ]},
-    '04': { name:'Prototype', title:'Plan what to build and test', intro:'Use this template to plan the selected concept, prototype format, target user, key features, materials, tasks and success check.', prev:'phase03-ideation.html', next:'phase05-test.html', templates:[
-      ['T11','Prototype Direction Plan','Plan your selected concept, prototype format, key features, materials and team task distribution.', 'Worksheet', [['textarea','Selected concept','What are you building or demonstrating?','t11_concept'],['textarea','Prototype format','Sketch, model, mock-up, wireframe, simulation, poster or demo.','t11_format'],['textarea','Target user','Who will experience the prototype?','t11_user'],['textarea','Key features','What must the prototype show?','t11_features'],['textarea','Materials / tools / support','What is needed to build or present it?','t11_materials'],['textarea','Team task distribution','Assign building, visuals, content, testing and pitch roles.','t11_tasks'],['textarea','Success check','How will you know the prototype is ready?','t11_success']]]
-    ]},
-    '05': { name:'Test & Pitch', title:'Collect feedback and prepare the final pitch', intro:'Use these templates to organise user feedback and structure a clear final presentation.', prev:'phase04-prototype.html', templates:[
-      ['T12','User Feedback & Feedback Grid Matrix','Test the prototype with users and organise feedback into what worked, what could improve, questions and action items.', 'Guide + Worksheet', [['grid4','Feedback grid','What worked|What could improve|Questions raised|Action items','t12_feedback'],['textarea','Key insights','What did your team learn from the feedback?','t12_insights'],['textarea','Decision summary','What are the top improvements your team will focus on?','t12_decision']]],
-      ['T13','8-Slide Pitch Framework','Plan the final pitch using a clear structure: problem, insight, solution, prototype, feedback, impact and call to action.', 'Worksheet', [['textarea','Slide 1–2: Title, team and problem','Key message, visual and presenter.','t13_1_2'],['textarea','Slide 3–4: User insight and solution','Evidence, insight, proposed solution and value.','t13_3_4'],['textarea','Slide 5–6: Prototype and feedback','Prototype demo, user feedback and improvements.','t13_5_6'],['textarea','Slide 7–8: Impact and call to action','Impact, value proposition and final closing.','t13_7_8'],['textarea','Q&A preparation','Who answers questions on user, prototype, impact and process?','t13_qa'],['textarea','Final takeaway','What should the audience remember?','t13_takeaway']]]
-    ]}
+    '01': {
+      name:'Empathise',
+      title:'Explore and understand the user context',
+      intro:'Use these templates to prepare interviews, observe real situations, capture evidence and build empathy before defining the problem.',
+      infographic:'assets/phase01-empathy-infographic.png',
+      definition:'The Empathise phase is the first stage of Design Thinking. Students understand real users, their experiences, feelings, challenges and needs through observation and interaction.',
+      purpose:['Understand the user context','Identify real pain points','Listen to user stories and experiences','Build meaningful insights before defining the problem'],
+      process:[
+        ['T01','Observe with POEMS','Look at People, Objects, Environments, Messages and Services.'],
+        ['T02','Interview the User','Ask open-ended questions and record important responses.'],
+        ['T03','Transcribe the Findings','Turn audio or notes into useful written evidence and quotes.'],
+        ['T04','Build an Empathy Map','Organise findings into Say, Do, Think and Feel.']
+      ],
+      output:'Students should understand who the user is, what the user experiences, and what matters most to the user.',
+      next:'phase02-define.html',
+      templates:[
+        ['T01','POEMS Observation Framework','Observe a real situation through People, Objects, Environments, Messages and Services.','Worksheet',[['grid','POEMS notes','People|Objects|Environments|Messages','t01_poems'],['textarea','Services','What services, support, steps or interactions shape the experience?','t01_services'],['textarea','Key pattern / insight','What keeps repeating? What surprised your team?','t01_key_insight']]],
+        ['T02','Interview Guide & Worksheet','Plan and record an interview using warm-up questions, story questions, notes and reflection.','Guide + Worksheet',[['textarea','Interview goal','What do you need to learn from this interview?','t02_goal'],['textarea','Interviewee profile','Who are you interviewing? Role, relationship to the problem and context.','t02_profile'],['textarea','Warm-up questions','Simple questions to build rapport.','t02_warmup'],['textarea','Main story questions','Open-ended questions that invite stories, actions, thoughts and feelings.','t02_main'],['textarea','Notes and body language','Record responses, tone, behaviour and important observations.','t02_notes'],['textarea','Reflection / insight','What is the most important insight from this interview?','t02_reflection']]],
+        ['T03','Audio-to-Text Transcription','Convert interview audio or notes into written evidence, quotes and meaning.','Worksheet',[['textarea','Audio information','File name, date, duration, speaker labels and permission status.','t03_audio_info'],['textarea','Clean transcript','Paste or type the cleaned transcript here.','t03_transcript'],['textarea','Important quotes','Capture exact words that reveal needs, pain points or emotions.','t03_quotes'],['textarea','What this means','Summarise the main meaning from the interview.','t03_meaning']]],
+        ['T04','Empathy Map','Organise evidence into Say, Do, Think and Feel to understand the user more deeply.','Guide + Worksheet',[['grid4','Empathy map areas','Say|Do|Think|Feel','t04_map'],['textarea','Strongest empathy insight','Write one meaningful statement from the map.','t04_insight']]]
+      ]
+    },
+    '02': {
+      name:'Define',
+      title:'Turn research into a clear user need',
+      intro:'Use these templates to build a persona and write a focused user insight and needs statement.',
+      infographic:'assets/phase02-define-infographic.png',
+      definition:'The Define phase is where the team makes sense of research findings and turns them into a clear problem to solve. It helps students focus on the real user need, not just a vague issue.',
+      purpose:['Organise findings into patterns and repeated issues','Identify user needs and what matters most','Clarify the problem with a focused statement','Guide ideation with a strong direction'],
+      process:[
+        ['T05','Build User Understanding','Create a persona or user profile from empathy findings.'],
+        ['T06','Write Insight + Need','Identify what the user needs and why it matters.'],
+        ['T06','Define the Problem','Write a focused needs statement or How Might We question.']
+      ],
+      output:'Students should have a clear user profile, insight and problem direction before generating ideas.',
+      prev:'phase01-empathy.html',
+      next:'phase03-ideation.html',
+      templates:[
+        ['T05','User Persona Template','Create a representative user profile based on interview findings, motivations, pain points and needs.','Worksheet',[['textarea','Persona image / avatar notes','Describe or upload later: photo, drawing or avatar representing the user.','t05_image'],['textarea','Persona snapshot','Name or alias, age/range, role, background and context.','t05_snapshot'],['textarea','Goals and motivations','What matters most to this user? What drives them?','t05_goals'],['textarea','Pain points','What blocks, frustrates or worries this user?','t05_pain'],['textarea','Needs','What does this persona need to be successful?','t05_needs'],['textarea','Opportunity area','Where can your team help?','t05_opportunity']]],
+        ['T06','User Insight & Needs Statement','Turn interview evidence into a clear statement using User, Need and Insight.','Guide + Worksheet',[['textarea','User','Who are you designing for?','t06_user'],['textarea','Need','What does the user need help to do? Write a need, not a solution.','t06_need'],['textarea','Insight','Why does this need matter? What motivation, fear or challenge explains it?','t06_insight'],['textarea','Evidence quote','Add a quote or observation that supports your statement.','t06_quote'],['textarea','Final needs statement','[User] needs a way to [need] because [insight].','t06_statement']]]
+      ]
+    },
+    '03': {
+      name:'Ideate',
+      title:'Generate, improve and select ideas',
+      intro:'Use these templates to explore many possibilities, sketch ideas, improve them with SCAMPER and choose the strongest option.',
+      infographic:'assets/phase03-ideation-infographic.png',
+      definition:'The Ideation phase is where the team generates many possible ideas to solve the defined problem. It encourages creative thinking, exploration and trying different possibilities before selecting the most promising idea.',
+      purpose:['Generate many possible solutions','Think creatively and openly','Explore different ways to solve the problem','Prepare strong ideas for prototype development'],
+      process:[
+        ['T07','Start with the Problem','Review the Define findings and focus question.'],
+        ['T07','Brainstorm Ideas','List as many ideas as possible without judging first.'],
+        ['T08','Sketch the Idea','Visualise promising ideas through quick sketches.'],
+        ['T09','Use SCAMPER','Improve the idea using creative prompts.'],
+        ['T10','Select Promising Ideas','Compare options and choose the best idea for prototype.']
+      ],
+      output:'Students should have several possible solutions, a clearer direction and one selected idea to move forward into the Prototype phase.',
+      prev:'phase02-define.html',
+      next:'phase04-prototype.html',
+      templates:[
+        ['T07','Ideation Techniques & Mind Map','Use ideation techniques and mind mapping to generate many possible solutions.','Guide + Worksheet',[['textarea','Central challenge / HMW question','Write your main design challenge or How Might We question.','t07_challenge'],['textarea','Mind map branches','List related themes, sub-ideas and possible solutions.','t07_branches'],['textarea','Promising ideas','Which ideas are most interesting or useful?','t07_promising'],['textarea','Best idea / reflection','Which idea should move forward and why?','t07_reflection']]],
+        ['T08','Sketching Template','Visualise one selected idea through quick sketches, key features and user flow.','Worksheet',[['textarea','Selected idea','Idea name, problem solved and target user.','t08_selected'],['textarea','Main sketch description','Describe the main sketch or attach/draw it outside the app.','t08_sketch'],['textarea','Detail sketches','Front/main view, user interaction and key feature close-up.','t08_details'],['textarea','How it works','Explain the user steps from start to finish.','t08_flow'],['textarea','Materials / tools needed','What do you need to build or present the idea?','t08_materials'],['textarea','Reflection / best idea','Why is this idea promising?','t08_reflection']]],
+        ['T09','SCAMPER Template','Improve one idea by substituting, combining, adapting, modifying, repurposing, eliminating and reversing.','Worksheet',[['textarea','Selected idea / problem focus','Idea name, user problem and target user.','t09_focus'],['textarea','S — Substitute / C — Combine','What can be replaced or combined?','t09_sc'],['textarea','A — Adapt / M — Modify','What can be adapted, enlarged, simplified or improved?','t09_am'],['textarea','P — Put to another use / E — Eliminate / R — Reverse','How else can it be used? What can be removed or rearranged?','t09_per'],['textarea','Best SCAMPER idea','Choose the strongest improvement.','t09_best'],['textarea','Why this idea is promising','Explain why the improved idea should move forward.','t09_reason']]],
+        ['T10','Idea Prioritisation Matrix','Compare ideas, vote and select the best solution using clear criteria.','Worksheet',[['textarea','Ideas to compare','List up to five ideas.','t10_ideas'],['textarea','Scoring notes','Score impact, feasibility, sustainability and user value from 1–5.','t10_scores'],['textarea','Team vote','Which idea received the most support?','t10_vote'],['textarea','Selected idea and justification','Explain why this idea has the best balance.','t10_selected']]]
+      ]
+    },
+    '04': {
+      name:'Prototype',
+      title:'Plan what to build and test',
+      intro:'Use this template to plan the selected concept, prototype format, target user, key features, materials, tasks and success check.',
+      infographic:'assets/phase04-prototype-infographic.png',
+      definition:'The Prototype phase is where ideas are turned into a simple, testable form. It helps students make their solution visible so users can interact with it and give feedback.',
+      purpose:['Visualise the idea so it is easier to understand','Build something tangible such as a draft, model, mock-up or storyboard','Test key features before finalising','Learn early and improve before moving to testing'],
+      process:[
+        ['T10','Select Best Idea','Choose the most promising idea from ideation.'],
+        ['T11','Plan the Prototype','Decide the format, target user, features, materials and team roles.'],
+        ['T11','Build the Prototype','Create a simple version such as a sketch, poster, mock-up, model or digital screen.'],
+        ['T11','Refine for Testing','Improve the prototype so it is ready to be shown to users.']
+      ],
+      output:'Students should have a clear prototype draft that shows the selected solution and is ready for user testing and feedback.',
+      prev:'phase03-ideation.html',
+      next:'phase05-test.html',
+      templates:[
+        ['T11','Prototype Direction Plan','Plan your selected concept, prototype format, key features, materials and team task distribution.','Worksheet',[['textarea','Selected concept','What are you building or demonstrating?','t11_concept'],['textarea','Prototype format','Sketch, model, mock-up, wireframe, simulation, poster or demo.','t11_format'],['textarea','Target user','Who will experience the prototype?','t11_user'],['textarea','Key features','What must the prototype show?','t11_features'],['textarea','Materials / tools / support','What is needed to build or present it?','t11_materials'],['textarea','Team task distribution','Assign building, visuals, content, testing and pitch roles.','t11_tasks'],['textarea','Success check','How will you know the prototype is ready?','t11_success']]]
+      ]
+    },
+    '05': {
+      name:'Test & Pitch',
+      title:'Collect feedback and prepare the final pitch',
+      intro:'Use these templates to organise user feedback and structure a clear final presentation.',
+      infographic:'assets/phase05-test-infographic.png',
+      definition:'The Testing phase is where students show the prototype to real users and observe how they interact with it. It helps the team discover what works, what confuses users and what should be improved before the final solution is completed.',
+      purpose:['Check usability and whether users understand the prototype','Collect feedback, comments, questions and reactions','Identify problems, errors and confusing steps','Improve the solution before final delivery'],
+      process:[
+        ['T12','Prepare the Prototype','Get the prototype ready for users to try.'],
+        ['T12','Choose Users','Select suitable target users or participants.'],
+        ['T12','Run the Test','Ask users to try the prototype and complete simple tasks.'],
+        ['T12','Observe and Record','Note what users say, do, feel and where they struggle.'],
+        ['T13','Improve and Pitch','Use findings to make changes and prepare the final presentation.']
+      ],
+      output:'Students should understand what works well, what needs improvement and what changes are needed to create a better solution.',
+      prev:'phase04-prototype.html',
+      templates:[
+        ['T12','User Feedback & Feedback Grid Matrix','Test the prototype with users and organise feedback into what worked, what could improve, questions and action items.','Guide + Worksheet',[['grid4','Feedback grid','What worked|What could improve|Questions raised|Action items','t12_feedback'],['textarea','Key insights','What did your team learn from the feedback?','t12_insights'],['textarea','Decision summary','What are the top improvements your team will focus on?','t12_decision']]],
+        ['T13','8-Slide Pitch Framework','Plan the final pitch using a clear structure: problem, insight, solution, prototype, feedback, impact and call to action.','Worksheet',[['textarea','Slide 1–2: Title, team and problem','Key message, visual and presenter.','t13_1_2'],['textarea','Slide 3–4: User insight and solution','Evidence, insight, proposed solution and value.','t13_3_4'],['textarea','Slide 5–6: Prototype and feedback','Prototype demo, user feedback and improvements.','t13_5_6'],['textarea','Slide 7–8: Impact and call to action','Impact, value proposition and final closing.','t13_7_8'],['textarea','Q&A preparation','Who answers questions on user, prototype, impact and process?','t13_qa'],['textarea','Final takeaway','What should the audience remember?','t13_takeaway']]]
+      ]
+    }
   };
+
   const d = DATA[phase];
   if(!d) return;
+
   function esc(s){ return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
   function field(f){
     if(f[0]==='grid' || f[0]==='grid4'){
       const cls = f[0]==='grid4' ? 'smart-grid-4' : 'smart-grid-2';
@@ -36,6 +125,7 @@
     }
     return '<div class="field"><label>'+esc(f[1])+'</label><p class="field-help">'+esc(f[2])+'</p><textarea class="textarea" name="'+esc(f[3])+'" placeholder="Write here..."></textarea></div>';
   }
+
   function sampleFor(code){
     const samples = {
       T01:'Example: In a cafeteria queue, students wait, check phones, look for menu signs and ask friends what is available.',
@@ -54,16 +144,32 @@
     };
     return samples[code] || 'Use a simple project example and real evidence from your own design challenge.';
   }
+
+  function quickInfo(){
+    const purposeCards = d.purpose.map((p,i)=>'<div class="quick-purpose-card accent-'+((i%4)+1)+'"><span class="purpose-icon">'+['👥','🎯','💬','💡'][i%4]+'</span><b>'+esc(p)+'</b></div>').join('');
+    const processCards = d.process.map((s,i)=>'<div class="quick-process-card accent-'+((i%5)+1)+'"><span class="process-no">'+(i+1)+'</span><small>'+esc(s[0])+'</small><h3>'+esc(s[1])+'</h3><p>'+esc(s[2])+'</p></div>').join('');
+    const sequence = d.templates.map(t=>'<div class="template-step"><span class="step-num">'+esc(t[0].slice(1))+'</span><p>'+esc(t[0]+' – '+t[1])+'</p></div>').join('');
+    return '<section class="panel active" id="quickInfo">'
+      + '<div class="quick-infographic-card"><div class="orange-header"><span>Quick Info</span><b>'+esc(d.name)+' Phase Guide</b></div><img class="phase-infographic-img" src="'+esc(d.infographic)+'" alt="'+esc(d.name)+' phase infographic"></div>'
+      + '<div class="quick-info-block"><div class="orange-header"><span>1</span><b>Definition</b></div><p>'+esc(d.definition)+'</p></div>'
+      + '<div class="quick-info-block"><div class="orange-header"><span>2</span><b>Purpose</b></div><div class="quick-purpose-grid">'+purposeCards+'</div></div>'
+      + '<div class="quick-info-block"><div class="orange-header"><span>3</span><b>Step-by-step Process</b></div><div class="quick-process-grid">'+processCards+'</div></div>'
+      + '<div class="quick-info-block"><div class="orange-header"><span>4</span><b>Template Sequence</b></div><div class="template-steps">'+sequence+'</div></div>'
+      + '<div class="key-output-card"><span class="trophy">🏆</span><div><b>Key Output</b><p>'+esc(d.output)+'</p></div></div>'
+      + '<button class="btn primary full" onclick="document.querySelector(\'[data-tab=templatesPanel]\').click()">Open Templates</button>'
+      + '</section>';
+  }
+
   function panel(t,i){
     const id = t[0].toLowerCase();
-    return '<section class="template-panel '+(i===0?'active':'')+'" id="'+id+'"><div class="template-card smart-template-card"><div class="smart-template-head"><div><h2>'+esc(t[0])+' '+esc(t[1])+'</h2><p>'+esc(t[2])+'</p></div><span class="status">Not Started</span></div><div class="smart-guide-card"><span class="guide-tag">'+esc(t[4])+'</span><h3>What is this for?</h3><p>'+esc(t[2])+'</p><div class="guide-mini-grid"><div><b>Input</b><span>Use previous evidence</span></div><div><b>Action</b><span>Complete the fields</span></div><div><b>Output</b><span>Saved DT evidence</span></div></div></div><div class="activity-box enhanced"><p class="activity-title"><span class="badge">'+esc(t[0])+'</span>How it works</p><p class="bullet"><b>1.</b> Read the guide and example.</p><p class="bullet"><b>2.</b> Fill in the input fields using your own design challenge.</p><p class="bullet"><b>3.</b> Click Save Draft, then Submit Final when your team is ready.</p></div><div class="switch template-mode-switch"><button class="active" data-mode="sample" type="button">View Example</button><button data-mode="fill" type="button">Fill Template</button></div><div class="mode-panel sample-panel" data-panel="sample"><div class="sample rich-sample"><span class="sample-kicker">General Smart DT Example</span><p class="sample-lead">'+esc(sampleFor(t[0]))+'</p><div class="sample-tip"><b>Beginner reminder:</b> Use real evidence from your own users. Avoid jumping to solutions too early.</div></div></div><div class="mode-panel fill-panel" data-panel="fill" hidden>'+t[5].map(field).join('')+'<div class="template-actions"><button class="btn teal full" data-save type="button">Save Draft</button></div></div></div></section>';
+    return '<section class="template-panel '+(i===0?'active':'')+'" id="'+id+'"><div class="template-card smart-template-card"><div class="smart-template-head"><div><h2>'+esc(t[0])+' '+esc(t[1])+'</h2><p>'+esc(t[2])+'</p></div><span class="status">Not Started</span></div><div class="smart-guide-card"><span class="guide-tag">'+esc(t[3])+'</span><h3>What is this for?</h3><p>'+esc(t[2])+'</p><div class="guide-mini-grid"><div><b>Input</b><span>Use previous evidence</span></div><div><b>Action</b><span>Complete the fields</span></div><div><b>Output</b><span>Saved DT evidence</span></div></div></div><div class="activity-box enhanced"><p class="activity-title"><span class="badge">'+esc(t[0])+'</span>How it works</p><p class="bullet"><b>1.</b> Read the guide and example.</p><p class="bullet"><b>2.</b> Fill in the input fields using your own design challenge.</p><p class="bullet"><b>3.</b> Click Save Draft, then Submit Final when your team is ready.</p></div><div class="switch template-mode-switch"><button class="active" data-mode="sample" type="button">View Example</button><button data-mode="fill" type="button">Fill Template</button></div><div class="mode-panel sample-panel" data-panel="sample"><div class="sample rich-sample"><span class="sample-kicker">General Smart DT Example</span><p class="sample-lead">'+esc(sampleFor(t[0]))+'</p><div class="sample-tip"><b>Beginner reminder:</b> Use real evidence from your own users. Avoid jumping to solutions too early.</div></div></div><div class="mode-panel fill-panel" data-panel="fill" hidden>'+t[4].map(field).join('')+'<div class="template-actions"><button class="btn teal full" data-save type="button">Save Draft</button></div></div></div></section>';
   }
-  const steps = d.templates.map(t=>'<div class="template-step"><span class="step-num">'+esc(t[0].slice(1))+'</span><p>'+esc(t[1])+'</p></div>').join('');
+
   const subtabs = d.templates.map((t,i)=>'<button class="subtab '+(i===0?'active':'')+'" data-subtab="'+t[0].toLowerCase()+'">'+esc(t[0])+'</button>').join('');
   const prev = d.prev ? '<a class="btn ghost full" href="'+d.prev+'" style="margin-bottom:10px">← Back</a>' : '';
   const next = d.next ? '<a class="btn primary full" href="'+d.next+'" style="margin-top:10px">Next Phase →</a>' : '';
   const nav = '<nav aria-label="Main navigation" class="bottom-nav"><a class="nav-item" data-nav="dashboard" href="dashboard.html"><span class="nav-label">Dashboard</span></a><a class="nav-item active" data-nav="learn" href="phase01-empathy.html"><span class="nav-label">Learn</span></a><a class="nav-item" data-nav="projects" href="projects.html"><span class="nav-label">Projects</span></a><a class="nav-item" data-nav="progress" href="progress.html"><span class="nav-label">Progress</span></a><a class="nav-item" data-nav="profile" href="profile.html"><span class="nav-label">Profile</span></a></nav>';
-  const html = '<main class="page phase-page"><section class="general-template-hero"><p class="eyebrow">Phase '+phase+' · '+esc(d.name)+'</p><h1>'+esc(d.title)+'</h1><p>'+esc(d.intro)+'</p><span class="phase-pill">Smart DT Project · General Template Set</span></section><div class="tabbar" role="tablist"><button class="tab active" data-tab="quickInfo">Quick Info</button><button class="tab" data-tab="quizPanel">Quiz</button><button class="tab" data-tab="templatesPanel">Templates</button></div><section class="panel active" id="quickInfo"><div class="card"><h2 class="section-title" style="margin-top:0">What students need to do</h2><p class="section-sub">Complete the templates step by step. Save each template as a draft and submit the final version when ready. No supervisor approval gate is required.</p></div><div class="card"><h2 class="section-title" style="margin-top:0">Template sequence</h2><div class="template-steps">'+steps+'</div></div><button class="btn primary full" onclick="document.querySelector(\'[data-tab=templatesPanel]\').click()">Open Templates</button></section><section class="panel" id="quizPanel"><div id="quizBox"></div></section><section class="panel" id="templatesPanel"><h1 class="section-title phase-title"><span>'+esc(d.name)+'</span><br/>Templates</h1><p class="section-sub">Use the guide first, then complete the input worksheet for your own project.</p>'+prev+'<div class="subtabs">'+subtabs+'</div><form>'+d.templates.map(panel).join('')+'<button class="btn primary full" data-submit-phase type="button">Submit Final Phase '+phase+'</button>'+next+'</form></section></main>'+nav;
+  const html = '<main class="page phase-page"><section class="general-template-hero"><p class="eyebrow">Phase '+phase+' · '+esc(d.name)+'</p><h1>'+esc(d.title)+'</h1><p>'+esc(d.intro)+'</p><span class="phase-pill">Smart DT Project · General Template Set</span></section><div class="tabbar" role="tablist"><button class="tab active" data-tab="quickInfo">Quick Info</button><button class="tab" data-tab="quizPanel">Quiz</button><button class="tab" data-tab="templatesPanel">Templates</button></div>'+quickInfo()+'<section class="panel" id="quizPanel"><div id="quizBox"></div></section><section class="panel" id="templatesPanel"><h1 class="section-title phase-title"><span>'+esc(d.name)+'</span><br/>Templates</h1><p class="section-sub">Use the guide first, then complete the input worksheet for your own project.</p>'+prev+'<div class="subtabs">'+subtabs+'</div><form>'+d.templates.map(panel).join('')+'<button class="btn primary full" data-submit-phase type="button">Submit Final Phase '+phase+'</button>'+next+'</form></section></main>'+nav;
   const root = document.getElementById('smartDtGeneralRoot');
   if(root) root.innerHTML = html;
 
