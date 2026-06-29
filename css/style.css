@@ -265,3 +265,167 @@ img{display:block;max-width:100%}
 /* ── Pill link (header actions) ── */
 .pill-link{background:var(--color-white);border:1.5px solid var(--color-border);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;color:var(--color-navy);text-decoration:none}
 .pill-link:hover{background:var(--color-teal);color:#fff;border-color:var(--color-teal)}
+
+
+/* =========================================================
+   SECTION-BY-SECTION QUICK INFO FIX
+   Purpose: organised Quick Info only. Quiz/Templates unchanged.
+   ========================================================= */
+.sq-quick-info{
+  width:100%;
+  max-width:980px;
+  margin:0 auto;
+  padding:18px 20px calc(var(--nav-height) + 28px);
+}
+.sq-section{
+  background:var(--color-white);
+  border:1px solid var(--color-border);
+  border-radius:20px;
+  padding:16px;
+  margin:0 0 16px;
+  box-shadow:var(--shadow);
+}
+.sq-orange-label{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(90deg,var(--color-orange),var(--color-yellow));
+  color:#fff;
+  padding:7px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.sq-orange-label span{
+  background:#fff;
+  color:var(--color-orange);
+  border-radius:999px;
+  padding:3px 9px;
+  font-weight:900;
+}
+.sq-overview-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(190px,.6fr);
+  align-items:end;
+  gap:16px;
+}
+.sq-kicker{font-size:12px;color:var(--color-mid);font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin:0 0 4px}
+.sq-phase-overview h2{font-size:28px;line-height:1.1;color:var(--color-navy);margin:0 0 6px}
+.sq-subtitle{font-size:14px;color:var(--color-mid);line-height:1.55;margin:0}
+.sq-template-flow{border:1px solid rgba(255,106,61,.25);background:#FFF7ED;color:var(--color-orange);border-radius:16px;padding:12px;text-align:center;font-weight:900}
+.sq-infographic-frame{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  overflow:hidden;
+  border-radius:18px;
+  background:#F8FAFC;
+  border:1px solid rgba(8,27,68,.08);
+}
+.sq-infographic-frame img{
+  width:100%;
+  max-width:520px;
+  max-height:560px;
+  object-fit:contain;
+  object-position:top center;
+  border-radius:16px;
+}
+.sq-definition-text{font-size:15px;line-height:1.75;color:var(--color-navy);margin:0}
+.sq-purpose-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.sq-purpose-card{
+  background:#F8FAFC;
+  border:1px solid rgba(8,27,68,.10);
+  border-radius:16px;
+  padding:14px 12px;
+  min-height:132px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:10px;
+  text-align:center;
+  border-bottom:4px solid var(--color-teal);
+}
+.sq-purpose-card:nth-child(2){border-bottom-color:var(--color-yellow)}
+.sq-purpose-card:nth-child(3){border-bottom-color:var(--color-pink)}
+.sq-purpose-card:nth-child(4){border-bottom-color:var(--color-orange)}
+.sq-purpose-icon{font-size:28px;line-height:1}
+.sq-purpose-card strong{font-size:13px;line-height:1.35;color:var(--color-navy)}
+.sq-process-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.sq-process-card{
+  position:relative;
+  background:#fff;
+  border:1px solid rgba(8,27,68,.12);
+  border-radius:18px;
+  padding:34px 12px 14px;
+  min-height:178px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(8,27,68,.04);
+}
+.sq-process-no{
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:34px;height:34px;
+  border-radius:999px;
+  display:grid;place-items:center;
+  background:var(--color-teal);
+  color:#fff;
+  font-weight:900;
+  box-shadow:0 6px 16px rgba(20,184,166,.25);
+}
+.sq-process-card:nth-child(2) .sq-process-no{background:var(--color-orange)}
+.sq-process-card:nth-child(3) .sq-process-no{background:#6D28D9}
+.sq-process-card:nth-child(4) .sq-process-no{background:#E11D48}
+.sq-process-card:nth-child(5) .sq-process-no{background:var(--color-yellow);color:var(--color-navy)}
+.sq-process-card small{display:block;color:var(--color-orange);font-weight:900;margin-bottom:6px}
+.sq-process-card h3{font-size:14px;line-height:1.25;margin:0 0 8px;color:var(--color-navy)}
+.sq-process-card p{font-size:12px;line-height:1.45;color:var(--color-mid);margin:0}
+.sq-key-output{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  background:#FFFBEB;
+  border:1.5px solid rgba(245,166,35,.55);
+  border-radius:20px;
+  padding:16px;
+  margin:0 0 16px;
+}
+.sq-trophy{font-size:40px;line-height:1;flex:0 0 auto}
+.sq-key-output strong{font-size:18px;color:var(--color-navy)}
+.sq-key-output p{margin:4px 0 0;color:var(--color-navy);line-height:1.55}
+.sq-action-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 14px}
+.sq-action-row .btn-primary,.sq-action-row .btn-secondary{width:100%}
+
+/* Keep bottom navigation icons controlled */
+.bottom-nav .nav-icon,.bottom-nav .nav-icon svg{width:22px!important;height:22px!important;max-width:22px!important;max-height:22px!important}
+.bottom-nav .nav-item{min-width:0!important}
+
+@media (min-width:768px){
+  .phase-header{min-height:220px;padding-left:34px;padding-right:34px}
+  .hero-wrap{width:220px;right:26px}
+  .page-header-text{padding-right:250px}
+  .sq-quick-info{max-width:1040px;padding-left:34px;padding-right:34px}
+  .sq-section{padding:20px}
+  .sq-infographic-frame img{max-width:620px;max-height:620px}
+}
+@media (min-width:1024px){
+  .sq-quick-info{max-width:1120px}
+  .sq-infographic-frame img{max-width:680px;max-height:680px}
+  .sq-purpose-card{min-height:146px}
+}
+@media (max-width:760px){
+  .sq-overview-grid{grid-template-columns:1fr}
+  .sq-purpose-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sq-process-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}
+  .sq-infographic-frame img{max-height:520px}
+}
+@media (max-width:430px){
+  .sq-quick-info{padding-left:16px;padding-right:16px}
+  .sq-purpose-grid,.sq-process-grid,.sq-action-row{grid-template-columns:1fr}
+  .sq-infographic-frame img{max-height:460px}
+  .sq-phase-overview h2{font-size:24px}
+}
