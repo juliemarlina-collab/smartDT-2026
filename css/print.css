@@ -1,0 +1,383 @@
+/* ============================================================
+   Smart DT Project — Print Stylesheet
+   Purpose: Clean template printout for documentation + pitching
+   Hides all app chrome. Shows only filled template content.
+   Usage: window.print() on any phase page or portfolio page.
+   ============================================================ */
+
+@media print {
+
+  /* ── 1. PAGE SETUP ───────────────────────────────────────── */
+  @page {
+    size: A4 portrait;
+    margin: 18mm 16mm 18mm 16mm;
+  }
+
+  /* ── 2. RESET BODY & APP CONTAINER ──────────────────────── */
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-family: 'Poppins', Arial, sans-serif !important;
+    font-size: 11pt !important;
+    line-height: 1.55 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .app {
+    max-width: 100% !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  /* ── 3. HIDE ALL APP CHROME ──────────────────────────────── */
+  /* Header bar */
+  .header,
+  /* Bottom navigation */
+  .bottom-nav,
+  /* Hero banner images */
+  .hero-card,
+  /* Tab bar (Quick Info / Quiz / Templates) */
+  .tabbar,
+  /* Quick Info panel */
+  #quickInfo,
+  /* Quiz panel */
+  #quizPanel,
+  /* Floating action button */
+  .fab,
+  /* Template step indicator row */
+  .template-steps,
+  /* Subtab navigation row */
+  .subtabs,
+  /* View Sample / Fill Template toggle switch */
+  .switch,
+  .template-mode-switch,
+  /* Sample content panels — don't print examples */
+  .sample-panel,
+  .mode-panel.sample-panel,
+  [data-panel="sample"],
+  .sample,
+  .rich-sample,
+  /* Template guide intro cards (instructions only) */
+  .template-guide-card,
+  /* Activity instruction boxes */
+  .activity-box.enhanced,
+  /* Fill step number indicators */
+  .fill-step,
+  /* Save / Next / Print buttons */
+  .template-actions,
+  .action-row,
+  /* Recording controls */
+  .record-controls,
+  .record-head,
+  .audio-box,
+  /* Consent reminder box */
+  .consent,
+  /* Phase glance strip (GAP-4 injection) */
+  #phaseGlanceStrip,
+  /* Quiz gate hint (GAP-3 injection) */
+  #quizGateHint,
+  /* First visit banner (GAP-1 injection) */
+  #firstVisitBanner,
+  /* Template saved count strip (GAP-7) */
+  #tmplSavedCountStrip,
+  /* Save timestamp (GAP-5) */
+  .save-timestamp,
+  /* Submit success card */
+  .submit-success-card,
+  /* DT Buddy card — entire section */
+  #smartDtBuddy,
+  .sdt-buddy-card,
+  /* Inline buddy tap cards */
+  .sdt-inline-buddy,
+  /* Toast messages */
+  .smart-toast,
+  /* Status badge (Saved / Not Started) */
+  .status,
+  /* Intro card (dark gradient banner) */
+  .intro-card,
+  /* Phase page eyebrow label */
+  .eyebrow,
+  /* Sample answer fill guides */
+  .sample-answer,
+  /* Do/don't comparison boxes */
+  .do-dont,
+  /* Role grid cards */
+  .role-grid-card,
+  /* Map preview sample */
+  .map-preview,
+  /* Persona preview sample */
+  .persona-preview,
+  /* Needs preview sample */
+  .needs-preview,
+  /* Sample columns */
+  .sample-columns,
+  /* Sample tip boxes */
+  .sample-tip,
+  /* Sample kicker label */
+  .sample-kicker,
+  /* Guide tag badge */
+  .guide-tag,
+  /* Guide mini grid */
+  .guide-mini-grid,
+  /* Completion checklist in activity box */
+  .activity-box:not(.print-keep),
+  /* Portfolio action buttons */
+  .portfolio-action-row,
+  /* Back/continue buttons */
+  .btn,
+  /* Lock notes on tabs */
+  .lock-note,
+  /* Phase 04-05 fix elements */
+  .phase04-fix,
+  /* Progress section on non-progress pages */
+  .progress-section-v9,
+  /* Accordion items on dashboard */
+  .accordion-wrap {
+    display: none !important;
+  }
+
+  /* ── 4. FORCE-SHOW TEMPLATE CONTENT ──────────────────────── */
+  /* Templates panel — always visible when printing */
+  #templatesPanel,
+  .panel#templatesPanel {
+    display: block !important;
+  }
+
+  /* Active template panel — show */
+  .template-panel.active {
+    display: block !important;
+  }
+
+  /* Fill panels — show even if browser hid them */
+  .mode-panel.fill-panel,
+  [data-panel="fill"],
+  .fill-panel {
+    display: block !important;
+    hidden: false !important;
+  }
+  [hidden] {
+    display: block !important;
+  }
+
+  /* ── 5. PRINT HEADER — PROJECT IDENTITY ─────────────────── */
+  /* Inject a clean print header using CSS ::before on the page */
+  .page::before {
+    content: "Smart DT Project  —  Design Thinking Portfolio";
+    display: block;
+    font-size: 9pt;
+    font-weight: 700;
+    color: #8A95A6;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1.5px solid #E0E8F0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+
+  /* ── 6. TEMPLATE CARD STYLING FOR PRINT ─────────────────── */
+  .template-card {
+    border: 1.5px solid #C8D8E8 !important;
+    border-radius: 8px !important;
+    padding: 14px !important;
+    box-shadow: none !important;
+    margin-bottom: 14px !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .template-head {
+    margin-bottom: 10px !important;
+    border-bottom: 1px solid #E8F0F7;
+    padding-bottom: 8px;
+  }
+
+  .template-head h2 {
+    font-size: 14pt !important;
+    color: #081B44 !important;
+    font-weight: 900 !important;
+    margin: 0 !important;
+  }
+
+  /* ── 7. FORM FIELDS — SHOW STUDENT ANSWERS CLEARLY ──────── */
+  .field {
+    margin-bottom: 10px !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .field label {
+    font-size: 8.5pt !important;
+    font-weight: 900 !important;
+    color: #3C4A65 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    display: block !important;
+    margin-bottom: 3px !important;
+  }
+
+  /* Inputs and textareas — show as plain text boxes */
+  .input,
+  .select,
+  .textarea,
+  input.input,
+  textarea.textarea,
+  select.select {
+    border: 1px solid #B0C4D8 !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    padding: 7px 9px !important;
+    font-size: 10.5pt !important;
+    color: #081B44 !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    resize: none !important;
+    /* Override hidden state */
+    display: block !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+  }
+
+  /* Empty fields — show a subtle placeholder line so the printed doc
+     still shows the field exists (useful for partially filled templates) */
+  .input:placeholder-shown,
+  .textarea:placeholder-shown {
+    color: #C0CBD8 !important;
+    font-style: italic !important;
+  }
+
+  /* Mini rows — keep side by side on A4 */
+  .mini-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Quad grid (Empathy Map Says/Thinks/Does/Feels) */
+  .quad {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* ── 8. STUDENT INFO STRIP ───────────────────────────────── */
+  /* Add student identity at top of printed output */
+  #templatesPanel::before {
+    content: "";
+    display: block;
+  }
+
+  /* ── 9. PAGE BREAKS ──────────────────────────────────────── */
+  /* Each template card starts on the same page as its content */
+  .template-card {
+    page-break-before: auto;
+    break-before: auto;
+  }
+
+  /* Force new page before each new template section */
+  .template-panel.active .template-card + .template-card {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Never break inside a field */
+  .field,
+  .mini-row,
+  .quad {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* ── 10. TYPOGRAPHY CLEANUP ──────────────────────────────── */
+  h1, h2, h3 {
+    color: #081B44 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Remove teal colour on links */
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  /* ── 11. ACTIVITY CHECKLIST — KEEP IF FILLED ────────────── */
+  /* The completion checklist (T04, Gate sections) is useful in print */
+  .activity-box.print-keep {
+    display: block !important;
+    border: 1px solid #C8D8E8 !important;
+    border-radius: 6px !important;
+    background: #F8FBFF !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+    box-shadow: none !important;
+  }
+
+  .bullet {
+    font-size: 10pt !important;
+    color: #3C4A65 !important;
+  }
+
+  .bullet::before {
+    background: #14B8A6 !important;
+  }
+
+  /* ── 12. SECTION LABELS ──────────────────────────────────── */
+  .section-title {
+    font-size: 12pt !important;
+    color: #081B44 !important;
+    margin: 10px 0 5px !important;
+    page-break-after: avoid !important;
+  }
+
+  .section-sub {
+    font-size: 9.5pt !important;
+    color: #5B6475 !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* ── 13. PORTFOLIO PAGE ──────────────────────────────────── */
+  .portfolio-checklist-item {
+    padding: 6px 0 !important;
+    border-bottom: 1px solid #E8F0F7 !important;
+    font-size: 10.5pt !important;
+  }
+
+  #portfolioSummary {
+    border: 1.5px solid #C8D8E8 !important;
+    border-radius: 8px !important;
+    padding: 14px !important;
+    box-shadow: none !important;
+  }
+
+  /* ── 14. HIDE PANELS THAT ARE NOT ACTIVE ────────────────── */
+  /* Non-active template panels stay hidden */
+  .template-panel:not(.active) {
+    display: none !important;
+  }
+
+  /* Page padding reset */
+  .page,
+  .phase-page {
+    padding: 0 !important;
+  }
+
+  /* Remove background from body */
+  body {
+    background: #fff !important;
+  }
+
+  .app {
+    min-height: 0 !important;
+  }
+
+}
+/* END @media print */

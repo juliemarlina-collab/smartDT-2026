@@ -1,0 +1,149 @@
+/* =========================================================
+   Smart DT Project — Phase 04 + Phase 05 micro-fix only
+   Scope:
+   1) Phase 04: turn “Confirm Before Submitting” bullet list into a clearer checklist.
+   2) Phase 05: fix “Iterate for improvement” step cards so text/icons do not overlap.
+   Do not edit other layouts.
+   ========================================================= */
+
+/* ---------- Phase 04: confirmation checklist ---------- */
+.smartdt-confirm-checklist-fixed {
+  background: #ffffff;
+  border: 1px solid #dbe7f0;
+  border-radius: 18px;
+  padding: 14px 14px 12px;
+}
+
+.smartdt-confirm-checklist-fixed .smartdt-check-row {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 8px 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #44516a;
+  border-bottom: 1px solid rgba(219, 231, 240, 0.75);
+}
+
+.smartdt-confirm-checklist-fixed .smartdt-check-row:last-child {
+  border-bottom: 0;
+}
+
+.smartdt-confirm-checklist-fixed .smartdt-check-row input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 2px solid #14b8a6;
+  border-radius: 7px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.14);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.smartdt-confirm-checklist-fixed .smartdt-check-row input[type="checkbox"]::before {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(-45deg) scale(0);
+  transition: transform 0.12s ease;
+}
+
+.smartdt-confirm-checklist-fixed .smartdt-check-row input[type="checkbox"]:checked {
+  background: #14b8a6;
+  border-color: #14b8a6;
+}
+
+.smartdt-confirm-checklist-fixed .smartdt-check-row input[type="checkbox"]:checked::before {
+  transform: rotate(-45deg) scale(1);
+}
+
+.smartdt-confirm-checklist-fixed .smartdt-check-row span {
+  padding-top: 1px;
+}
+
+/* Make the two orange action instruction strips easier to read. */
+.smartdt-phase04-orange-steps-fixed {
+  display: grid !important;
+  gap: 10px !important;
+}
+
+.smartdt-phase04-orange-steps-fixed > * {
+  border-radius: 14px !important;
+  padding: 11px 12px !important;
+  line-height: 1.35 !important;
+  min-height: auto !important;
+}
+
+/* ---------- Phase 05: Iterate for improvement cards ---------- */
+.smartdt-iterate-fixed {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  align-items: stretch !important;
+}
+
+.smartdt-iterate-fixed > * {
+  min-width: 0 !important;
+  min-height: 106px !important;
+  padding: 12px 8px !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: center !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.smartdt-iterate-fixed > * img,
+.smartdt-iterate-fixed > * svg,
+.smartdt-iterate-fixed > * .icon,
+.smartdt-iterate-fixed > * .step-icon {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  object-fit: contain !important;
+  position: static !important;
+  margin: 4px auto 6px !important;
+  opacity: 1 !important;
+  transform: none !important;
+  flex: 0 0 auto !important;
+}
+
+.smartdt-iterate-fixed > * h4,
+.smartdt-iterate-fixed > * h5,
+.smartdt-iterate-fixed > * strong,
+.smartdt-iterate-fixed > * .step-title {
+  font-size: 11.5px !important;
+  line-height: 1.2 !important;
+  margin: 0 0 4px !important;
+  color: #081b44 !important;
+  font-weight: 800 !important;
+}
+
+.smartdt-iterate-fixed > * p,
+.smartdt-iterate-fixed > * span:not(.step-title),
+.smartdt-iterate-fixed > * .step-text {
+  font-size: 10.8px !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+  color: #44516a !important;
+  overflow-wrap: anywhere !important;
+}
+
+@media (min-width: 520px) {
+  .smartdt-iterate-fixed {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}

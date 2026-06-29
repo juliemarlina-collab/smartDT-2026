@@ -1,0 +1,92 @@
+/* =========================================================
+   SMART DT HERO SIZING PATCH ONLY
+   Paste this at the VERY BOTTOM of css/style.css.
+   Purpose: stop all 16:9 hero images from cropping left/right.
+   No layout/content/backend/icon changes.
+   ========================================================= */
+
+/* Phase/Dashboard/Profile/Progress hero card wrapper */
+.hero-card,
+.phase-hero-card,
+.dashboard-hero-card,
+.profile-hero-card,
+.progress-hero-card,
+.auth-hero-card,
+.hero-card.compact {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 10px !important;
+  margin-bottom: 16px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #ffffff !important;
+  border-radius: 28px !important;
+  box-sizing: border-box !important;
+}
+
+/* Any image inside the hero card must show fully, not crop */
+.hero-card > img,
+.hero-card img,
+.hero-card img.hero-img-wide,
+.phase-hero-card > img,
+.phase-hero-card img,
+.dashboard-hero-card > img,
+.dashboard-hero-card img,
+.profile-hero-card > img,
+.profile-hero-card img,
+.progress-hero-card > img,
+.progress-hero-card img,
+.auth-hero-card > img,
+.auth-hero-card img {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  translate: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  border-radius: 22px !important;
+  background: #ffffff !important;
+}
+
+/* If any page still uses a standalone hero section, keep it visible but not cropped */
+.hero-section .hero-card,
+.phase-header .hero-card,
+.page .hero-card {
+  aspect-ratio: 16 / 9 !important;
+}
+
+/* Mobile safety: keep the hero neat on small screens */
+@media (max-width: 430px) {
+  .hero-card,
+  .phase-hero-card,
+  .dashboard-hero-card,
+  .profile-hero-card,
+  .progress-hero-card,
+  .auth-hero-card,
+  .hero-card.compact {
+    padding: 8px !important;
+    border-radius: 26px !important;
+  }
+
+  .hero-card > img,
+  .hero-card img,
+  .phase-hero-card img,
+  .dashboard-hero-card img,
+  .profile-hero-card img,
+  .progress-hero-card img,
+  .auth-hero-card img {
+    border-radius: 20px !important;
+  }
+}
