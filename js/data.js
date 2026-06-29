@@ -1,286 +1,166 @@
-/* Smart DT Project — data.js
-   Quiz question sets for all 5 phases.
-   Consumed by phase-engine.js renderQuiz().
-   --------------------------------------------------------- */
+/* Smart DT Project — Quiz Data
+   window.SMARTDT_QUIZ[phaseNum] = array of 5 question objects
+   Each: { q: string, a: 0-3 (correct index), o: [4 options], e: explanation }
+*/
 window.SMARTDT_QUIZ = {
   1: [
     {
-      q: 'What is the MAIN goal of the Empathy phase?',
-      a: 0,
-      o: [
-        'To understand users’ real feelings, needs and experiences',
-        'To build the final product immediately',
-        'To choose the cheapest solution',
-        'To prepare a presentation only'
-      ],
-      e: 'Empathy is about understanding real people — their feelings, struggles and actual needs — before any solution is considered. You cannot design well for someone you do not truly understand.'
-    },
-    {
-      q: 'Should you already know the solution before interviewing users?',
+      q: 'What is the main goal of the Empathise phase?',
       a: 1,
-      o: [
-        'True — decide first',
-        'False — keep an open mind and discover',
-        'True — the app requires it',
-        'False — no interviews are needed'
-      ],
-      e: 'Entering an interview with a fixed solution causes you to ask leading questions and ignore evidence that contradicts your idea. Empathy requires an open, curious mind so real insights can surface.'
+      o: ['Build a prototype quickly', 'Understand the user deeply before solving', 'Select the best idea', 'Write a problem statement'],
+      e: 'Empathise is about gaining deep insight into user needs, feelings, and context BEFORE defining any problem or solution.'
     },
     {
-      q: 'Which is the BEST interview question for Empathy?',
+      q: 'Which method is best for collecting real user evidence?',
       a: 2,
-      o: [
-        'Do you agree my idea is good?',
-        'Do you want our product?',
-        'Tell me about your experience using the canteen during peak hours.',
-        'Is this problem serious?'
-      ],
-      e: 'Open-ended, experience-based questions invite users to share stories and feelings. Questions that lead or suggest solutions produce biased answers that do not reflect real needs.'
+      o: ['Guessing what users need', 'Reading only online articles', 'Observing and interviewing real users', 'Asking your teammates'],
+      e: 'Real evidence comes from direct observation and interviews with actual target users — not assumptions or secondary sources.'
     },
     {
-      q: 'Is interviewing one person enough for the Empathy phase?',
-      a: 1,
-      o: [
-        'True — one user is enough',
-        'False — interview at least 3 users to find patterns',
-        'True — if the user is your friend',
-        'False — no interviews are needed'
-      ],
-      e: 'One person’s experience may be unique to them. Interviewing at least 3 users lets you spot repeated patterns — the pain points that keep appearing — which are far more reliable to design for.'
+      q: 'An Empathy Map organises evidence into:',
+      a: 0,
+      o: ['Says, Thinks, Does, Feels', 'Problem, Solution, Prototype, Test', 'Who, What, Where, Why', 'Input, Process, Output, Outcome'],
+      e: 'The four quadrants of an Empathy Map are Says, Thinks, Does, and Feels — capturing the full human picture.'
     },
     {
-      q: 'Which tool maps what a user SAYS, THINKS, DOES and FEELS?',
+      q: 'What should you avoid when interviewing users?',
       a: 3,
-      o: [
-        'Persona only',
-        'Problem Statement',
-        'SCAMPER',
-        'Empathy Map'
-      ],
-      e: 'The Empathy Map organises your interview evidence into four quadrants: Says (direct quotes), Thinks (inferred thoughts), Does (observed behaviours), and Feels (emotional states).'
+      o: ['Using open-ended questions', 'Following up with "Why?"', 'Recording observations', 'Asking leading yes/no questions'],
+      e: 'Leading or yes/no questions push users toward your assumptions. Open questions invite honest stories and real feelings.'
+    },
+    {
+      q: 'POEMS stands for:',
+      a: 1,
+      o: ['People, Objectives, Evidence, Methods, Strategy', 'People, Objects, Environments, Messages, Services', 'Problems, Outcomes, Empathy, Methods, Solutions', 'Process, Objects, Empathy, Maps, Systems'],
+      e: 'POEMS is an observation framework: People, Objects, Environments, Messages, Services — used to capture a real situation.'
     }
   ],
   2: [
     {
-      q: 'What is the MAIN output of the Define phase?',
-      a: 0,
-      o: [
-        'A clear user-centred problem statement based on research',
-        'A finished prototype',
-        'A list of random ideas',
-        'A final presentation script'
-      ],
-      e: 'Define converts all the Empathy research into one focused problem statement. Without this step, your team may brainstorm solutions to the wrong problem.'
-    },
-    {
-      q: 'Should the problem statement include a solution?',
-      a: 1,
-      o: [
-        'True — include the app idea immediately',
-        'False — define the problem only, never the solution',
-        'True — supervisors prefer solutions first',
-        'False — skip the problem statement'
-      ],
-      e: 'A problem statement that already contains a solution narrows thinking too early. The Define phase should frame the user need clearly so Ideation can explore many possible solutions freely.'
-    },
-    {
-      q: 'Which HMW question is correctly formatted?',
+      q: 'What is the correct format for a Needs Statement?',
       a: 2,
-      o: [
-        'We should build a canteen app.',
-        'Can you make students eat faster?',
-        'How might we help students eat lunch faster on campus?',
-        'Why is the canteen crowded?'
-      ],
-      e: '"How might we…" opens up creative possibilities without prescribing a solution. It is broad enough to generate many ideas but specific enough to stay connected to the user need.'
+      o: ['We will build an app to solve the problem', 'The problem is that students struggle', '[User] needs a way to [need] because [insight]', 'Our solution is a website with features'],
+      e: 'The Needs Statement follows: [User] needs a way to [need] because [insight]. It focuses on the need, not the solution.'
     },
     {
-      q: 'Can you skip Define if Empathy was thorough enough?',
+      q: 'A User Persona is based on:',
       a: 1,
-      o: [
-        'True — Empathy is enough',
-        'False — Empathy and Define serve different purposes',
-        'True — go straight to Ideation',
-        'False — skip Ideation instead'
-      ],
-      e: 'Empathy collects raw evidence; Define makes sense of it. Jumping from interviews to brainstorming without framing the problem first results in scattered ideas that do not address the real user need.'
+      o: ['Team imagination and creativity', 'Real interview and observation findings', 'Online statistics only', 'The teacher\'s suggestions'],
+      e: 'A persona must be grounded in real evidence from interviews and observations — not invented assumptions.'
     },
     {
-      q: 'What should a good problem statement focus on?',
-      a: 1,
-      o: [
-        'The technology your team likes',
-        'The user’s need and the insight behind it',
-        'The cheapest available solution',
-        'The supervisor’s preferred product'
-      ],
-      e: 'A user-centred problem statement always starts from a real person’s need and the evidence that explains why that need exists.'
+      q: 'The Define phase turns research into:',
+      a: 0,
+      o: ['A clear, focused user need', 'A working prototype', 'A list of solutions', 'A completed quiz'],
+      e: 'Define synthesises Empathy findings into one clear user need and insight — the foundation for ideation.'
+    },
+    {
+      q: 'Which of these is a good insight in a Needs Statement?',
+      a: 3,
+      o: ['Because we want to help', 'Because technology is useful', 'Because students are lazy', 'Because they fear making mistakes in an unfamiliar process'],
+      e: 'A good insight explains the underlying motivation, fear, or challenge — specific and evidence-based.'
+    },
+    {
+      q: 'What does a User Persona help the team do?',
+      a: 2,
+      o: ['Write code faster', 'Decide on the budget', 'Design for a realistic human, not an abstract group', 'Choose a project topic'],
+      e: 'Personas make the target user concrete and human, so the team designs solutions that match real needs and contexts.'
     }
   ],
   3: [
     {
-      q: 'What is the golden rule of brainstorming?',
+      q: 'The first rule of brainstorming is:',
       a: 0,
-      o: [
-        'No judging or evaluating ideas during the session',
-        'Choose the cheapest idea first',
-        'Only write ideas from the team leader',
-        'Start building the prototype immediately'
-      ],
-      e: 'Judging ideas during brainstorming shuts down creative thinking. When team members fear criticism, they hold back unusual ideas — and those unusual ideas are often where the most innovative solutions come from.'
+      o: ['Generate many ideas without judging them', 'Choose the best idea immediately', 'Only share safe, proven ideas', 'Work alone to avoid conflict'],
+      e: 'In brainstorming, quantity beats quality first. Defer judgement — all ideas are welcome before any are filtered.'
     },
     {
-      q: 'Should you stop when you find your first good idea?',
+      q: 'What does the "S" in SCAMPER stand for?',
       a: 1,
-      o: [
-        'True — one good idea is enough',
-        'False — push for 20+ ideas before evaluating',
-        'True — avoid wasting time',
-        'False — skip SCAMPER instead'
-      ],
-      e: 'The first idea is almost never the best one. Quantity builds quality — by pushing for 20 or more ideas, you exhaust the obvious options and reach more creative solutions.'
+      o: ['Solve', 'Substitute', 'Survey', 'Select'],
+      e: 'SCAMPER: Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse — a creative improvement technique.'
     },
     {
-      q: 'What does the S in SCAMPER stand for?',
+      q: 'A How Might We (HMW) question should be:',
       a: 2,
-      o: ['Score', 'Sketch', 'Substitute', 'Submit'],
-      e: 'SCAMPER stands for Substitute, Combine, Adapt, Modify, Put to other uses, Eliminate, Reverse. Each prompt forces you to look at your existing ideas from a different angle.'
+      o: ['Very specific with a named solution', 'Too broad to answer', 'Open-ended and user-centred', 'A yes/no question'],
+      e: 'Good HMW questions are open enough to invite many ideas but focused enough on the user need to guide direction.'
     },
     {
-      q: 'Does the Idea Selection Matrix use gut feelings to choose?',
-      a: 1,
-      o: [
-        'True — choose based on preference',
-        'False — it uses criteria with numerical scores',
-        'True — the team leader decides',
-        'False — it uses interviews only'
-      ],
-      e: 'The Idea Selection Matrix scores each idea against criteria such as feasibility, user impact and originality using numbers. This makes the selection transparent and based on evidence.'
-    },
-    {
-      q: 'What is the correct order for the Ideation phase?',
+      q: 'The Idea Prioritisation Matrix helps teams:',
       a: 3,
-      o: [
-        'Select → Brainstorm → SCAMPER → Justify',
-        'Prototype → Brainstorm → Submit → Test',
-        'SCAMPER → Test → Persona → Matrix',
-        'Brainstorm → SCAMPER → Select → Justify'
-      ],
-      e: 'You brainstorm freely first, then use SCAMPER to push ideas further, then evaluate using the selection matrix, and finally justify your chosen concept.'
+      o: ['Write the problem statement', 'Build a prototype', 'Design the app interface', 'Compare ideas using clear criteria before selecting'],
+      e: 'The matrix scores ideas on impact, feasibility, sustainability, and user value — removing bias from the selection process.'
+    },
+    {
+      q: 'After ideation, the team should:',
+      a: 0,
+      o: ['Select one strong idea using criteria and move to prototyping', 'Present all ideas to the teacher', 'Delete weak ideas immediately', 'Start building the final product'],
+      e: 'One idea should be selected using structured criteria, then carried forward into a tangible prototype.'
     }
   ],
   4: [
     {
-      q: 'What type of prototype should students build FIRST?',
-      a: 0,
-      o: [
-        'Low-fidelity rough sketch or paper prototype',
-        'Fully polished final product',
-        'Expensive commercial version',
-        'Only a written report'
-      ],
-      e: 'Low-fidelity prototypes — paper sketches, cardboard mockups, simple wireframes — can be built quickly and tested immediately. Starting rough means you can learn and improve before investing time in polish.'
-    },
-    {
-      q: 'Must the prototype be polished before testing with users?',
+      q: 'What is a low-fidelity prototype?',
       a: 1,
-      o: [
-        'True — it must look perfect',
-        'False — rough prototypes generate honest feedback',
-        'True — users cannot test rough ideas',
-        'False — do not test at all'
-      ],
-      e: 'A polished prototype can reduce feedback quality — users hesitate to criticise something that looks finished. Rough prototypes invite honest reactions because users feel their feedback can still change things.'
+      o: ['A finished digital product', 'A rough, quick version made to learn and test fast', 'A detailed 3D model', 'The final submission'],
+      e: 'Low-fidelity means simple and fast — sketches, paper models, storyboards. The goal is learning, not perfection.'
     },
     {
-      q: 'What is the MAIN purpose of building a prototype?',
+      q: 'The Prototype phase goal is:',
       a: 2,
-      o: [
-        'To decorate the final report',
-        'To replace user testing',
-        'To test the idea and learn from real user feedback',
-        'To avoid improving the idea'
-      ],
-      e: 'The prototype is a learning tool, not the final product. Its purpose is to put something tangible in front of users so you can observe how they interact with it and discover what needs to change.'
+      o: ['To finish the project', 'To impress the teacher', 'To make the idea tangible so it can be tested and improved', 'To create a logo'],
+      e: 'Prototypes exist to learn — they make abstract ideas real enough to get real feedback from users.'
     },
     {
-      q: 'If a prototype fails during testing, has the project failed?',
-      a: 1,
-      o: [
-        'True — failure means stop the project',
-        'False — failure reveals problems to improve',
-        'True — delete the version log',
-        'False — ignore all feedback'
-      ],
-      e: 'In Design Thinking, a prototype that fails during testing is a success — it revealed a real problem before you built the final version. Every failure is information that tells you exactly what to improve next.'
-    },
-    {
-      q: 'What should the Version Log record for each iteration?',
+      q: 'Which of these is NOT a prototype format?',
       a: 3,
-      o: [
-        'Only the team members’ names',
-        'Only the final score',
-        'Only the supervisor comment',
-        'What was built, feedback received, and what to improve next'
-      ],
-      e: 'The Version Log documents your design decisions and learning process. Recording what was built, what feedback came back, and what changed shows your design evolved based on real evidence.'
+      o: ['Paper sketch', 'Storyboard', 'Clickable wireframe', 'Final published website'],
+      e: 'A final published website is a finished product, not a prototype. Prototypes are quick and designed to be changed.'
+    },
+    {
+      q: 'A good Prototype Direction Plan includes:',
+      a: 0,
+      o: ['Concept, format, user, features, materials, task distribution, success check', 'Only the team name and topic', 'A list of problems', 'Quiz scores and template names'],
+      e: 'T11 covers all key planning elements: what you\'re building, how, for whom, what it must show, and who does what.'
+    },
+    {
+      q: 'Why is it important to document versions?',
+      a: 1,
+      o: ['To fill in the template only', 'To show how user feedback shaped improvements over time', 'To prove the team worked a long time', 'Because the teacher requires it'],
+      e: 'Version logs show the Design Thinking process — each version should link to specific feedback and decisions made.'
     }
   ],
   5: [
     {
-      q: 'Who should you select as test participants?',
-      a: 1,
-      o: [
-        'Your friends and family for convenience',
-        'Real target users who match the Persona from Phase 01',
-        'Only your classmates',
-        'Your supervisor and lecturers'
-      ],
-      e: 'Testing with actual target users gives you meaningful data because they experience the real problem your solution addresses. Friends and family often give positive feedback to avoid hurting your feelings.'
-    },
-    {
-      q: 'Should you explain how the prototype works before testing?',
-      a: 1,
-      o: [
-        'True — explain every feature first',
-        'False — never explain first; watching struggle is useful data',
-        'True — users cannot test without full explanation',
-        'False — cancel the test instead'
-      ],
-      e: 'When a user struggles to find a feature without guidance, that struggle is critical usability data. Explaining everything first removes that data.'
-    },
-    {
-      q: 'What is most important to do during a user test?',
+      q: 'When testing a prototype, you should first:',
       a: 2,
-      o: [
-        'Persuade users to like the prototype',
-        'Change the design during the test',
-        'Observe and listen without interfering',
-        'Ask only yes/no questions'
-      ],
-      e: 'Your role during a test is to be a quiet observer. Helping, explaining or defending the design during the session contaminates the data.'
+      o: ['Explain how it works in detail', 'Ask users to guess what it does', 'Observe silently as the user interacts', 'Show the final product instead'],
+      e: 'Silent observation reveals what users actually understand and struggle with — more honest than guided tours.'
     },
     {
-      q: 'If testers complete the task, is testing done?',
-      a: 1,
-      o: [
-        'True — completion means no more analysis',
-        'False — also identify friction points and improvement opportunities',
-        'True — submit immediately',
-        'False — restart from Empathy'
-      ],
-      e: 'Task completion is only one measure. A user who completes a task but hesitates, takes a wrong path, or expresses frustration is giving you valuable improvement data.'
+      q: 'A Feedback Grid organises feedback into:',
+      a: 0,
+      o: ['What worked, what to improve, questions raised, action items', 'Good, bad, neutral, irrelevant', 'User, need, insight, evidence', 'Phase 1, 2, 3, 4'],
+      e: 'T12 uses four quadrants: What Worked, What Could Improve, Questions Raised, Action Items — for structured reflection.'
     },
     {
-      q: 'What should happen AFTER collecting all test feedback?',
+      q: 'How many users should you ideally test with?',
       a: 1,
-      o: [
-        'Submit directly to supervisor without analysis',
-        'Analyse feedback patterns, create an improvement plan, then reflect',
-        'Rebuild the entire prototype from scratch',
-        'Present results to class immediately'
-      ],
-      e: 'Raw feedback only becomes useful when analysed for patterns. Identifying which issues appeared most often, planning specific improvements, and reflecting completes the Design Thinking cycle properly.'
+      o: ['1 — your best friend', 'At least 3 real target users', '10 or more online respondents', 'Only the teacher'],
+      e: 'At least 3 users helps identify patterns. Online-only surveys miss the rich observation data from in-person testing.'
+    },
+    {
+      q: 'A good 8-Slide Pitch structure ends with:',
+      a: 3,
+      o: ['The team photo', 'A list of templates completed', 'The quiz score', 'A clear call to action and impact statement'],
+      e: 'Slides 7–8 communicate impact and what the audience should do or believe — the memorable closing.'
+    },
+    {
+      q: 'The Test phase closes the DT cycle by:',
+      a: 2,
+      o: ['Finishing all templates', 'Submitting the zip file', 'Using real feedback to improve the solution and reflect on learning', 'Presenting to parents'],
+      e: 'Testing is not the end — it loops back. Real user feedback drives meaningful improvement and deeper understanding.'
     }
   ]
 };

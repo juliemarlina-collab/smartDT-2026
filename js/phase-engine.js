@@ -1,348 +1,281 @@
-/* Smart DT Project — phase-engine.js
-   Tab switching, quiz rendering/scoring, template auto-save, phase submit.
-   Requires: js/data.js (window.SMARTDT_QUIZ), js/ui.js (SmartDTUI)
-   -------------------------------------------------------------------- */
-(function (global) {
+/* Smart DT Project — Phase Engine
+   Exposes: window.PhaseEngine = { init, submitPhase }
+
+   init(opts):
+     opts.phaseNum   — 1-5
+     opts.namespace  — localStorage key prefix e.g. 'df_p01_'
+     opts.hasGate    — false (no supervisor gate)
+     opts.sheetUrl   — Google Apps Script Web App URL (or '')
+*/
+(function () {
   'use strict';
 
-  /* ── localStorage helpers ──────────────────────────── */
-  var store = {
-    get:     function (k)   { return localStorage.getItem(k) || ''; },
-    set:     function (k,v) { localStorage.setItem(k, String(v)); },
-    json:    function (k,d) { try { return JSON.parse(localStorage.getItem(k) || '') || d; } catch(e) { return d; } },
-    setJson: function (k,v) { localStorage.setItem(k, JSON.stringify(v)); }
-  };
+  var _sheetUrl = '';
+  var _saveTimers = {};
 
-  /* ── Toast notification ────────────────────────────── */
-  function toast(msg, colour) {
-    var el = document.getElementById('smartdt-toast');
-    if (!el) {
-      el = document.createElement('div');
-      el.id = 'smartdt-toast';
-      el.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);'
-        + 'background:#081B44;color:#fff;padding:10px 20px;border-radius:24px;font-size:13px;'
-        + 'font-weight:600;z-index:9999;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;'
-        + 'white-space:nowrap;max-width:90vw;text-align:center';
-      document.body.appendChild(el);
-    }
-    el.textContent = msg;
-    el.style.background = colour || '#081B44';
-    el.style.opacity = '1';
-    el.style.transform = 'translateX(-50%) translateY(0)';
-    clearTimeout(el._timer);
-    el._timer = setTimeout(function () {
-      el.style.opacity = '0';
-      el.style.transform = 'translateX(-50%) translateY(20px)';
-    }, 2600);
-  }
+  /* ── Utility ─────────────────────────────────────────── */
+  function qs(sel, root) { return (root || document).querySelector(sel); }
+  function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
 
-  /* ── Google Sheets sync ────────────────────────────── */
-  function syncSheets(url, action, payload) {
-    if (!url) return;
-    var body = JSON.stringify({
-      action: action,
-      source: 'Smart DT Project',
-      appVersion: 'v3.0.0',
-      page: location.pathname.split('/').pop(),
-      timestamp: new Date().toISOString(),
-      student: {
-        studentName: store.get('df_student_name'),
-        email:       store.get('df_email'),
-        regNo:       store.get('df_reg_no'),
-        className:   store.get('df_class'),
-        team:        store.get('df_team'),
-        projectName: store.get('df_project_name')
-      },
-      payload: payload || {}
-    });
+  function syncSheet(data) {
+    if (!_sheetUrl) return;
     try {
-      fetch(url, {
-        method:  'POST',
-        mode:    'no-cors',
-        cache:   'no-store',
-        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-        body:    body
-      }).catch(function () {});
+      fetch(_sheetUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
     } catch (e) {}
   }
 
-  /* ── Tab system ────────────────────────────────────── */
+  function studentInfo() {
+    return {
+      name: localStorage.getItem('df_student_name') || '',
+      email: localStorage.getItem('df_email') || '',
+      regNo: localStorage.getItem('df_reg_no') || '',
+      class: localStorage.getItem('df_class') || '',
+      team: localStorage.getItem('df_team') || '',
+      project: localStorage.getItem('df_project_name') || ''
+    };
+  }
+
+  /* ── Tabs ────────────────────────────────────────────── */
   function initTabs(phaseNum) {
-    var tabs   = document.querySelectorAll('.tab-btn[data-tab]');
-    var panels = document.querySelectorAll('.tab-panel[id]');
+    var tabBtns = qsa('.tab-btn');
+    var panels = qsa('.tab-panel');
+    var unlocked = localStorage.getItem('df_unlocked_phase' + phaseNum) === 'true';
 
-    function showTab(id) {
-      tabs.forEach(function (t) {
-        var active = t.dataset.tab === id;
-        t.classList.toggle('active', active);
-        t.setAttribute('aria-selected', active ? 'true' : 'false');
-      });
-      panels.forEach(function (p) {
-        var active = p.id === 'tab-' + id;
-        p.classList.toggle('hidden', !active);
-        p.removeAttribute('hidden');
-        if (!active) p.setAttribute('hidden', '');
-        else         p.removeAttribute('hidden');
-      });
-    }
+    tabBtns.forEach(function (btn) {
+      var target = btn.dataset.tab;
 
-    tabs.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var id = btn.dataset.tab;
-        if (id === 'templates' && btn.classList.contains('locked')) {
-          toast('Pass the Quiz first to unlock Templates 🔒');
-          showTab('quiz');
-          return;
+      if (target === 'templates' && !unlocked) {
+        btn.classList.add('locked');
+        btn.setAttribute('disabled', 'true');
+        if (!btn.querySelector('.lock-icon')) {
+          var icon = document.createElement('span');
+          icon.className = 'lock-icon';
+          icon.textContent = ' 🔒';
+          btn.appendChild(icon);
         }
-        showTab(id);
-      });
-    });
+      }
 
-    /* Restore last active tab */
-    var lastTab = store.get('df_active_tab_p' + phaseNum);
-    if (lastTab) showTab(lastTab);
-    else         showTab('info');
-
-    /* Persist tab choice */
-    tabs.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        store.set('df_active_tab_p' + phaseNum, btn.dataset.tab);
+        if (btn.classList.contains('locked')) return;
+        tabBtns.forEach(function (b) { b.classList.remove('active'); });
+        panels.forEach(function (p) { p.classList.add('hidden'); });
+        btn.classList.add('active');
+        var panel = document.getElementById(target + 'Panel');
+        if (panel) panel.classList.remove('hidden');
       });
     });
   }
 
-  /* ── Quiz ──────────────────────────────────────────── */
+  /* ── Quiz ────────────────────────────────────────────── */
   function initQuiz(phaseNum, sheetUrl) {
-    var container = document.getElementById('quiz-container');
-    if (!container) return;
-
+    var box = document.getElementById('quizBox');
+    if (!box) return;
     var questions = (window.SMARTDT_QUIZ || {})[phaseNum];
     if (!questions || !questions.length) {
-      container.innerHTML = '<p style="padding:20px;color:#666">No quiz available for this phase.</p>';
+      box.innerHTML = '<p>No quiz available for this phase.</p>';
       return;
     }
 
-    var scoreKey    = 'df_quiz_phase' + phaseNum;
-    var unlockedKey = 'df_unlocked_phase' + phaseNum;
-    var savedScore  = parseInt(store.get(scoreKey) || '-1', 10);
+    var current = 0;
+    var score = 0;
+    var answers = [];
 
-    /* Already passed — show result immediately */
-    if (savedScore >= 3) {
-      renderResult(savedScore, questions.length);
-      unlockTemplates();
-      return;
-    }
-
-    var current  = 0;
-    var answers  = [];
-    var selected = null;
-
-    function render() {
+    function renderQ() {
       var q = questions[current];
-      var html = '<div class="quiz-card">'
-        + '<p class="quiz-q-num">Question ' + (current + 1) + ' of ' + questions.length + '</p>'
-        + '<p class="quiz-q-text">' + esc(q.q) + '</p>'
-        + '<div class="quiz-options">'
-        + q.o.map(function (opt, i) {
-            return '<button class="quiz-option" data-idx="' + i + '" type="button">' + esc(opt) + '</button>';
-          }).join('')
-        + '</div>'
-        + '<button class="quiz-next btn-primary" id="quiz-next-btn" disabled type="button">'
-        + (current < questions.length - 1 ? 'Next →' : 'Submit Quiz')
-        + '</button>'
-        + '</div>';
-      container.innerHTML = html;
+      box.innerHTML =
+        '<div class="quiz-card">' +
+          '<p class="quiz-progress">Question ' + (current + 1) + ' of ' + questions.length + '</p>' +
+          '<p class="quiz-question">' + q.q + '</p>' +
+          '<div class="quiz-options">' +
+            q.o.map(function (opt, i) {
+              return '<button class="quiz-option" data-idx="' + i + '">' + opt + '</button>';
+            }).join('') +
+          '</div>' +
+        '</div>';
 
-      /* Restore prior answer for this question */
-      if (answers[current] !== undefined) {
-        var opts = container.querySelectorAll('.quiz-option');
-        opts[answers[current]].classList.add('selected');
-        selected = answers[current];
-        document.getElementById('quiz-next-btn').disabled = false;
-      } else {
-        selected = null;
-      }
-
-      container.querySelectorAll('.quiz-option').forEach(function (btn) {
+      qsa('.quiz-option', box).forEach(function (btn) {
         btn.addEventListener('click', function () {
-          container.querySelectorAll('.quiz-option').forEach(function (b) { b.classList.remove('selected'); });
-          btn.classList.add('selected');
-          selected = parseInt(btn.dataset.idx, 10);
-          document.getElementById('quiz-next-btn').disabled = false;
+          var chosen = Number(btn.dataset.idx);
+          answers.push(chosen);
+          if (chosen === q.a) score++;
+          qsa('.quiz-option', box).forEach(function (b) {
+            b.disabled = true;
+            if (Number(b.dataset.idx) === q.a) b.classList.add('correct');
+            else if (Number(b.dataset.idx) === chosen) b.classList.add('wrong');
+          });
+          var exp = document.createElement('p');
+          exp.className = 'quiz-explanation';
+          exp.textContent = q.e;
+          box.querySelector('.quiz-card').appendChild(exp);
+
+          setTimeout(function () {
+            current++;
+            if (current < questions.length) {
+              renderQ();
+            } else {
+              showResult();
+            }
+          }, 1400);
         });
       });
-
-      document.getElementById('quiz-next-btn').addEventListener('click', function () {
-        if (selected === null) return;
-        answers[current] = selected;
-        if (current < questions.length - 1) {
-          current++;
-          render();
-        } else {
-          grade();
-        }
-      });
     }
 
-    function grade() {
-      var score = 0;
-      questions.forEach(function (q, i) {
-        if (answers[i] === q.a) score++;
-      });
-      store.set(scoreKey, score);
+    function showResult() {
+      var pass = score >= 3;
+      box.innerHTML =
+        '<div class="quiz-result ' + (pass ? 'pass' : 'fail') + '">' +
+          '<p class="quiz-score">' + score + ' / ' + questions.length + '</p>' +
+          '<p>' + (pass ? '✅ Well done! You unlocked the Templates tab.' : '❌ Score at least 3 to unlock Templates. Try again!') + '</p>' +
+          (!pass ? '<button class="btn-primary" id="quizRetry">Try Again</button>' : '') +
+        '</div>';
 
-      if (score >= 3) {
-        store.set(unlockedKey, 'true');
-        unlockTemplates();
-        syncSheets(sheetUrl, 'quiz_pass', { phase: phaseNum, score: score });
-      }
-
-      renderResult(score, questions.length);
-    }
-
-    function renderResult(score, total) {
-      var passed = score >= 3;
-      var html = '<div class="quiz-result ' + (passed ? 'pass' : 'fail') + '">'
-        + '<p class="quiz-result-score">' + score + ' / ' + total + '</p>'
-        + '<p class="quiz-result-label">' + (passed ? '🎉 Quiz Passed! Templates are now unlocked.' : '📚 Score 3 or more to unlock Templates.') + '</p>';
-
-      if (!passed) {
-        html += '<button class="btn-primary" id="quiz-retry-btn" type="button" style="margin-top:16px">Try Again</button>';
-      }
-
-      /* Explanations */
-      html += '<div class="quiz-explanations">';
-      questions.forEach(function (q, i) {
-        var correct = answers[i] === q.a;
-        var answered = answers[i] !== undefined;
-        html += '<div class="quiz-exp-item ' + (answered ? (correct ? 'correct' : 'wrong') : '') + '">'
-          + '<p class="quiz-exp-q">' + esc(q.q) + '</p>'
-          + (answered ? '<p class="quiz-exp-a">' + (correct ? '✓ Correct' : '✗ You chose: ' + esc(q.o[answers[i]])) + '</p>' : '')
-          + '<p class="quiz-exp-text">' + esc(q.e) + '</p>'
-          + '</div>';
-      });
-      html += '</div></div>';
-
-      container.innerHTML = html;
-
-      var retryBtn = document.getElementById('quiz-retry-btn');
-      if (retryBtn) {
-        retryBtn.addEventListener('click', function () {
-          current = 0;
-          answers = [];
-          selected = null;
-          render();
-        });
+      if (pass) {
+        localStorage.setItem('df_quiz_phase' + phaseNum, score);
+        unlockTemplates(phaseNum);
+        syncSheet({ mode: 'quiz', phase: phaseNum, score: score, student: studentInfo(), ts: Date.now() });
+      } else {
+        var retry = document.getElementById('quizRetry');
+        if (retry) retry.addEventListener('click', function () { current = 0; score = 0; answers = []; renderQ(); });
       }
     }
 
-    render();
+    renderQ();
   }
 
-  function unlockTemplates() {
-    var tmplBtn = document.querySelector('.tab-btn[data-tab="templates"]');
-    if (tmplBtn) {
-      tmplBtn.classList.remove('locked');
-      var lock = tmplBtn.querySelector('.tab-lock-icon');
-      if (lock) lock.remove();
+  function unlockTemplates(phaseNum) {
+    localStorage.setItem('df_unlocked_phase' + phaseNum, 'true');
+    var btn = qs('[data-tab="templates"]');
+    if (btn) {
+      btn.classList.remove('locked');
+      btn.removeAttribute('disabled');
+      var icon = btn.querySelector('.lock-icon');
+      if (icon) icon.remove();
     }
   }
 
-  /* ── Template auto-save ────────────────────────────── */
+  /* ── Template Form ───────────────────────────────────── */
   function initTemplateForm(namespace, phaseNum, sheetUrl) {
-    var form = document.getElementById('template-form');
+    var form = document.getElementById('templateForm');
     if (!form) return;
 
     /* Restore saved values */
-    var saved = store.json('df_p' + String(phaseNum).padStart(2,'0') + '_templates', {});
-    Array.from(form.elements).forEach(function (el) {
-      if (!el.name) return;
-      if (saved[el.name] !== undefined) el.value = saved[el.name];
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(namespace + 'data') || '{}'); } catch (e) {}
+    qsa('textarea, input', form).forEach(function (el) {
+      if (el.name && saved[el.name] !== undefined) el.value = saved[el.name];
     });
 
     /* Debounced auto-save */
-    var saveTimer = null;
-    function doSave() {
+    function autoSave() {
       var data = {};
-      Array.from(form.elements).forEach(function (el) {
-        if (el.name) data[el.name] = el.value;
-      });
-      store.setJson('df_p' + String(phaseNum).padStart(2,'0') + '_templates', data);
-      toast('Draft saved ✓', '#14B8A6');
-      syncSheets(sheetUrl, 'template_draft', { phase: phaseNum, fields: data });
+      qsa('textarea, input', form).forEach(function (el) { if (el.name) data[el.name] = el.value; });
+      localStorage.setItem(namespace + 'data', JSON.stringify(data));
     }
 
-    form.addEventListener('input', function () {
-      clearTimeout(saveTimer);
-      saveTimer = setTimeout(doSave, 800);
+    qsa('textarea, input', form).forEach(function (el) {
+      el.addEventListener('input', function () {
+        clearTimeout(_saveTimers[namespace]);
+        _saveTimers[namespace] = setTimeout(autoSave, 800);
+      });
+    });
+
+    /* Mode toggle: Example ↔ Fill */
+    qsa('.mode-toggle-btn', form).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var card = btn.closest('.template-card');
+        if (!card) return;
+        qsa('.mode-toggle-btn', card).forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var mode = btn.dataset.mode;
+        qsa('.mode-panel', card).forEach(function (p) { p.hidden = p.dataset.panel !== mode; });
+      });
+    });
+
+    /* Save Draft button */
+    qsa('[data-save-draft]', form).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        autoSave();
+        btn.textContent = 'Draft Saved ✓';
+        setTimeout(function () { btn.textContent = 'Save Draft'; }, 2000);
+      });
+    });
+
+    /* Printable button */
+    qsa('[data-print-template]', form).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var tCode = btn.dataset.printTemplate;
+        window.location.href = 'printable.html?template=' + tCode + '&phase=' + phaseNum;
+      });
     });
   }
 
-  /* ── Phase submit ──────────────────────────────────── */
+  /* ── Submit Phase ────────────────────────────────────── */
   function submitPhase(phaseNum, gateCode, namespaces) {
-    var key = 'df_submitted_phase' + String(phaseNum).padStart(2,'0');
-    store.set(key, 'true');
+    var confirmed = window.confirm(
+      'Are you sure you want to submit Phase ' + phaseNum + '?\n\nThis marks the phase as Final. You can still view your answers.'
+    );
+    if (!confirmed) return;
 
-    var payload = { phase: phaseNum };
+    /* Collect all template data */
+    var allData = {};
     (namespaces || []).forEach(function (ns) {
-      var data = {};
-      for (var i = 0; i < localStorage.length; i++) {
-        var k = localStorage.key(i);
-        if (k && k.indexOf(ns) === 0) data[k] = localStorage.getItem(k);
-      }
-      Object.assign(payload, data);
+      try {
+        var d = JSON.parse(localStorage.getItem(ns + 'data') || '{}');
+        Object.assign(allData, d);
+      } catch (e) {}
     });
 
-    /* Retrieve sheet URL from meta tag or data attribute */
-    var sheetUrl = (document.querySelector('[data-sheet-url]') || {}).dataset
-      ? (document.querySelector('[data-sheet-url]') || {}).dataset.sheetUrl || ''
-      : '';
+    localStorage.setItem('df_submitted_phase' + phaseNum, 'true');
 
-    syncSheets(sheetUrl || '', 'phase_submit', payload);
-    toast('Phase ' + phaseNum + ' submitted! ✓', '#14B8A6');
+    var payload = {
+      mode: 'submit_phase',
+      phase: phaseNum,
+      student: studentInfo(),
+      templates: allData,
+      ts: Date.now()
+    };
 
-    setTimeout(function () {
-      var NEXT = {1:'phase02-define.html', 2:'phase03-ideation.html',
-                  3:'phase04-prototype.html', 4:'phase05-test.html',
-                  5:'portfolio-completion.html'};
-      location.href = NEXT[phaseNum] || 'dashboard.html';
-    }, 1200);
+    syncSheet(payload);
+
+    /* Show confirmation then navigate to next phase or portfolio */
+    var nextMap = { 1: 'phase02-define.html', 2: 'phase03-ideation.html', 3: 'phase04-prototype.html', 4: 'phase05-test.html', 5: 'portfolio-completion.html' };
+    var next = nextMap[phaseNum] || 'dashboard.html';
+
+    var box = document.getElementById('submitConfirm');
+    if (box) {
+      box.innerHTML = '<div class="submit-success">✅ Phase ' + phaseNum + ' submitted! Redirecting…</div>';
+    }
+    setTimeout(function () { window.location.href = next; }, 1800);
   }
 
-  /* ── Main init ──────────────────────────────────────── */
+  /* ── Public init ─────────────────────────────────────── */
   function init(opts) {
     opts = opts || {};
-    var phaseNum  = opts.phaseNum  || 1;
-    var namespace = opts.namespace || ('df_p' + String(phaseNum).padStart(2,'0') + '_');
-    var sheetUrl  = opts.sheetUrl  || '';
-    /* hasGate is intentionally ignored — supervisor gate removed */
-
-    /* Check if quiz already passed and unlock templates immediately */
-    var scoreKey    = 'df_quiz_phase' + phaseNum;
-    var unlockedKey = 'df_unlocked_phase' + phaseNum;
-    var savedScore  = parseInt(store.get(scoreKey) || '-1', 10);
-    if (savedScore >= 3 || store.get(unlockedKey) === 'true') {
-      unlockTemplates();
-    }
+    var phaseNum = opts.phaseNum || 1;
+    _sheetUrl = opts.sheetUrl || '';
 
     initTabs(phaseNum);
-    initQuiz(phaseNum, sheetUrl);
-    initTemplateForm(namespace, phaseNum, sheetUrl);
 
-    if (global.SmartDTUI) global.SmartDTUI.init();
+    if (document.getElementById('quizBox')) {
+      initQuiz(phaseNum, _sheetUrl);
+    }
+
+    var ns = opts.namespace || ('df_p0' + phaseNum + '_');
+    initTemplateForm(ns, phaseNum, _sheetUrl);
+
+    /* Submit phase button */
+    var submitBtn = document.getElementById('submitPhaseBtn');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', function () {
+        submitPhase(phaseNum, opts.gateCode || '', opts.namespaces || [ns]);
+      });
+    }
   }
 
-  /* ── Escape HTML helper ─────────────────────────────── */
-  function esc(s) {
-    return String(s || '').replace(/[&<>"']/g, function (m) {
-      return ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[m];
-    });
-  }
-
-  /* ── Expose public API ──────────────────────────────── */
-  global.PhaseEngine = {
-    init:        init,
-    submitPhase: submitPhase
-  };
-
-}(window));
+  window.PhaseEngine = { init: init, submitPhase: submitPhase };
+}());

@@ -1,110 +1,96 @@
-/* Smart DT Project — ui.js
-   Carousel, decorative elements, nav active state.
-   Called by phase-engine.js after DOM is ready.
-   --------------------------------------------------------- */
-(function (global) {
+/* Smart DT Project — UI helpers
+   Exposes: window.SmartDTUI = { init, initCarousel }
+*/
+(function () {
   'use strict';
 
-  /* ── Dot grid background ─────────────────────────────── */
-  function _injectDotGrid() {
-    if (document.body.dataset.dots !== 'true') return;
-    if (document.querySelector('.dot-grid-bg')) return;
-    var grid = document.createElement('div');
-    grid.className = 'dot-grid-bg';
-    grid.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(grid);
-  }
-
-  /* ── Pink blob decoration ────────────────────────────── */
-  function _injectBlob() {
-    if (document.querySelector('.pink-blob')) return;
-    var blob = document.createElement('img');
-    blob.src = 'assets/shared/pink-blob.png';
-    blob.className = 'pink-blob';
-    blob.alt = '';
-    blob.setAttribute('aria-hidden', 'true');
-    blob.onerror = function () { this.style.display = 'none'; };
-    document.body.insertBefore(blob, document.body.firstChild);
-  }
-
-  /* ── Bottom nav active state ─────────────────────────── */
   function _setNavActive() {
-    var page  = location.pathname.split('/').pop() || 'index.html';
-    var items = document.querySelectorAll('.nav-item[data-page]');
-    items.forEach(function (el) {
-      var target = el.dataset.page || '';
-      el.classList.toggle('active', target === page || page.indexOf(target) === 0);
+    var page = document.body.dataset.page || '';
+    document.querySelectorAll('.nav-item[data-nav]').forEach(function (el) {
+      el.classList.toggle('active', el.dataset.nav === page);
     });
   }
 
-  /* ── Carousel ────────────────────────────────────────── */
-  function initCarousel(wrapId, dotRowId) {
-    var wrap  = document.getElementById(wrapId  || 'phase-carousel');
-    var track = document.getElementById('carousel-track');
-    var dotRow = document.getElementById(dotRowId || 'carousel-dots');
-    if (!wrap || !track) return;
+  function _injectBlob() {
+    var targets = document.querySelectorAll('[data-blob="true"]');
+    targets.forEach(function (el) {
+      if (el.querySelector('.blob-bg')) return;
+      var div = document.createElement('div');
+      div.className = 'blob-bg';
+      el.prepend(div);
+    });
+  }
 
-    var slides = Array.from(track.querySelectorAll('.carousel-slide'));
-    if (!slides.length) return;
+  function initCarousel(wrapId, dotRowId) {
+    var wrap = document.getElementById(wrapId);
+    var dotRow = document.getElementById(dotRowId);
+    if (!wrap) return;
+    var track = wrap.querySelector('.carousel-track');
+    var slides = wrap.querySelectorAll('.carousel-slide');
+    if (!track || slides.length === 0) return;
 
     var current = 0;
+    var total = slides.length;
+    var startX = 0;
+    var timer;
 
-    /* Build dots if dotRow exists */
-    function buildDots() {
-      if (!dotRow) return;
-      dotRow.innerHTML = '';
-      slides.forEach(function (_, i) {
-        var dot = document.createElement('div');
-        dot.className = 'dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('role', 'tab');
-        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-        dot.addEventListener('click', function () { goTo(i); });
-        dotRow.appendChild(dot);
-      });
-    }
-
-    function goTo(index) {
-      slides[current].setAttribute('aria-hidden', 'true');
-      current = (index + slides.length) % slides.length;
-      track.style.transform = 'translateX(-' + current * 100 + '%)';
-      slides.forEach(function (s, i) {
-        s.setAttribute('aria-hidden', i !== current ? 'true' : 'false');
-      });
+    function go(idx) {
+      current = (idx + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
       if (dotRow) {
-        var dots = dotRow.querySelectorAll('.dot');
-        dots.forEach(function (d, i) {
+        dotRow.querySelectorAll('.dot').forEach(function (d, i) {
           d.classList.toggle('active', i === current);
-          d.setAttribute('aria-selected', i === current ? 'true' : 'false');
         });
       }
     }
 
-    buildDots();
+    if (dotRow) {
+      dotRow.innerHTML = '';
+      for (var i = 0; i < total; i++) {
+        (function (idx) {
+          var d = document.createElement('button');
+          d.className = 'dot' + (idx === 0 ? ' active' : '');
+          d.setAttribute('aria-label', 'Slide ' + (idx + 1));
+          d.addEventListener('click', function () { go(idx); restart(); });
+          dotRow.appendChild(d);
+        })(i);
+      }
+    }
 
-    /* Touch/swipe */
-    var startX = 0;
-    wrap.addEventListener('touchstart', function (e) {
-      startX = e.touches[0].clientX;
-    }, { passive: true });
-    wrap.addEventListener('touchend', function (e) {
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(function () { go(current + 1); }, 4000);
+    }
+
+    track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
       var dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+      if (Math.abs(dx) > 40) { go(current + (dx < 0 ? 1 : -1)); restart(); }
     }, { passive: true });
 
-    /* Auto-advance every 4 s */
-    var timer = setInterval(function () { goTo(current + 1); }, 4000);
-    wrap.addEventListener('touchstart', function () { clearInterval(timer); }, { passive: true });
+    restart();
   }
 
-  /* ── Public API ──────────────────────────────────────── */
-  global.SmartDTUI = {
-    init: function () {
-      _injectDotGrid();
-      _setNavActive();
-      initCarousel();
-    },
-    initCarousel: initCarousel
-  };
+  function init() {
+    _setNavActive();
+    _injectBlob();
 
-}(window));
+    /* Guard: check auth on protected pages */
+    var page = document.body.dataset.page || '';
+    var open = ['welcome', 'login', 'register', '404'];
+    if (open.indexOf(page) === -1) {
+      var reg = localStorage.getItem('df_registered');
+      if (!reg) {
+        window.location.href = 'login.html';
+      }
+    }
+  }
+
+  window.SmartDTUI = { init: init, initCarousel: initCarousel };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+}());
