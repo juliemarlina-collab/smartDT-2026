@@ -1,71 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-  <title>My Profile — Smart DT Project</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Profile — Smart DT Project</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/smartdt.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-page="profile">
-<div class="app">
-<header class="header">
-  <a class="brand" href="dashboard.html"><span class="brand-logo brand-logo-inline"><img alt="" src="https://iili.io/Cd3i8QV.png"/></span><span class="brand-text">Smart DT<br>Project</span></a>
-  <div class="header-actions"><span class="pill lang-pill"><span class="pill-symbol" aria-hidden="true">🌐</span> EN</span><span class="avatar">JM</span></div>
-</header>
-<main class="page profile-page">
-  <section class="hero-card compact profile-hero-card"><img alt="My Profile hero" class="hero-img-wide" src="https://iili.io/Cdztr41.png"/></section>
-  <section class="intro-card profile-intro">
-    <p class="eyebrow">My Profile</p>
-    <h1 class="intro-title">Track your role, <span class="teal">progress and achievements.</span></h1>
-    <p class="intro-text">Review your student details, project team, supervisor, evidence progress and reflection records.</p>
-  </section>
-
-  <section class="profile-card-v9 card">
-    <div class="profile-top-v9">
-      <div class="profile-avatar-v9"><span class="profile-initials">ST</span><button class="camera-dot" aria-label="Upload profile photo">+</button></div>
-      <div class="profile-name-block">
-        <h2 class="profile-name student-name">Student</h2>
-        <span class="profile-role-pill">Student · FYP Team Member</span>
-        <button class="btn ghost mini-btn" id="editProfileBtn" type="button">Edit Profile</button>
-      </div>
+<body>
+<div class="app-container">
+  <header class="header"><a href="dashboard.html" class="header-logo"><img src="assets/brand/logo-icon.png" class="header-logo-icon" alt="" onerror="this.style.display='none'"><span class="header-logo-text">Smart DT<br>Project</span></a><div class="header-right"><span style="font-size:13px;font-weight:700;color:var(--color-orange)">Profile</span></div></header>
+  <div class="simple-page">
+    <div class="avatar-circle" id="prof-avatar">ST</div>
+    <p class="page-title" style="text-align:center" id="prof-name">Student</p>
+    <p class="page-sub" style="text-align:center" id="prof-email"></p>
+    <div class="card">
+      <div class="profile-info-row"><span class="profile-info-label">Registration No.</span><span class="profile-info-val" id="prof-reg"></span></div>
+      <div class="profile-info-row"><span class="profile-info-label">Class / Programme</span><span class="profile-info-val" id="prof-class"></span></div>
+      <div class="profile-info-row"><span class="profile-info-label">Team</span><span class="profile-info-val" id="prof-team"></span></div>
+      <div class="profile-info-row" style="border-bottom:none"><span class="profile-info-label">Project Title</span><span class="profile-info-val" id="prof-project" style="max-width:60%;text-align:right"></span></div>
     </div>
-    <div class="profile-fields-v9">
-      <div class="profile-field"><span>Registration No.</span><strong data-field="reg">—</strong></div>
-      <div class="profile-field"><span>Class</span><strong data-field="class">—</strong></div>
-      <div class="profile-field"><span>Team</span><strong data-field="team">—</strong></div>
-      <div class="profile-field"><span>Supervisor</span><strong data-field="supervisor">—</strong></div>
-    </div>
-  </section>
-
-  <section class="stats-grid-v9" aria-label="Profile statistics">
-    <div class="stat-card-v9"><img src="assets/icons/dashboard/flag.svg" alt=""/><strong>1</strong><span>Active<br>Project</span></div>
-    <div class="stat-card-v9"><img src="assets/icons/dashboard/tasks.svg" alt=""/><strong id="profileTasks">5</strong><span>Pending<br>Tasks</span></div>
-    <div class="stat-card-v9"><img src="assets/icons/dashboard/evidence.svg" alt=""/><strong id="profileEvidence">0</strong><span>Submitted<br>Evidence</span></div>
-    <div class="stat-card-v9"><img src="assets/icons/dashboard/feedback.svg" alt=""/><strong id="profileFeedback">0</strong><span>Feedback<br>Received</span></div>
-    <div class="stat-card-v9"><img src="assets/icons/ui/shield.svg" alt=""/><strong id="profileBadges">0</strong><span>Badges<br>Earned</span></div>
-  </section>
-
-  <section class="menu-list-v9">
-    <button class="menu-row-v9" type="button"><span class="menu-ico teal"><img src="https://iili.io/Cd3sIyb.png" alt=""/></span><span><strong>Personal Information</strong><small>Student details and contact information</small></span><b>›</b></button>
-    <button class="menu-row-v9" type="button"><span class="menu-ico orange"><img src="assets/icons/dashboard/team.svg" alt="" style="width:40px;height:40px;object-fit:contain;display:block;"/></span><span><strong>Team & Roles</strong><small>Team members and assigned responsibilities</small></span><b>›</b></button>
-    <button class="menu-row-v9" type="button"><span class="menu-ico teal"><img src="https://iili.io/Cd3sAwx.png" alt=""/></span><span><strong>My Reflections</strong><small>Final reflection and design thinking notes</small></span><b>›</b></button>
-    <a class="menu-row-v9" href="progress.html"><span class="menu-ico yellow"><img src="https://iili.io/Cd3soF9.png" alt=""/></span><span><strong>Achievements</strong><small>Badge milestones and completion status</small></span><b>›</b></a>
-    <button class="menu-row-v9" type="button"><span class="menu-ico grey"><img src="https://iili.io/Cd3s7nV.png" alt=""/></span><span><strong>Settings</strong><small>Language, notifications and preferences</small></span><b>›</b></button>
-    <button class="menu-row-v9 logout" id="logoutBtn" type="button"><span class="menu-ico red"><img src="https://iili.io/Cd3sz8u.png" alt=""/></span><span><strong>Log Out</strong><small>Sign out from this device</small></span><b>›</b></button>
-  </section>
-</main>
-<nav aria-label="Main navigation" class="bottom-nav">
-  <a class="nav-item" data-nav="dashboard" href="dashboard.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3ksWu.png"/><span class="nav-label">Dashboard</span></a>
-  <a class="nav-item" data-nav="learn" href="phase01-empathy.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3wdpn.png"/><span class="nav-label">Learn</span></a>
-  <a class="nav-item" data-nav="projects" href="projects.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3kixe.png"/><span class="nav-label">Projects</span></a>
-  <a class="nav-item" data-nav="progress" href="progress.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3k4O7.png"/><span class="nav-label">Progress</span></a>
-  <a class="nav-item" data-nav="profile" href="profile.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3k6b9.png"/><span class="nav-label">Profile</span></a>
-</nav>
+    <button class="btn-secondary" onclick="if(confirm('This will clear all your data on this device. Are you sure?')){ localStorage.clear(); location.href='welcome.html'; }" style="width:100%;margin-top:8px">Clear All Data & Start Over</button>
+  </div>
+  <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+    <a href="dashboard.html" class="nav-item" data-page="dashboard.html" aria-label="Dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="nav-label">Dashboard</span></a>
+    <a href="phase01-empathy.html" class="nav-item" data-page="phase01-empathy.html" aria-label="Learn"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></span><span class="nav-label">Learn</span></a>
+    <a href="projects.html" class="nav-item" data-page="projects.html" aria-label="Projects"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="nav-label">Projects</span></a>
+    <a href="progress.html" class="nav-item" data-page="progress.html" aria-label="Progress"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="14 11 17 14 22 9"/><path d="M22 12v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="nav-label">Progress</span></a>
+    <a href="profile.html" class="nav-item" data-page="profile.html" aria-label="Profile"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Profile</span></a>
+  </nav>
 </div>
-<script src="js/smartdt-assets.js"></script>
-<script src="js/smartdt.js"></script>
+<script>
+  (function(){
+    if(localStorage.getItem('df_registered')!=='true'){ location.href='welcome.html'; return; }
+    var name = localStorage.getItem('df_student_name')||'Student';
+    document.getElementById('prof-name').textContent = name;
+    document.getElementById('prof-avatar').textContent = name.trim().split(/\s+/).slice(0,2).map(function(x){ return x[0]; }).join('').toUpperCase()||'ST';
+    document.getElementById('prof-email').textContent = localStorage.getItem('df_email')||'';
+    document.getElementById('prof-reg').textContent = localStorage.getItem('df_reg_no')||'—';
+    document.getElementById('prof-class').textContent = localStorage.getItem('df_class')||'—';
+    document.getElementById('prof-team').textContent = localStorage.getItem('df_team')||'—';
+    document.getElementById('prof-project').textContent = localStorage.getItem('df_project_name')||'—';
+    document.querySelectorAll('.nav-item[data-page]').forEach(function(el){ el.classList.toggle('active', el.dataset.page==='profile.html'); });
+  })();
+</script>
 </body>
 </html>

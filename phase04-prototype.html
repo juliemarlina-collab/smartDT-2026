@@ -1,11 +1,199 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport"/>
-<title>Phase 04 Prototype — Smart DT Project</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<link href="css/smartdt.css" rel="stylesheet"/><link href="css/smartdt-general-templates.css" rel="stylesheet"/><link rel="stylesheet" href="css/ai-dt-buddy.css">
-</head><body data-page="learn" data-phase="04"><div class="app">
-<header class="header"><a class="brand" href="dashboard.html"><span aria-hidden="true" class="brand-logo brand-logo-inline"><img alt="" decoding="async" loading="lazy" src="https://iili.io/Cd3i8QV.png"/></span><span class="brand-text">Smart DT<br/>Project</span></a><div class="header-actions"><span class="pill"><b style="color:var(--orange)">04</b> / 05</span><span class="pill lang-pill">🌐 EN</span><button aria-label="Menu" class="icon-btn menu-lines"><span></span><span></span><span></span></button></div></header>
-<div id="smartDtGeneralRoot"></div>
-</div><script src="js/smartdt-general-templates.js"></script><script src="js/smartdt-no-supervisor.js"></script><script src="js/smartdt-assets.js"></script><script src="js/smartdt.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Phase 04: Prototype  — Smart DT Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-dots="true">
+<div class="app-container">
+  <img src="assets/shared/pink-blob.png" class="pink-blob" alt="" aria-hidden="true" onerror="this.style.display='none'">
+
+  <header class="header" role="banner">
+    <a href="dashboard.html" class="header-logo">
+      <img src="assets/brand/logo-icon.png" class="header-logo-icon" alt="" onerror="this.style.display='none'">
+      <span class="header-logo-text">Smart DT<br>Project</span>
+    </a>
+    <div class="header-right">
+      <div class="phase-counter"><span class="phase-counter-current">04</span><span class="phase-counter-sep"> / </span><span class="phase-counter-total">05</span></div>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="phase-header">
+    <div class="hero-wrap" aria-hidden="true">
+      <img src="assets/heroes/phase04-hero.png" class="hero-img" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="page-header-text">
+      <a href="dashboard.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Dashboard</a>
+      <div class="phase-badge">04</div>
+      <div class="phase-title-area">
+        <p class="phase-title-line"><span class="word-accent">Prototype</span></p>
+        <p class="phase-title-line"><span class="word-phase">Phase</span></p>
+        <p class="phase-description">Build a simple, testable version of your idea to learn from.</p>
+        <div class="orange-underline"></div>
+        <p class="phase-tagline">Build Fast. Learn Faster.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="info" role="tab" aria-selected="true">Quick Info</button>
+    <button class="tab-btn" data-tab="quiz" role="tab" aria-selected="false">Quiz <span class="tab-badge">5 Qs</span></button>
+    <button class="tab-btn locked" data-tab="templates" role="tab" aria-selected="false" title="Pass quiz to unlock">Templates <span class="tab-lock-icon">🔒</span></button>
+  </div>
+
+  <!-- QUICK INFO -->
+  <div class="tab-panel" id="tab-info" role="tabpanel">
+  <main class="phase-content">
+    <div class="phase-content-grid">
+      <div>
+        <div class="carousel-wrap" id="phase-carousel">
+          <div class="carousel-track" id="carousel-track">
+            <div class="carousel-slide" role="group" aria-label="Slide 1 of 3">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><rect x="10" y="20" width="60" height="40" rx="6" fill="#14B8A6" opacity=".15"/><rect x="18" y="28" width="20" height="24" rx="3" fill="#14B8A6" opacity=".4"/><rect x="44" y="28" width="18" height="10" rx="2" fill="#F5A623" opacity=".5"/><rect x="44" y="42" width="18" height="10" rx="2" fill="#FF6A3D" opacity=".4"/></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Build to learn, not to finish</p>
+                <p class="carousel-slide-text">Your first prototype should be rough, fast and testable — not polished.</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Slide 2 of 3">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><rect x="20" y="14" width="40" height="52" rx="5" fill="none" stroke="#F5A623" stroke-width="2"/><rect x="28" y="24" width="24" height="16" rx="2" fill="#F5A623" opacity=".2"/><line x1="28" y1="46" x2="52" y2="46" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="3 2"/><line x1="28" y1="54" x2="44" y2="54" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="3 2"/></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Start low-fidelity</p>
+                <p class="carousel-slide-text">Paper sketches, cardboard, simple wireframes — these are valid prototypes.</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Slide 3 of 3">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><path d="M24 12h32a4 4 0 0 1 4 4v48a4 4 0 0 1-4 4H24a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z" fill="#FF6A3D" opacity=".12" stroke="#FF6A3D" stroke-width="1.5"/><line x1="28" y1="28" x2="52" y2="28" stroke="#FF6A3D" stroke-width="1.5"/><line x1="28" y1="36" x2="52" y2="36" stroke="#FF6A3D" stroke-width="1.5"/><line x1="28" y1="44" x2="44" y2="44" stroke="#FF6A3D" stroke-width="1.5"/></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Document every version</p>
+                <p class="carousel-slide-text">Record what changed, why it changed and what feedback triggered the change.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dot-row" id="carousel-dots"></div>
+      </div>
+      <div class="feature-list">
+        <div class="feature-row">
+          <div class="feature-icon-box teal><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="3"/></svg></div>
+          <div class="feature-text"><p class="feature-text-title">Prototype fast</p><p class="feature-text-desc">Build, not plan.</p></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box pink-red><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="feature-text"><p class="feature-text-title">Log every version</p><p class="feature-text-desc">Track your evolution.</p></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box yellow><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="feature-text"><p class="feature-text-title">Test and improve</p><p class="feature-text-desc">Failure is feedback.</p></div>
+        </div></div>
+    </div>
+    <div class="cta-row">
+      <button class="btn-primary" id="cta-btn">Let's Get Started <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      <button class="btn-arrow-circle" id="cta-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+    <div class="phase-progress-line"><div class="line-segment done"></div><div class="line-segment done"></div><div class="line-segment done"></div><div class="line-segment done"></div><div class="line-segment"></div></div>
+  </main>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="tab-panel hidden" id="tab-quiz" role="tabpanel">
+    <div class="phase-content">
+      <div class="quiz-intro">
+        <p class="quiz-intro-title">Quick Check Quiz</p>
+        <p class="quiz-intro-sub">Answer 5 questions about Phase 04 — Prototype. Score <strong>3 out of 5</strong> to unlock your templates.</p>
+      </div>
+      <div id="quiz-container"></div>
+    </div>
+  </div>
+
+  <!-- TEMPLATES -->
+  <div class="tab-panel hidden" id="tab-templates" role="tabpanel">
+    <div class="phase-content">
+      <form id="template-form" novalidate>
+        <section class="template-section">
+          <div class="template-section-header">
+            <span class="template-badge">T11</span>
+            <p class="template-title">Prototype Direction Plan</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Selected Concept</label>
+            <textarea name="t11_concept" class="form-textarea" placeholder="What are you building or demonstrating?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Prototype Format</label>
+            <textarea name="t11_format" class="form-textarea" placeholder="Sketch, model, mock-up, wireframe, simulation, poster or demo?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Target User</label>
+            <input name="t11_user" type="text" class="form-input" placeholder="Who will experience the prototype?">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Key Features to Show</label>
+            <textarea name="t11_features" class="form-textarea" placeholder="What must the prototype demonstrate?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Materials / Tools / Support Needed</label>
+            <textarea name="t11_materials" class="form-textarea" placeholder="What is needed to build or present it?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Team Task Distribution</label>
+            <textarea name="t11_tasks" class="form-textarea" placeholder="Assign building, visuals, content, testing and pitch roles."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Version Log</label>
+            <textarea name="t11_log" class="form-textarea" style="min-height:120px" placeholder="Record Version 1 built, feedback received, Version 2 changes, and so on."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Success Check</label>
+            <textarea name="t11_success" class="form-textarea" placeholder="How will you know the prototype is ready to test?"></textarea>
+          </div>
+                  <div class="template-action-bar">
+            <button type="button" class="template-action-btn" data-save-draft>💾 Save Draft</button>
+            <a class="template-action-btn" href="printable.html?template=T11&phase=4" target="_blank">🖨 PDF Printable</a>
+            <a class="template-action-btn" href="assets/template-previews/t11-preview.png" target="_blank">🖼 PNG Preview</a>
+          </div>
+</section></form>
+      <div class="phase-submit-section">
+        <p class="phase-submit-title">Ready to Submit Phase 04?</p>
+        <p class="phase-submit-sub">Make sure all templates are complete before submitting.</p>
+        <button class="btn-primary" onclick="PhaseEngine.submitPhase(4,'',['df_p04_'])">Submit Phase 04 — Prototype → <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+    <a href="dashboard.html" class="nav-item" data-page="dashboard.html" aria-label="Dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="nav-label">Dashboard</span></a>
+    <a href="phase01-empathy.html" class="nav-item" data-page="phase01-empathy.html" aria-label="Learn"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></span><span class="nav-label">Learn</span></a>
+    <a href="projects.html" class="nav-item" data-page="projects.html" aria-label="Projects"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="nav-label">Projects</span></a>
+    <a href="progress.html" class="nav-item" data-page="progress.html" aria-label="Progress"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="14 11 17 14 22 9"/><path d="M22 12v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="nav-label">Progress</span></a>
+    <a href="profile.html" class="nav-item" data-page="profile.html" aria-label="Profile"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Profile</span></a>
+  </nav>
+</div>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/phase-engine.js"></script>
+<script>
+  'use strict';
+  window.addEventListener('load', function () {
+    if (typeof PhaseEngine === 'undefined') return;
+    PhaseEngine.init({ phaseNum: 4, namespace: 'df_p04_', hasGate: false, sheetUrl: '' });
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var cta=document.getElementById('cta-btn'), arrow=document.getElementById('cta-arrow-btn');
+    function goToQuiz(){ var t=document.querySelector('.tab-btn[data-tab="quiz"]'); if(t) t.click(); window.scrollTo({top:0,behavior:'smooth'}); }
+    if(cta) cta.addEventListener('click',goToQuiz);
+    if(arrow) arrow.addEventListener('click',goToQuiz);
+    var hbtn=document.getElementById('hamburger-btn');
+    if(hbtn) hbtn.addEventListener('click',function(){ this.setAttribute('aria-expanded',String(this.getAttribute('aria-expanded')!=='true')); });
+  });
+</script>
+</body>
+</html>

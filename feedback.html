@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>Feedback — Smart DT Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/smartdt-feedback-marks.css"/>
+</head>
+<body data-page="progress">
+<div class="app-container">
+
+  <header class="header">
+    <a class="brand" href="dashboard.html">
+      <span class="brand-text">Smart DT Project</span>
+    </a>
+    <div class="header-actions">
+      <a href="marks.html" class="pill-link">📊 View Marks</a>
+    </div>
+  </header>
+
+  <main class="page-content" style="padding:16px 16px 100px;">
+
+    <div style="max-width:640px;margin:0 auto;">
+
+      <h1 style="font-size:22px;font-weight:800;color:var(--color-navy);margin-bottom:4px;">Lecturer Feedback</h1>
+      <p style="color:#888;font-size:13px;margin-bottom:24px;">Review comments and guidance from your lecturer for each phase you have submitted.</p>
+
+      <!-- Feedback list populated by JS -->
+      <div id="feedbackListRoot">
+        <p style="text-align:center;padding:40px;color:#aaa;">Loading feedback…</p>
+      </div>
+
+      <!-- Self-reflection form -->
+      <div class="reflection-form" style="margin-top:32px;">
+        <h2>Self-Reflection</h2>
+        <p style="font-size:13px;color:#666;margin-bottom:20px;">Complete this reflection after receiving feedback. It will be submitted to your lecturer as evidence of your learning process.</p>
+        <form id="selfReflectionForm">
+
+          <div class="field">
+            <label for="sr_learned">What is the most important thing you learned from this project?</label>
+            <textarea id="sr_learned" name="sr_learned" rows="3" placeholder="Write your reflection here…"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="sr_challenge">What was the biggest challenge your team faced and how did you overcome it?</label>
+            <textarea id="sr_challenge" name="sr_challenge" rows="3" placeholder="Describe the challenge and your response…"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="sr_improve">Based on feedback received, what would you change if you repeated this project?</label>
+            <textarea id="sr_improve" name="sr_improve" rows="3" placeholder="List specific improvements…"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="sr_dt_value">How did Design Thinking help you solve the problem differently than usual?</label>
+            <textarea id="sr_dt_value" name="sr_dt_value" rows="3" placeholder="Reflect on the DT process…"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary" style="width:100%;margin-top:8px;">Save Reflection</button>
+          <p id="reflectionMsg"></p>
+
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a class="nav-item" data-nav="dashboard" href="dashboard.html"><span class="nav-label">Dashboard</span></a>
+    <a class="nav-item" data-nav="learn" href="phase01-empathy.html"><span class="nav-label">Learn</span></a>
+    <a class="nav-item" data-nav="projects" href="projects.html"><span class="nav-label">Projects</span></a>
+    <a class="nav-item active" data-nav="progress" href="progress.html"><span class="nav-label">Progress</span></a>
+    <a class="nav-item" data-nav="profile" href="profile.html"><span class="nav-label">Profile</span></a>
+  </nav>
+
+</div>
+
+<script src="js/ui.js"></script>
+<script src="js/smartdt-feedback.js"></script>
+</body>
+</html>

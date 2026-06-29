@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>Printable Template — Smart DT Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/smartdt-printable.css"/>
+</head>
+<body data-page="learn">
+<div class="app-container">
+
+  <header class="header">
+    <a class="brand" href="dashboard.html">
+      <span class="brand-text">Smart DT Project</span>
+    </a>
+    <span style="font-size:13px;font-weight:600;color:#888;">Print / PDF View</span>
+  </header>
+
+  <main class="page-content" style="padding-bottom:80px;">
+    <div class="printable-screen-wrap">
+
+      <div class="print-toolbar">
+        <a class="btn-back" href="javascript:history.back()">← Back</a>
+        <button id="triggerPrint">🖨 Print / Save PDF</button>
+      </div>
+
+      <div id="printableRoot">
+        <!-- Populated by smartdt-printable.js -->
+        <p style="text-align:center;padding:40px;color:#aaa;">Loading template…</p>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script src="js/smartdt-printable.js"></script>
+</body>
+</html>

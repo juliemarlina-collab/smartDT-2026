@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>Marks &amp; Rubric — Smart DT Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/smartdt-feedback-marks.css"/>
+</head>
+<body data-page="progress">
+<div class="app-container">
+
+  <header class="header">
+    <a class="brand" href="dashboard.html">
+      <span class="brand-text">Smart DT Project</span>
+    </a>
+    <div class="header-actions">
+      <a href="feedback.html" class="pill-link">💬 Feedback</a>
+    </div>
+  </header>
+
+  <main class="page-content" style="padding:16px 16px 100px;">
+
+    <div style="max-width:640px;margin:0 auto;">
+
+      <h1 style="font-size:22px;font-weight:800;color:var(--color-navy);margin-bottom:4px;">Marks &amp; Rubric</h1>
+      <p style="color:#888;font-size:13px;margin-bottom:24px;">Your scores per phase, rubric criteria and overall grade. Marks are updated by your lecturer after reviewing your submitted phases.</p>
+
+      <!-- Overall grade summary -->
+      <div id="marksOverall">
+        <div class="marks-overall-card">
+          <p class="marks-overall-label">Overall Grade</p>
+          <p class="marks-overall-pct">—</p>
+          <p class="marks-overall-grade" style="font-size:14px;opacity:0.7;">Submit phases to see your grade</p>
+        </div>
+      </div>
+
+      <!-- Per-phase rubric cards populated by JS -->
+      <div id="marksPhaseRoot">
+        <p style="text-align:center;padding:40px;color:#aaa;">Loading marks…</p>
+      </div>
+
+      <!-- Grade scale reference -->
+      <div style="background:#f5f7fb;border-radius:12px;padding:16px;margin-top:8px;">
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#888;margin-bottom:10px;">Grade Scale</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;font-size:12px;text-align:center;">
+          <div style="background:#fff;border-radius:8px;padding:8px;font-weight:700;">A+ ≥90%</div>
+          <div style="background:#fff;border-radius:8px;padding:8px;font-weight:700;">A ≥80%</div>
+          <div style="background:#fff;border-radius:8px;padding:8px;font-weight:700;">B+ ≥70%</div>
+          <div style="background:#fff;border-radius:8px;padding:8px;font-weight:700;">B ≥65%</div>
+          <div style="background:#fff;border-radius:8px;padding:8px;font-weight:700;">C+ ≥55%</div>
+          <div style="background:#fff;border-radius:8px;padding:8px;font-weight:700;">C ≥50%</div>
+          <div style="background:#fff;border-radius:8px;padding:8px;font-weight:700;">D ≥40%</div>
+          <div style="background:#fff;border-radius:8px;padding:8px;font-weight:700;">F &lt;40%</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a class="nav-item" data-nav="dashboard" href="dashboard.html"><span class="nav-label">Dashboard</span></a>
+    <a class="nav-item" data-nav="learn" href="phase01-empathy.html"><span class="nav-label">Learn</span></a>
+    <a class="nav-item" data-nav="projects" href="projects.html"><span class="nav-label">Projects</span></a>
+    <a class="nav-item active" data-nav="progress" href="progress.html"><span class="nav-label">Progress</span></a>
+    <a class="nav-item" data-nav="profile" href="profile.html"><span class="nav-label">Profile</span></a>
+  </nav>
+
+</div>
+
+<script src="js/ui.js"></script>
+<script src="js/smartdt-marks.js"></script>
+</body>
+</html>

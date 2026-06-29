@@ -1,11 +1,287 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport"/>
-<title>Phase 03 Ideate — Smart DT Project</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<link href="css/smartdt.css" rel="stylesheet"/><link href="css/smartdt-general-templates.css" rel="stylesheet"/><link rel="stylesheet" href="css/ai-dt-buddy.css">
-</head><body data-page="learn" data-phase="03"><div class="app">
-<header class="header"><a class="brand" href="dashboard.html"><span aria-hidden="true" class="brand-logo brand-logo-inline"><img alt="" decoding="async" loading="lazy" src="https://iili.io/Cd3i8QV.png"/></span><span class="brand-text">Smart DT<br/>Project</span></a><div class="header-actions"><span class="pill"><b style="color:var(--orange)">03</b> / 05</span><span class="pill lang-pill">🌐 EN</span><button aria-label="Menu" class="icon-btn menu-lines"><span></span><span></span><span></span></button></div></header>
-<div id="smartDtGeneralRoot"></div>
-</div><script src="js/smartdt-general-templates.js"></script><script src="js/smartdt-no-supervisor.js"></script><script src="js/smartdt-assets.js"></script><script src="js/smartdt.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Phase 03: Ideate  — Smart DT Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-dots="true">
+<div class="app-container">
+  <img src="assets/shared/pink-blob.png" class="pink-blob" alt="" aria-hidden="true" onerror="this.style.display='none'">
+
+  <header class="header" role="banner">
+    <a href="dashboard.html" class="header-logo">
+      <img src="assets/brand/logo-icon.png" class="header-logo-icon" alt="" onerror="this.style.display='none'">
+      <span class="header-logo-text">Smart DT<br>Project</span>
+    </a>
+    <div class="header-right">
+      <div class="phase-counter"><span class="phase-counter-current">03</span><span class="phase-counter-sep"> / </span><span class="phase-counter-total">05</span></div>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="phase-header">
+    <div class="hero-wrap" aria-hidden="true">
+      <img src="assets/heroes/phase03-hero.png" class="hero-img" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="page-header-text">
+      <a href="dashboard.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Dashboard</a>
+      <div class="phase-badge">03</div>
+      <div class="phase-title-area">
+        <p class="phase-title-line"><span class="word-accent">Ideate</span></p>
+        <p class="phase-title-line"><span class="word-phase">Phase</span></p>
+        <p class="phase-description">Generate many ideas, then select the strongest one to develop.</p>
+        <div class="orange-underline"></div>
+        <p class="phase-tagline">Ideas Are Cheap. Selection Is Skill.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="info" role="tab" aria-selected="true">Quick Info</button>
+    <button class="tab-btn" data-tab="quiz" role="tab" aria-selected="false">Quiz <span class="tab-badge">5 Qs</span></button>
+    <button class="tab-btn locked" data-tab="templates" role="tab" aria-selected="false" title="Pass quiz to unlock">Templates <span class="tab-lock-icon">🔒</span></button>
+  </div>
+
+  <!-- QUICK INFO -->
+  <div class="tab-panel" id="tab-info" role="tabpanel">
+  <main class="phase-content">
+    <div class="phase-content-grid">
+      <div>
+        <div class="carousel-wrap" id="phase-carousel">
+          <div class="carousel-track" id="carousel-track">
+            <div class="carousel-slide" role="group" aria-label="Slide 1 of 4">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><circle cx="40" cy="32" r="14" fill="#F5A623" opacity=".3"/><line x1="40" y1="46" x2="40" y2="56" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/><path d="M32 56h16" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Generate many ideas first</p>
+                <p class="carousel-slide-text">Do not stop at the first good idea. Push for 20 or more before evaluating.</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Slide 2 of 4">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><rect x="10" y="10" width="60" height="60" rx="8" fill="#14B8A6" opacity=".12"/><text x="17" y="32" font-size="9" fill="#14B8A6" font-family="sans-serif" font-weight="bold">S C A</text><text x="17" y="46" font-size="9" fill="#14B8A6" font-family="sans-serif" font-weight="bold">M P E</text><text x="17" y="60" font-size="9" fill="#14B8A6" font-family="sans-serif" font-weight="bold">R</text></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Use SCAMPER to improve</p>
+                <p class="carousel-slide-text">Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse your best ideas.</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Slide 3 of 4">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><rect x="12" y="16" width="56" height="40" rx="6" fill="#FF6A3D" opacity=".12"/><rect x="20" y="24" width="18" height="24" rx="3" fill="#FF6A3D" opacity=".3"/><rect x="44" y="24" width="16" height="10" rx="2" fill="#FF6A3D" opacity=".4"/><rect x="44" y="38" width="16" height="10" rx="2" fill="#FF6A3D" opacity=".3"/></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Sketch your concept</p>
+                <p class="carousel-slide-text">A quick sketch communicates an idea faster than a paragraph.</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Slide 4 of 4">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><circle cx="40" cy="40" r="28" fill="#F5A623" opacity=".12"/><polyline points="28 40 36 48 52 32" stroke="#F5A623" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Select using criteria</p>
+                <p class="carousel-slide-text">Use the Idea Selection Matrix to choose based on evidence, not preference.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dot-row" id="carousel-dots"></div>
+      </div>
+      <div class="feature-list">
+        <div class="feature-row">
+          <div class="feature-icon-box teal><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 4-3 6-4 8H9C8 17 5 15 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/></svg></div>
+          <div class="feature-text"><p class="feature-text-title">Brainstorm widely</p><p class="feature-text-desc">Quantity before quality.</p></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box pink-red><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+          <div class="feature-text"><p class="feature-text-title">SCAMPER it</p><p class="feature-text-desc">Improve the best ideas.</p></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box yellow><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+          <div class="feature-text"><p class="feature-text-title">Select clearly</p><p class="feature-text-desc">Use criteria, not feelings.</p></div>
+        </div></div>
+    </div>
+    <div class="cta-row">
+      <button class="btn-primary" id="cta-btn">Let's Get Started <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      <button class="btn-arrow-circle" id="cta-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+    <div class="phase-progress-line"><div class="line-segment done"></div><div class="line-segment done"></div><div class="line-segment done"></div><div class="line-segment"></div><div class="line-segment"></div></div>
+  </main>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="tab-panel hidden" id="tab-quiz" role="tabpanel">
+    <div class="phase-content">
+      <div class="quiz-intro">
+        <p class="quiz-intro-title">Quick Check Quiz</p>
+        <p class="quiz-intro-sub">Answer 5 questions about Phase 03 — Ideate. Score <strong>3 out of 5</strong> to unlock your templates.</p>
+      </div>
+      <div id="quiz-container"></div>
+    </div>
+  </div>
+
+  <!-- TEMPLATES -->
+  <div class="tab-panel hidden" id="tab-templates" role="tabpanel">
+    <div class="phase-content">
+      <form id="template-form" novalidate>
+        <section class="template-section">
+          <div class="template-section-header">
+            <span class="template-badge">T07</span>
+            <p class="template-title">Ideation & Mind Map</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Central Challenge / HMW Question</label>
+            <textarea name="t07_challenge" class="form-textarea" placeholder="Write your main design challenge or How Might We question."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mind Map Branches</label>
+            <textarea name="t07_branches" class="form-textarea" style="min-height:120px" placeholder="List related themes, sub-ideas and possible solutions."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Promising Ideas</label>
+            <textarea name="t07_promising" class="form-textarea" placeholder="Which ideas are most interesting or useful?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Best Idea / Reflection</label>
+            <textarea name="t07_reflection" class="form-textarea" placeholder="Which idea should move forward and why?"></textarea>
+          </div>
+                  <div class="template-action-bar">
+            <button type="button" class="template-action-btn" data-save-draft>💾 Save Draft</button>
+            <a class="template-action-btn" href="printable.html?template=T07&phase=3" target="_blank">🖨 PDF Printable</a>
+            <a class="template-action-btn" href="assets/template-previews/t07-preview.png" target="_blank">🖼 PNG Preview</a>
+          </div>
+</section>
+        <section class="template-section">
+          <div class="template-section-header">
+            <span class="template-badge">T08</span>
+            <p class="template-title">Sketching Template</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Selected Idea</label>
+            <textarea name="t08_selected" class="form-textarea" placeholder="Idea name, problem solved and target user."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Main Sketch Description</label>
+            <textarea name="t08_sketch" class="form-textarea" placeholder="Describe the main sketch or attach a photo outside the app."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Detail Sketches</label>
+            <textarea name="t08_details" class="form-textarea" placeholder="Front/main view, user interaction and key feature close-up."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">How It Works</label>
+            <textarea name="t08_flow" class="form-textarea" placeholder="Explain the user steps from start to finish."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Materials / Tools Needed</label>
+            <textarea name="t08_materials" class="form-textarea" placeholder="What do you need to build or present the idea?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Reflection / Why This Idea</label>
+            <textarea name="t08_reflection" class="form-textarea" placeholder="Why is this idea promising?"></textarea>
+          </div>
+                  <div class="template-action-bar">
+            <button type="button" class="template-action-btn" data-save-draft>💾 Save Draft</button>
+            <a class="template-action-btn" href="printable.html?template=T08&phase=3" target="_blank">🖨 PDF Printable</a>
+            <a class="template-action-btn" href="assets/template-previews/t08-preview.png" target="_blank">🖼 PNG Preview</a>
+          </div>
+</section>
+        <section class="template-section">
+          <div class="template-section-header">
+            <span class="template-badge">T09</span>
+            <p class="template-title">SCAMPER Template</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Selected Idea / Problem Focus</label>
+            <textarea name="t09_focus" class="form-textarea" placeholder="Idea name, user problem and target user."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">S — Substitute / C — Combine</label>
+            <textarea name="t09_sc" class="form-textarea" placeholder="What can be replaced or combined?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">A — Adapt / M — Modify</label>
+            <textarea name="t09_am" class="form-textarea" placeholder="What can be adapted, enlarged, simplified or improved?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">P — Put to another use / E — Eliminate / R — Reverse</label>
+            <textarea name="t09_per" class="form-textarea" placeholder="How else can it be used? What can be removed or rearranged?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Best SCAMPER Idea</label>
+            <textarea name="t09_best" class="form-textarea" placeholder="Choose the strongest improvement."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Why This Idea Is Promising</label>
+            <textarea name="t09_reason" class="form-textarea" placeholder="Explain why the improved idea should move forward."></textarea>
+          </div>
+                  <div class="template-action-bar">
+            <button type="button" class="template-action-btn" data-save-draft>💾 Save Draft</button>
+            <a class="template-action-btn" href="printable.html?template=T09&phase=3" target="_blank">🖨 PDF Printable</a>
+            <a class="template-action-btn" href="assets/template-previews/t09-preview.png" target="_blank">🖼 PNG Preview</a>
+          </div>
+</section>
+        <section class="template-section">
+          <div class="template-section-header">
+            <span class="template-badge">T10</span>
+            <p class="template-title">Idea Prioritisation Matrix</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ideas to Compare</label>
+            <textarea name="t10_ideas" class="form-textarea" placeholder="List up to five ideas with a short description each."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Scoring Notes</label>
+            <textarea name="t10_scores" class="form-textarea" placeholder="Score impact, feasibility, sustainability and user value from 1–5 for each idea."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Team Vote</label>
+            <textarea name="t10_vote" class="form-textarea" placeholder="Which idea received the most support? Why?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Selected Idea and Justification</label>
+            <textarea name="t10_selected" class="form-textarea" placeholder="Explain why this idea has the best balance of impact and feasibility."></textarea>
+          </div>
+                  <div class="template-action-bar">
+            <button type="button" class="template-action-btn" data-save-draft>💾 Save Draft</button>
+            <a class="template-action-btn" href="printable.html?template=T10&phase=3" target="_blank">🖨 PDF Printable</a>
+            <a class="template-action-btn" href="assets/template-previews/t10-preview.png" target="_blank">🖼 PNG Preview</a>
+          </div>
+</section></form>
+      <div class="phase-submit-section">
+        <p class="phase-submit-title">Ready to Submit Phase 03?</p>
+        <p class="phase-submit-sub">Make sure all templates are complete before submitting.</p>
+        <button class="btn-primary" onclick="PhaseEngine.submitPhase(3,'',['df_p03_'])">Submit Phase 03 — Ideate → <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+    <a href="dashboard.html" class="nav-item" data-page="dashboard.html" aria-label="Dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="nav-label">Dashboard</span></a>
+    <a href="phase01-empathy.html" class="nav-item" data-page="phase01-empathy.html" aria-label="Learn"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></span><span class="nav-label">Learn</span></a>
+    <a href="projects.html" class="nav-item" data-page="projects.html" aria-label="Projects"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="nav-label">Projects</span></a>
+    <a href="progress.html" class="nav-item" data-page="progress.html" aria-label="Progress"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="14 11 17 14 22 9"/><path d="M22 12v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="nav-label">Progress</span></a>
+    <a href="profile.html" class="nav-item" data-page="profile.html" aria-label="Profile"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Profile</span></a>
+  </nav>
+</div>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/phase-engine.js"></script>
+<script>
+  'use strict';
+  window.addEventListener('load', function () {
+    if (typeof PhaseEngine === 'undefined') return;
+    PhaseEngine.init({ phaseNum: 3, namespace: 'df_p03_', hasGate: false, sheetUrl: '' });
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var cta=document.getElementById('cta-btn'), arrow=document.getElementById('cta-arrow-btn');
+    function goToQuiz(){ var t=document.querySelector('.tab-btn[data-tab="quiz"]'); if(t) t.click(); window.scrollTo({top:0,behavior:'smooth'}); }
+    if(cta) cta.addEventListener('click',goToQuiz);
+    if(arrow) arrow.addEventListener('click',goToQuiz);
+    var hbtn=document.getElementById('hamburger-btn');
+    if(hbtn) hbtn.addEventListener('click',function(){ this.setAttribute('aria-expanded',String(this.getAttribute('aria-expanded')!=='true')); });
+  });
+</script>
+</body>
+</html>

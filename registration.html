@@ -1,21 +1,70 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport"/><title>Registration — Smart DT Project</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/><link href="css/smartdt.css" rel="stylesheet"/></head>
-<body data-page="registration"><div class="app">
-<header class="header"><a class="brand" href="welcome.html"><span aria-hidden="true" class="brand-logo brand-logo-inline"><img alt="" decoding="async" loading="lazy" src="https://iili.io/Cd3i8QV.png"/></span><span class="brand-text">Smart DT<br/>Project</span></a><div class="header-actions"><span class="pill lang-pill"><span class="pill-symbol" aria-hidden="true">🌐</span> EN</span><button aria-label="Menu" class="icon-btn menu-lines"><span></span><span></span><span></span></button></div></header>
-<main class="page no-nav">
-<section class="hero-card auth"><img alt="Registration header" src="https://iili.io/CdztVBS.png"/></section>
-<section class="form-card"><h1 class="section-title" style="margin-top:0">Create your student profile</h1><p class="section-sub">This information is saved locally first so the dashboard and phase templates can personalise your Smart DT journey.</p>
-<form class="form-grid" id="registrationForm">
-<div class="field"><label>Full Name</label><input class="input" name="df_student_name" placeholder="e.g. Nur Aina Binti Ahmad" required=""/></div>
-<div class="field"><label>Email Address</label><input class="input" name="df_email" placeholder="e.g. yourname@gmail.com" required="" type="email"/></div>
-<div class="mini-row"><div class="field"><label>Registration No.</label><input class="input" name="df_reg_no" placeholder="e.g. 01DTK23F1001" required=""/></div><div class="field"><label>Class</label><input class="input" name="df_class" placeholder="e.g. DTK5A" required=""/></div></div>
-<div class="field"><label>Project Title</label><input class="input" name="df_project_name" placeholder="e.g. Smart Queue System"/></div>
-<div class="mini-row"><div class="field"><label>Team Name</label><input class="input" name="df_team" placeholder="e.g. Team Innovate"/></div><div class="field"><label>Supervisor Name</label><input class="input" name="df_supervisor" placeholder="e.g. Ts. Dr. ..."/></div></div>
-<button class="btn primary full" type="submit">Save &amp; Continue</button>
-</form>
-</section>
-<p class="footer-note">Your data is stored in your browser for the current prototype version.</p>
-</main></div><script src="js/smartdt-assets.js"></script><script src="js/smartdt.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Create Profile — Smart DT Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <div class="auth-logo">
+    <img src="assets/brand/logo-icon.png" alt="" onerror="this.style.display='none'">
+    <p class="auth-logo-text">Smart DT Project</p>
+  </div>
+  <div class="auth-card">
+    <h1 class="auth-title">Create Your Profile</h1>
+    <p class="auth-sub">Already registered? <a href="login.html" class="auth-link">Log in here</a></p>
+    <form id="registrationForm" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="df_student_name">Full Name</label>
+        <input id="df_student_name" name="df_student_name" type="text" class="form-input" placeholder="e.g. Siti Nurhaliza binti Ahmad" required>
+        <p class="form-error" id="err_name">Please enter your full name.</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="df_email">Institutional Email</label>
+        <input id="df_email" name="df_email" type="email" class="form-input" placeholder="e.g. sitinurhaliza@polipd.edu.my" required>
+        <p class="form-error" id="err_email">Please enter a valid email.</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="df_reg_no">Registration No.</label>
+        <input id="df_reg_no" name="df_reg_no" type="text" class="form-input" placeholder="e.g. 01DTK23F1001" required>
+        <p class="form-error" id="err_reg">Please enter your registration number.</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="df_class">Class / Programme</label>
+        <input id="df_class" name="df_class" type="text" class="form-input" placeholder="e.g. DTK3A / Diploma in Technology">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="df_team">Team Name</label>
+        <input id="df_team" name="df_team" type="text" class="form-input" placeholder="e.g. Team Alpha">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="df_project_name">Project / FYP Title</label>
+        <input id="df_project_name" name="df_project_name" type="text" class="form-input" placeholder="e.g. Smart Campus Canteen Queue System">
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;margin-top:8px">Create Profile &amp; Start →</button>
+    </form>
+  </div>
+<script>
+  document.getElementById('registrationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('df_student_name').value.trim();
+    var email = document.getElementById('df_email').value.trim();
+    var reg = document.getElementById('df_reg_no').value.trim();
+    var ok = true;
+    document.querySelectorAll('.form-error').forEach(function(el){ el.style.display='none'; });
+    if (!name) { document.getElementById('err_name').style.display='block'; ok=false; }
+    if (!email || email.indexOf('@') < 0) { document.getElementById('err_email').style.display='block'; ok=false; }
+    if (!reg) { document.getElementById('err_reg').style.display='block'; ok=false; }
+    if (!ok) return;
+    var data = Object.fromEntries(new FormData(this));
+    Object.entries(data).forEach(function(kv){ localStorage.setItem(kv[0], kv[1].trim()); });
+    localStorage.setItem('df_registered', 'true');
+    location.href = 'dashboard.html';
+  });
+</script>
+</body>
+</html>

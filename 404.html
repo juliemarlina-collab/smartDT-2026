@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — Smart DT Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center">
+  <p style="font-size:64px;font-weight:800;color:var(--color-orange)">404</p>
+  <p style="font-size:20px;font-weight:700;margin-bottom:8px">Page not found</p>
+  <p style="font-size:14px;color:var(--color-mid);margin-bottom:24px">Redirecting you now...</p>
+  <a href="dashboard.html" class="btn-primary" style="max-width:280px;margin:0 auto">Go to Dashboard</a>
+</div>
+<script>setTimeout(function(){location.href=localStorage.getItem('df_registered')==='true'?'dashboard.html':'welcome.html'},2500)</script>
+</body>
+</html>

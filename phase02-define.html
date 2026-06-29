@@ -1,11 +1,226 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport"/>
-<title>Phase 02 Define — Smart DT Project</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<link href="css/smartdt.css" rel="stylesheet"/><link href="css/smartdt-general-templates.css" rel="stylesheet"/><link rel="stylesheet" href="css/ai-dt-buddy.css">
-</head><body data-page="learn" data-phase="02"><div class="app">
-<header class="header"><a class="brand" href="dashboard.html"><span aria-hidden="true" class="brand-logo brand-logo-inline"><img alt="" decoding="async" loading="lazy" src="https://iili.io/Cd3i8QV.png"/></span><span class="brand-text">Smart DT<br/>Project</span></a><div class="header-actions"><span class="pill"><b style="color:var(--orange)">02</b> / 05</span><span class="pill lang-pill">🌐 EN</span><button aria-label="Menu" class="icon-btn menu-lines"><span></span><span></span><span></span></button></div></header>
-<div id="smartDtGeneralRoot"></div>
-</div><script src="js/smartdt-general-templates.js"></script><script src="js/smartdt-no-supervisor.js"></script><script src="js/smartdt-assets.js"></script><script src="js/smartdt.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Phase 02: Define  — Smart DT Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-dots="true">
+<div class="app-container">
+  <img src="assets/shared/pink-blob.png" class="pink-blob" alt="" aria-hidden="true" onerror="this.style.display='none'">
+
+  <header class="header" role="banner">
+    <a href="dashboard.html" class="header-logo">
+      <img src="assets/brand/logo-icon.png" class="header-logo-icon" alt="" onerror="this.style.display='none'">
+      <span class="header-logo-text">Smart DT<br>Project</span>
+    </a>
+    <div class="header-right">
+      <div class="phase-counter"><span class="phase-counter-current">02</span><span class="phase-counter-sep"> / </span><span class="phase-counter-total">05</span></div>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="phase-header">
+    <div class="hero-wrap" aria-hidden="true">
+      <img src="assets/heroes/phase02-hero.png" class="hero-img" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="page-header-text">
+      <a href="dashboard.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Dashboard</a>
+      <div class="phase-badge">02</div>
+      <div class="phase-title-area">
+        <p class="phase-title-line"><span class="word-accent">Define</span></p>
+        <p class="phase-title-line"><span class="word-phase">Phase</span></p>
+        <p class="phase-description">Turn your research into one clear, focused user need.</p>
+        <div class="orange-underline"></div>
+        <p class="phase-tagline">Clarity Creates Direction.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="info" role="tab" aria-selected="true">Quick Info</button>
+    <button class="tab-btn" data-tab="quiz" role="tab" aria-selected="false">Quiz <span class="tab-badge">5 Qs</span></button>
+    <button class="tab-btn locked" data-tab="templates" role="tab" aria-selected="false" title="Pass quiz to unlock">Templates <span class="tab-lock-icon">🔒</span></button>
+  </div>
+
+  <!-- QUICK INFO -->
+  <div class="tab-panel" id="tab-info" role="tabpanel">
+  <main class="phase-content">
+    <div class="phase-content-grid">
+      <div>
+        <div class="carousel-wrap" id="phase-carousel">
+          <div class="carousel-track" id="carousel-track">
+            <div class="carousel-slide" role="group" aria-label="Slide 1 of 3">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><circle cx="40" cy="40" r="28" fill="#14B8A6" opacity=".15"/><path d="M28 40h24M40 28v24" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Turn research into a problem</p>
+                <p class="carousel-slide-text">Use everything you discovered in Empathy to write one focused user need statement.</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Slide 2 of 3">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><rect x="10" y="20" width="60" height="40" rx="8" fill="#F5A623" opacity=".15"/><text x="22" y="46" font-size="20" fill="#F5A623" font-family="sans-serif" font-weight="bold">HMW</text></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Write HMW questions</p>
+                <p class="carousel-slide-text">How Might We questions open up creative possibilities without locking in a solution.</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Slide 3 of 3">
+              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><circle cx="40" cy="32" r="14" fill="#FF6A3D" opacity=".2"/><path d="M22 68c0-9.9 8.1-18 18-18s18 8.1 18 18" fill="none" stroke="#FF6A3D" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Define the user, need, insight</p>
+                <p class="carousel-slide-text">Your POV statement: [User] needs a way to [need] because [insight].</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dot-row" id="carousel-dots"></div>
+      </div>
+      <div class="feature-list">
+        <div class="feature-row">
+          <div class="feature-icon-box teal><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <div class="feature-text"><p class="feature-text-title">Synthesise evidence</p><p class="feature-text-desc">Turn insights into a statement.</p></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box pink-red><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <div class="feature-text"><p class="feature-text-title">Ask HMW questions</p><p class="feature-text-desc">Open creative space.</p></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box yellow><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="feature-text"><p class="feature-text-title">Focus on the user</p><p class="feature-text-desc">Never lose sight of who you design for.</p></div>
+        </div></div>
+    </div>
+    <div class="cta-row">
+      <button class="btn-primary" id="cta-btn">Let's Get Started <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      <button class="btn-arrow-circle" id="cta-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+    <div class="phase-progress-line"><div class="line-segment done"></div><div class="line-segment done"></div><div class="line-segment"></div><div class="line-segment"></div><div class="line-segment"></div></div>
+  </main>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="tab-panel hidden" id="tab-quiz" role="tabpanel">
+    <div class="phase-content">
+      <div class="quiz-intro">
+        <p class="quiz-intro-title">Quick Check Quiz</p>
+        <p class="quiz-intro-sub">Answer 5 questions about Phase 02 — Define. Score <strong>3 out of 5</strong> to unlock your templates.</p>
+      </div>
+      <div id="quiz-container"></div>
+    </div>
+  </div>
+
+  <!-- TEMPLATES -->
+  <div class="tab-panel hidden" id="tab-templates" role="tabpanel">
+    <div class="phase-content">
+      <form id="template-form" novalidate>
+        <section class="template-section">
+          <div class="template-section-header">
+            <span class="template-badge">T05</span>
+            <p class="template-title">User Persona</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Persona Name / Alias</label>
+            <input name="t05_name" type="text" class="form-input" placeholder="e.g. Amirah — the time-pressed student">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Age / Background</label>
+            <input name="t05_age" type="text" class="form-input" placeholder="e.g. 20 years old, Diploma in Technology, Semester 3">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Goals and Motivations</label>
+            <textarea name="t05_goals" class="form-textarea" placeholder="What matters most to this user? What drives them?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pain Points</label>
+            <textarea name="t05_pain" class="form-textarea" placeholder="What blocks, frustrates or worries this user?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Needs</label>
+            <textarea name="t05_needs" class="form-textarea" placeholder="What does this persona need to be successful?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Opportunity Area</label>
+            <textarea name="t05_opportunity" class="form-textarea" placeholder="Where can your team help?"></textarea>
+          </div>
+                  <div class="template-action-bar">
+            <button type="button" class="template-action-btn" data-save-draft>💾 Save Draft</button>
+            <a class="template-action-btn" href="printable.html?template=T05&phase=2" target="_blank">🖨 PDF Printable</a>
+            <a class="template-action-btn" href="assets/template-previews/t05-preview.png" target="_blank">🖼 PNG Preview</a>
+          </div>
+</section>
+        <section class="template-section">
+          <div class="template-section-header">
+            <span class="template-badge">T06</span>
+            <p class="template-title">User Insight & Needs Statement</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">User</label>
+            <input name="t06_user" type="text" class="form-input" placeholder="Who are you designing for?">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Need</label>
+            <textarea name="t06_need" class="form-textarea" placeholder="What does the user need help to do? Write a need, not a solution."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Insight</label>
+            <textarea name="t06_insight" class="form-textarea" placeholder="Why does this need matter? What motivation, fear or challenge explains it?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Evidence Quote</label>
+            <textarea name="t06_quote" class="form-textarea" placeholder="Add a quote or observation that supports your statement."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">How Might We (HMW) Questions<span class="form-label-hint">write 3–5 open-ended HMW questions</span></label>
+            <div class="form-numbered-list"><div class="form-numbered-item"><span class="form-number-badge">1</span><textarea name="t06_hmw_1" class="form-textarea" placeholder="e.g. How might we help students find canteen seats faster?"></textarea></div><div class="form-numbered-item"><span class="form-number-badge">2</span><textarea name="t06_hmw_2" class="form-textarea" placeholder="e.g. How might we reduce food waste during peak hours?"></textarea></div><div class="form-numbered-item"><span class="form-number-badge">3</span><textarea name="t06_hmw_3" class="form-textarea" placeholder="e.g. How might we help students plan their meals in advance?"></textarea></div></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Final Needs Statement</label>
+            <textarea name="t06_statement" class="form-textarea" style="min-height:120px" placeholder="[User] needs a way to [need] because [insight]."></textarea>
+          </div>
+                  <div class="template-action-bar">
+            <button type="button" class="template-action-btn" data-save-draft>💾 Save Draft</button>
+            <a class="template-action-btn" href="printable.html?template=T06&phase=2" target="_blank">🖨 PDF Printable</a>
+            <a class="template-action-btn" href="assets/template-previews/t06-preview.png" target="_blank">🖼 PNG Preview</a>
+          </div>
+</section></form>
+      <div class="phase-submit-section">
+        <p class="phase-submit-title">Ready to Submit Phase 02?</p>
+        <p class="phase-submit-sub">Make sure all templates are complete before submitting.</p>
+        <button class="btn-primary" onclick="PhaseEngine.submitPhase(2,'',['df_p02_'])">Submit Phase 02 — Define → <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+    <a href="dashboard.html" class="nav-item" data-page="dashboard.html" aria-label="Dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="nav-label">Dashboard</span></a>
+    <a href="phase01-empathy.html" class="nav-item" data-page="phase01-empathy.html" aria-label="Learn"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></span><span class="nav-label">Learn</span></a>
+    <a href="projects.html" class="nav-item" data-page="projects.html" aria-label="Projects"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="nav-label">Projects</span></a>
+    <a href="progress.html" class="nav-item" data-page="progress.html" aria-label="Progress"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="14 11 17 14 22 9"/><path d="M22 12v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="nav-label">Progress</span></a>
+    <a href="profile.html" class="nav-item" data-page="profile.html" aria-label="Profile"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Profile</span></a>
+  </nav>
+</div>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/phase-engine.js"></script>
+<script>
+  'use strict';
+  window.addEventListener('load', function () {
+    if (typeof PhaseEngine === 'undefined') return;
+    PhaseEngine.init({ phaseNum: 2, namespace: 'df_p02_', hasGate: false, sheetUrl: '' });
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var cta=document.getElementById('cta-btn'), arrow=document.getElementById('cta-arrow-btn');
+    function goToQuiz(){ var t=document.querySelector('.tab-btn[data-tab="quiz"]'); if(t) t.click(); window.scrollTo({top:0,behavior:'smooth'}); }
+    if(cta) cta.addEventListener('click',goToQuiz);
+    if(arrow) arrow.addEventListener('click',goToQuiz);
+    var hbtn=document.getElementById('hamburger-btn');
+    if(hbtn) hbtn.addEventListener('click',function(){ this.setAttribute('aria-expanded',String(this.getAttribute('aria-expanded')!=='true')); });
+  });
+</script>
+</body>
+</html>

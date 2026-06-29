@@ -1,56 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-  <title>My Progress — Smart DT Project</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Progress — Smart DT Project</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/smartdt.css"/>
-  <link rel="stylesheet" href="css/smartdt-general-templates.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-page="progress">
-<div class="app">
-<header class="header">
-  <a class="brand" href="dashboard.html"><span class="brand-logo brand-logo-inline"><img alt="" src="https://iili.io/Cd3i8QV.png"/></span><span class="brand-text">Smart DT<br>Project</span></a>
-  <div class="header-actions"><span class="pill lang-pill"><span class="pill-symbol" aria-hidden="true">🌐</span> EN</span><span class="avatar">ST</span></div>
-</header>
-<main class="page progress-page">
-  <section class="hero-card compact"><img alt="Progress hero" class="hero-img-wide" src="https://iili.io/CdztgEP.png"/></section>
-  <section class="intro-card">
-    <p class="eyebrow">My Progress</p>
-    <h1 class="intro-title">Your Smart DT <span class="teal">journey tracker.</span></h1>
-    <p class="intro-text">Track quiz scores, saved drafts, final submissions and achievement badges from T01 until T13.</p>
-  </section>
-  <section class="overall-card-v9 card">
-    <div class="overall-head-v9"><div><p class="card-label">Overall Progress</p><h2 id="progressDoneText">0 of 5 phases complete</h2></div><div class="overall-pct-v9"><strong id="progressPct">0%</strong><span>completed</span></div></div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-  </section>
-  <section class="progress-section-v9">
-    <div class="section-row-v9"><h2 class="section-title">Phase Progress</h2><button type="button" class="btn ghost mini-btn" id="continuePhaseBtn">Continue</button></div>
-    <div id="phaseProgressList" class="phase-list-v9"></div>
-  </section>
-  <section class="progress-section-v9">
-    <h2 class="section-title">Template Submission Workflow</h2>
-    <p class="section-sub">No supervisor approval gate. Students save drafts and submit final work when ready.</p>
-    <div id="workflowList" class="gate-list-v9"></div>
-  </section>
-  <section class="progress-section-v9">
-    <div class="section-row-v9"><h2 class="section-title">Achievements</h2><a class="btn-text" href="profile.html">View Profile</a></div>
-    <div id="badgeGrid" class="badge-grid-v9"></div>
-  </section>
-</main>
-<nav aria-label="Main navigation" class="bottom-nav">
-  <a class="nav-item" data-nav="dashboard" href="dashboard.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3ksWu.png"/><span class="nav-label">Dashboard</span></a>
-  <a class="nav-item" data-nav="learn" href="phase01-empathy.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3wdpn.png"/><span class="nav-label">Learn</span></a>
-  <a class="nav-item" data-nav="projects" href="projects.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3kixe.png"/><span class="nav-label">Projects</span></a>
-  <a class="nav-item active" data-nav="progress" href="progress.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3k4O7.png"/><span class="nav-label">Progress</span></a>
-  <a class="nav-item" data-nav="profile" href="profile.html"><img alt="" class="nav-icon-img" style="width:52px;height:52px;min-width:52px;min-height:52px;object-fit:contain;display:block;" src="https://iili.io/Cd3k6b9.png"/><span class="nav-label">Profile</span></a>
-</nav>
+<body>
+<div class="app-container">
+  <header class="header"><a href="dashboard.html" class="header-logo"><img src="assets/brand/logo-icon.png" class="header-logo-icon" alt="" onerror="this.style.display='none'"><span class="header-logo-text">Smart DT<br>Project</span></a><div class="header-right"><span style="font-size:13px;font-weight:700;color:var(--color-orange)">Progress</span></div></header>
+  <div class="simple-page">
+    <p class="page-title">My Progress</p>
+    <p class="page-sub">Track your Design Thinking journey across all 5 phases.</p>
+    <div class="stat-grid">
+      <div class="stat-card"><p class="stat-value" id="prog-phases-done">0</p><p class="stat-label">Phases Submitted</p></div>
+      <div class="stat-card"><p class="stat-value" id="prog-pct">0%</p><p class="stat-label">Overall Progress</p></div>
+      <div class="stat-card"><p class="stat-value" id="prog-quizzes">0</p><p class="stat-label">Quizzes Passed</p></div>
+      <div class="stat-card"><p class="stat-value" id="prog-templates">0</p><p class="stat-label">Templates Saved</p></div>
+    </div>
+    <p style="font-size:14px;font-weight:700;margin-bottom:10px">Phase Breakdown</p>
+    <div id="prog-phases"></div>
+    <div style="display:flex;gap:10px;margin-top:20px;">
+      <a href="feedback.html" class="btn-primary" style="flex:1;text-align:center;text-decoration:none;font-size:13px;">💬 View Feedback</a>
+      <a href="marks.html" class="btn-primary" style="flex:1;text-align:center;text-decoration:none;font-size:13px;background:var(--color-navy);">📊 View Marks</a>
+    </div>
+  </div>
+  <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+    <a href="dashboard.html" class="nav-item" data-page="dashboard.html" aria-label="Dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="nav-label">Dashboard</span></a>
+    <a href="phase01-empathy.html" class="nav-item" data-page="phase01-empathy.html" aria-label="Learn"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></span><span class="nav-label">Learn</span></a>
+    <a href="projects.html" class="nav-item" data-page="projects.html" aria-label="Projects"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="nav-label">Projects</span></a>
+    <a href="progress.html" class="nav-item" data-page="progress.html" aria-label="Progress"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="14 11 17 14 22 9"/><path d="M22 12v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="nav-label">Progress</span></a>
+    <a href="profile.html" class="nav-item" data-page="profile.html" aria-label="Profile"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Profile</span></a>
+  </nav>
 </div>
-<script src="js/smartdt-no-supervisor.js"></script>
-<script src="js/smartdt-assets.js"></script>
-<script src="js/smartdt.js"></script>
+<script>
+  (function(){
+    if(localStorage.getItem('df_registered')!=='true'){ location.href='welcome.html'; return; }
+    var PHASES=[{num:'01',name:'Empathy',tmpl:2,url:'phase01-empathy.html'},{num:'02',name:'Define',tmpl:2,url:'phase02-define.html'},{num:'03',name:'Ideate',tmpl:4,url:'phase03-ideation.html'},{num:'04',name:'Prototype',tmpl:1,url:'phase04-prototype.html'},{num:'05',name:'Test & Pitch',tmpl:2,url:'phase05-test.html'}];
+    var submitted=0, quizzes=0, templates=0;
+    var container = document.getElementById('prog-phases');
+    PHASES.forEach(function(p){
+      var sub = localStorage.getItem('df_submitted_phase'+p.num)==='true';
+      var score = parseInt(localStorage.getItem('df_quiz_phase'+p.num)||'-1',10);
+      var qp = score>=3||localStorage.getItem('df_unlocked_phase'+p.num)==='true';
+      var saved = Object.keys(JSON.parse(localStorage.getItem('df_p'+p.num+'_templates')||'{}')).length;
+      if(sub) submitted++;
+      if(qp) quizzes++;
+      templates += saved;
+      var el = document.createElement('div'); el.className='card'; el.style.cursor='pointer';
+      el.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><p style="font-size:14px;font-weight:700">Phase '+p.num+' — '+p.name+'</p><span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:'+(sub?'rgba(20,184,166,.15)':qp?'rgba(255,106,61,.12)':'rgba(8,27,68,.06)')+';color:'+(sub?'var(--color-teal)':qp?'var(--color-orange)':'var(--color-mid)')+';">'+(sub?'Submitted':qp?'Unlocked':'Locked')+'</span></div><p style="font-size:12px;color:var(--color-mid)">Quiz: '+(qp?'Passed ('+score+'/5)':'Not yet passed')+' &nbsp;·&nbsp; Templates saved: '+saved+'/'+p.tmpl+'</p>';
+      el.addEventListener('click',function(){ location.href=p.url; });
+      container.appendChild(el);
+    });
+    document.getElementById('prog-phases-done').textContent = submitted;
+    document.getElementById('prog-pct').textContent = Math.round(submitted/5*100)+'%';
+    document.getElementById('prog-quizzes').textContent = quizzes;
+    document.getElementById('prog-templates').textContent = templates;
+    document.querySelectorAll('.nav-item[data-page]').forEach(function(el){ el.classList.toggle('active', el.dataset.page==='progress.html'); });
+  })();
+</script>
 </body>
 </html>
