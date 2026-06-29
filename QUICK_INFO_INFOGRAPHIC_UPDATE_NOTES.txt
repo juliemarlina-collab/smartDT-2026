@@ -1,0 +1,24 @@
+Smart DT 2026 — Quick Info Infographic Update
+
+Updated files:
+- phase01-empathy.html
+- phase02-define.html
+- phase03-ideation.html
+- phase04-prototype.html
+- phase05-test.html
+- css/smartdt-quick-info.css
+- js/smartdt-quick-info-static.js
+
+What changed:
+- Quick Info tabs now show the phase infographic image.
+- Definition, Purpose, Step-by-step Process and Key Output are displayed using Smart DT orange-header infographic cards.
+- Process cards follow the correct T01-T13 phase flow.
+- Template input pages are not changed.
+- Quiz tabs are not changed.
+
+Testing checklist:
+1. Open each phase page.
+2. Click Quick Info.
+3. Check the infographic image, orange headers and process cards.
+4. Click Open Templates to confirm template tab still works.
+5. Click the ? button to confirm quiz tab still works.
