@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/smartdt-quick-info.css">
 </head>
 <body data-dots="true">
 <div class="app-container">
@@ -16,7 +15,7 @@
 
   <header class="header" role="banner">
     <a href="dashboard.html" class="header-logo">
-      <img src="assets/brand/brand-logo.png" class="header-logo-icon" alt="" onerror="this.style.display='none'">
+      <img src="assets/brand/logo-icon.png" class="header-logo-icon" alt="" onerror="this.style.display='none'">
       <span class="header-logo-text">Smart DT<br>Project</span>
     </a>
     <div class="header-right">
@@ -29,7 +28,7 @@
 
   <section class="phase-header">
     <div class="hero-wrap" aria-hidden="true">
-      <img src="assets/heroes/empathy-hero.svg" class="hero-img" alt="" onerror="this.style.display='none'">
+      <img src="assets/heroes/phase01-hero.png" class="hero-img" alt="" onerror="this.style.display='none'">
     </div>
     <div class="page-header-text">
       <a href="dashboard.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Dashboard</a>
@@ -52,63 +51,52 @@
 
   <!-- QUICK INFO -->
   <div class="tab-panel" id="tab-info" role="tabpanel">
-  <main class="phase-content">
-    <div class="phase-content-grid">
-      <div>
-        <div class="carousel-wrap" id="phase-carousel">
-          <div class="carousel-track" id="carousel-track">
-            <div class="carousel-slide" role="group" aria-label="Slide 1 of 4">
-              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><circle cx="40" cy="40" r="28" fill="#14B8A6" opacity=".15"/><path d="M40 68c0 0-14-9-14-18a8 8 0 0 1 14-5.3A8 8 0 0 1 54 50c0 9-14 18-14 18z" fill="#FF6A3D" opacity=".7"/></svg></div>
-              <div class="carousel-slide-content">
-                <p class="carousel-slide-title">Empathy is the first step</p>
-                <p class="carousel-slide-text">Listen, observe and understand your users' world before thinking about solutions.</p>
-              </div>
-            </div>
-            <div class="carousel-slide" role="group" aria-label="Slide 2 of 4">
-              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><circle cx="40" cy="40" r="28" fill="#14B8A6" opacity=".15"/><path d="M50 32a12 12 0 1 0-12 20v8" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round"/><circle cx="38" cy="62" r="2" fill="#14B8A6"/></svg></div>
-              <div class="carousel-slide-content">
-                <p class="carousel-slide-title">Why empathy matters</p>
-                <p class="carousel-slide-text">Without understanding real user feelings, you risk building solutions nobody needs.</p>
-              </div>
-            </div>
-            <div class="carousel-slide" role="group" aria-label="Slide 3 of 4">
-              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><rect x="10" y="10" width="60" height="60" rx="8" fill="#F5A623" opacity=".15"/><line x1="40" y1="10" x2="40" y2="70" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="3 2"/><line x1="10" y1="40" x2="70" y2="40" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="3 2"/><text x="18" y="30" font-size="8" fill="#F5A623" font-family="sans-serif">SAYS</text><text x="45" y="30" font-size="8" fill="#F5A623" font-family="sans-serif">THINKS</text><text x="18" y="58" font-size="8" fill="#F5A623" font-family="sans-serif">DOES</text><text x="45" y="58" font-size="8" fill="#F5A623" font-family="sans-serif">FEELS</text></svg></div>
-              <div class="carousel-slide-content">
-                <p class="carousel-slide-title">Your empathy tools</p>
-                <p class="carousel-slide-text">Use the Empathy Map to capture what users Say, Think, Do and Feel.</p>
-              </div>
-            </div>
-            <div class="carousel-slide" role="group" aria-label="Slide 4 of 4">
-              <div class="carousel-slide-illustration"><svg viewBox="0 0 80 80" fill="none" style="width:80px;height:80px"><circle cx="40" cy="40" r="28" fill="#FF6A3D" opacity=".12"/><circle cx="40" cy="40" r="18" stroke="#FF6A3D" stroke-width="2" fill="none"/><circle cx="40" cy="40" r="8" fill="#FF6A3D" opacity=".5"/><circle cx="40" cy="40" r="3" fill="#FF6A3D"/></svg></div>
-              <div class="carousel-slide-content">
-                <p class="carousel-slide-title">Your goal this phase</p>
-                <p class="carousel-slide-text">Interview at least 3 real users, capture notes and complete T01–T02.</p>
-              </div>
-            </div>
+    <main class="phase-content sq-quick-info">
+      <section class="sq-section sq-phase-overview">
+        <div class="sq-orange-label"><span>Quick Info</span><strong>EMPATHY PHASE GUIDE</strong></div>
+        <div class="sq-overview-grid">
+          <div>
+            <p class="sq-kicker">Phase 01 · Smart DT Project</p>
+            <h2>Empathy Phase</h2>
+            <p class="sq-subtitle">Understand the user before solving the problem</p>
           </div>
+          <div class="sq-template-flow"><span>T01 → T02 → T03 → T04</span></div>
         </div>
-        <div class="dot-row" id="carousel-dots"></div>
+      </section>
+
+      <section class="sq-section sq-infographic-section">
+        <div class="sq-orange-label"><span>Visual Guide</span><strong>INFOGRAPHIC OVERVIEW</strong></div>
+        <div class="sq-infographic-frame">
+          <img src="assets/phase01-empathy-infographic.png" alt="Empathy phase infographic" loading="lazy">
+        </div>
+      </section>
+
+      <section class="sq-section">
+        <div class="sq-orange-label"><span>1</span><strong>DEFINITION</strong></div>
+        <p class="sq-definition-text">The Empathy Phase helps students understand real users, their experiences, feelings, challenges and needs through observation and interaction.</p>
+      </section>
+
+      <section class="sq-section">
+        <div class="sq-orange-label"><span>2</span><strong>PURPOSE</strong></div>
+        <div class="sq-purpose-grid"><article class="sq-purpose-card"><span class="sq-purpose-icon">👥</span><strong>Understand the user context</strong></article><article class="sq-purpose-card"><span class="sq-purpose-icon">🎯</span><strong>Identify real pain points</strong></article><article class="sq-purpose-card"><span class="sq-purpose-icon">💬</span><strong>Listen to user stories and experiences</strong></article><article class="sq-purpose-card"><span class="sq-purpose-icon">💡</span><strong>Build meaningful insights before defining the problem</strong></article></div>
+      </section>
+
+      <section class="sq-section">
+        <div class="sq-orange-label"><span>3</span><strong>STEP-BY-STEP PROCESS</strong></div>
+        <div class="sq-process-grid"><article class="sq-process-card"><span class="sq-process-no">1</span><small>T01</small><h3>Observe with POEMS</h3><p>Look at People, Objects, Environments, Messages and Services.</p></article><article class="sq-process-card"><span class="sq-process-no">2</span><small>T02</small><h3>Interview the User</h3><p>Ask open-ended questions and record important responses.</p></article><article class="sq-process-card"><span class="sq-process-no">3</span><small>T03</small><h3>Transcribe the Findings</h3><p>Turn audio or notes into written evidence and quotes.</p></article><article class="sq-process-card"><span class="sq-process-no">4</span><small>T04</small><h3>Build an Empathy Map</h3><p>Organise findings into Say, Do, Think and Feel.</p></article></div>
+      </section>
+
+      <section class="sq-key-output">
+        <span class="sq-trophy">🏆</span>
+        <div><strong>Key Output</strong><p>Students understand who the user is, what the user experiences and what matters most to the user.</p></div>
+      </section>
+
+      <div class="sq-action-row">
+        <button class="btn-primary" type="button" onclick="document.querySelector('.tab-btn[data-tab=&quot;quiz&quot;]').click();window.scrollTo({top:0,behavior:'smooth'});">Start Quiz</button>
+        <button class="btn-secondary" type="button" onclick="document.querySelector('.tab-btn[data-tab=&quot;templates&quot;]').click();window.scrollTo({top:0,behavior:'smooth'});">Open Templates</button>
       </div>
-      <div class="feature-list">
-        <div class="feature-row">
-          <div class="feature-icon-box teal><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 3-2 4-3 6H9c-1-2-3-3-3-6z"/><path d="M9 20a3 3 0 0 0 6 0"/><line x1="12" y1="14" x2="12" y2="20"/></svg></div>
-          <div class="feature-text"><p class="feature-text-title">Listen actively</p><p class="feature-text-desc">Hear what users say.</p></div>
-        </div>
-        <div class="feature-row">
-          <div class="feature-icon-box pink-red><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-          <div class="feature-text"><p class="feature-text-title">Observe closely</p><p class="feature-text-desc">See what users do.</p></div>
-        </div>
-        <div class="feature-row">
-          <div class="feature-icon-box yellow><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-          <div class="feature-text"><p class="feature-text-title">Understand deeply</p><p class="feature-text-desc">Feel what users feel.</p></div>
-        </div></div>
-    </div>
-    <div class="cta-row">
-      <button class="btn-primary" id="cta-btn">Let's Get Started <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
-      <button class="btn-arrow-circle" id="cta-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
-    </div>
-    <div class="phase-progress-line"><div class="line-segment done"></div><div class="line-segment"></div><div class="line-segment"></div><div class="line-segment"></div><div class="line-segment"></div></div>
-  </main>
+      <div class="phase-progress-line"><div class="line-segment done"></div><div class="line-segment"></div><div class="line-segment"></div><div class="line-segment"></div><div class="line-segment"></div></div>
+    </main>
   </div>
 
   <!-- QUIZ -->
@@ -235,6 +223,5 @@
     if(hbtn) hbtn.addEventListener('click',function(){ this.setAttribute('aria-expanded',String(this.getAttribute('aria-expanded')!=='true')); });
   });
 </script>
-<script src="js/smartdt-quick-info-static.js"></script>
 </body>
 </html>
