@@ -1,0 +1,7 @@
+  // ── Preview / Testing Mode ──────────────────────────────────────
+  // Set to true to bypass gate locks for testing. Set back to false for production.
+  const PREVIEW_MODE = false; // CRITICAL-FIX-01: production mode
+
+  const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/a/macros/polipd.edu.my/s/AKfycbxkk8DZEMFCIq4tBrlNulKk-xSblFqEkz2UOkGBqr-aX9-uu8XAYt5oiYMCtJOcmIld/exec';
+  window.SMART_DT_CONFIG = window.SMART_DT_CONFIG || {};
+  window.SMART_DT_CONFIG.appsScriptWebAppUrl = APPS_SCRIPT_WEB_APP_URL;
