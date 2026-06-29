@@ -1,0 +1,35 @@
+PHASE 04 & PHASE 05 UPDATE NOTES
+
+Updated files:
+- phase04-prototype.html
+- phase05-test.html
+- js/smartdt-general-templates.js
+- css/smartdt-general-templates.css
+- js/smartdt-no-supervisor.js
+
+Phase 04 now uses:
+- T11 Prototype Direction Plan
+
+Phase 05 now uses:
+- T12 User Feedback & Feedback Grid Matrix
+- T13 8-Slide Pitch Framework
+
+Workflow:
+- View Example
+- Fill Template
+- Save Draft
+- Submit Final
+
+Removed from this flow:
+- Supervisor approval gate
+- Gate lock screen
+- CAMP21-specific wording
+- Craft seller-specific example
+
+Testing checklist:
+1. Open phase04-prototype.html and check T11 only.
+2. Open phase05-test.html and check T12 and T13 only.
+3. Test View Example and Fill Template.
+4. Test Save Draft.
+5. Test Submit Final.
+6. Confirm no supervisor gate appears.

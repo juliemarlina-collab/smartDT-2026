@@ -1,0 +1,31 @@
+PHASE 01 EMPATHISE UPDATE NOTES
+
+Updated focus: General Smart DT Project template system, not CAMP21-specific.
+
+Main file to test:
+- phase01-empathy.html
+
+Supporting files used by Phase 01:
+- css/smartdt-general-templates.css
+- js/smartdt-general-templates.js
+- js/smartdt-no-supervisor.js
+- js/smartdt.js
+
+Phase 01 templates included:
+- T01 POEMS Observation Framework
+- T02 Interview Guide & Worksheet
+- T03 Audio-to-Text Transcription
+- T04 Empathy Map
+
+What to check during testing:
+1. Open phase01-empathy.html.
+2. Confirm it shows Smart DT Project general design, not CAMP21 branding.
+3. Confirm the Templates tab shows T01, T02, T03 and T04.
+4. Confirm each template has View Example and Fill Template.
+5. Confirm Save Draft works.
+6. Confirm Submit Final is visible.
+7. Confirm there is no Supervisor Gate / Gate Approval blocking flow.
+
+Note:
+- phase01-empathy_UPDATED.html is an older backup/reference file and is not the active page.
+- The active page is phase01-empathy.html.

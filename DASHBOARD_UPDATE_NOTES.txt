@@ -1,0 +1,20 @@
+Dashboard cleanup completed for Smart DT Project.
+
+Updated focus:
+- General Smart DT Project wording only.
+- Design Thinking Progress now shows:
+  Phase 01 Empathise: T01-T04
+  Phase 02 Define: T05-T06
+  Phase 03 Ideate: T07-T10
+  Phase 04 Prototype: T11
+  Phase 05 Test/Pitch: T12-T13
+- Supervisor Feedback changed to Submission Status.
+- Gate approval wording removed from dashboard.
+- Workflow shown as Draft / Submitted / Updated.
+
+Testing checklist:
+1. Open dashboard.html.
+2. Confirm no Supervisor Feedback / Gate approval wording appears.
+3. Click Continue Current Phase.
+4. Confirm it routes to the current phase page.
+5. Check bottom navigation still works.

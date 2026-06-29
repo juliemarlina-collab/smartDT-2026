@@ -1,0 +1,17 @@
+Smart DT general cleanup update
+
+Updated files:
+- progress.html
+- projects.html
+- js/smartdt.js
+- css/smartdt-general-templates.css
+
+What changed:
+- Removed supervisor gate wording from Progress and Projects.
+- Updated phase/template mapping to T01–T13.
+- Fixed PHASE_TEMPLATES in smartdt.js so Save Draft and Submit Final checks match the new template IDs.
+- Simplified currentPhase() so no gate approval blocks Phase 03, Phase 04 or Portfolio.
+- Simplified showSubmitSuccess() to Save Draft / Submit Final workflow.
+- Updated achievements/badges text.
+- Added Progress workflow list: Draft, Submitted, Updated.
+- Updated Projects as a neutral Smart DT evidence hub.

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="Smart DT Project — Phase 02: Define">
+  <title>Phase 02: Define — Smart DT Project</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body { background-color: var(--color-bg); overflow-x: hidden; }
+
+    .hamburger-btn {
+      width:36px; height:36px;
+      display:flex; align-items:center; justify-content:center;
+      border-radius:var(--radius-sm);
+      background-color:var(--color-bg);
+      border:1px solid var(--color-border);
+      cursor:pointer; flex-shrink:0;
+    }
+    .hamburger-btn svg {
+      width:20px; height:20px;
+      stroke:var(--color-navy); fill:none;
+      stroke-width:2; stroke-linecap:round;
+    }
+
+    .phase-header {
+      position:relative;
+      padding:calc(var(--header-height) + 16px) 20px 0;
+      overflow:hidden;
+      min-height:240px;
+    }
+
+    .phase-content {
+      padding:16px 20px calc(var(--nav-height) + 24px);
+      position:relative; z-index:2;
+    }
+
+    .nav-icon svg {
+      width:24px; height:24px;
+      fill:none; stroke:currentColor;
+      stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+    }
+
+    .back-link {
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:13px; font-weight:500;
+      color:var(--color-text-mid); text-decoration:none;
+      margin-bottom:8px; position:relative; z-index:2;
+    }
+    .back-link:hover { color:var(--color-navy); }
+    .back-link svg {
+      width:16px; height:16px;
+      stroke:currentColor; fill:none;
+      stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+    }
+  </style>
+</head>
+
+<body data-dots="true">
+<div class="app-container">
+
+  <img src="assets/shared/pink-blob.png"
+       class="pink-blob" alt="" aria-hidden="true"
+       onerror="this.style.display='none'">
+
+
+  <!-- HEADER -->
+  <header class="header" role="banner">
+    <a href="dashboard.html" class="header-logo"
+       aria-label="Smart DT Project — back to dashboard">
+      <img src="assets/brand/logo-icon.png"
+           class="header-logo-icon" alt="Smart DT Project logo"
+           onerror="this.style.display='none'">
+      <span class="header-logo-text">Smart DT<br>Project</span>
+    </a>
+    <div class="header-right">
+      <div class="phase-counter" aria-label="Phase 02 of 5">
+        <span class="phase-counter-current">02</span>
+        <span class="phase-counter-sep"> / </span>
+        <span class="phase-counter-total">05</span>
+      </div>
+      <button class="hamburger-btn" id="hamburger-btn"
+              aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="3" y1="6"  x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- PHASE HEADER -->
+  <section class="phase-header" aria-label="Define phase introduction">
+
+    <div class="hero-wrap" aria-hidden="true">
+      <img src="assets/heroes/define-hero.png"
+           class="hero-img" alt="Student with teal hair holding orange phone"
+           onerror="this.style.display='none'">
+    </div>
+
+    <div class="page-header-text">
+
+      <a href="dashboard.html" class="back-link" aria-label="Back to dashboard">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Dashboard
+      </a>
+
+      <div class="phase-badge" aria-hidden="true">02</div>
+
+      <div class="phase-title-area">
+        <p class="phase-title-line">
+          <span class="word-accent">Define</span>
+        </p>
+        <p class="phase-title-line">
+          <span class="word-phase">Phase</span>
+        </p>
+        <p class="phase-description">Clearly define the problem and focus on the challenges that matter most.</p>
+        <div class="orange-underline" aria-hidden="true"></div>
+        <p class="phase-tagline">Clear Problem.<br>Better Direction.</p>
+      </div>
+
+    </div>
+  </section>
+  <!-- TAB BAR -->
+  <div class="tab-bar" role="tablist" aria-label="Phase navigation">
+    <button class="tab-btn active" data-tab="info"
+            role="tab" aria-selected="true" aria-controls="tab-info">
+      Quick Info
+    </button>
+    <button class="tab-btn" data-tab="quiz"
+            role="tab" aria-selected="false" aria-controls="tab-quiz">
+      Quiz
+      <span class="tab-badge" aria-hidden="true">5 Qs</span>
+    </button>
+    <button class="tab-btn locked" data-tab="templates"
+            role="tab" aria-selected="false" aria-controls="tab-templates"
+            title="Pass the quiz to unlock templates">
+      Templates
+      <span class="tab-lock-icon" aria-label="locked">🔒</span>
+    </button>
+  </div>
+
+  <!-- TAB PANEL: QUICK INFO -->
+  <div class="tab-panel" id="tab-info" role="tabpanel">
+
+  <main class="phase-content" role="main">
+
+    <div class="phase-content-grid">
+
+      <!-- Carousel -->
+      <div>
+        <div class="carousel-wrap" id="phase-carousel"
+             aria-label="Define phase information slides">
+          <div class="carousel-track" id="carousel-track">
+            
+            <!-- Slide 1 -->
+            <div class="carousel-slide"
+                 role="group"
+                 aria-roledescription="slide"
+                 aria-label="Slide 1 of 4: Define the real problem">
+              <div class="carousel-slide-illustration" aria-hidden="true">
+                <svg viewBox="0 0 80 80" fill="none"
+                     xmlns="http://www.w3.org/2000/svg"
+                     style="display:block;width:80px;height:80px">
+                  <circle cx="40" cy="40" r="28" fill="#FF6A3D" opacity=".1"/>
+           <circle cx="36" cy="36" r="14" stroke="#FF6A3D" stroke-width="2.5" fill="none"/>
+           <line x1="46" y1="46" x2="56" y2="56" stroke="#FF6A3D" stroke-width="3" stroke-linecap="round"/>
+           <circle cx="32" cy="32" r="3" fill="#F5A623" opacity=".8"/>
+           <circle cx="40" cy="30" r="2" fill="#14B8A6" opacity=".8"/>
+           <circle cx="36" cy="40" r="2.5" fill="#FF6A3D" opacity=".6"/>
+                </svg>
+              </div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Define the real problem</p>
+                <p class="carousel-slide-text">Dig deep to understand the root cause and key pain points behind user struggles.</p>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-slide"
+                 role="group"
+                 aria-roledescription="slide"
+                 aria-label="Slide 2 of 4: Why Define matters"
+                 aria-hidden="true">
+              <div class="carousel-slide-illustration" aria-hidden="true">
+                <svg viewBox="0 0 80 80" fill="none"
+                     xmlns="http://www.w3.org/2000/svg"
+                     style="display:block;width:80px;height:80px">
+                  <circle cx="40" cy="40" r="26" fill="#FF6A3D" opacity=".08"/>
+           <circle cx="40" cy="40" r="18" stroke="#FF6A3D" stroke-width="2" fill="none"/>
+           <circle cx="40" cy="40" r="10" stroke="#FF6A3D" stroke-width="2" fill="none"/>
+           <circle cx="40" cy="40" r="3" fill="#FF6A3D"/>
+                </svg>
+              </div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Why Define matters</p>
+                <p class="carousel-slide-text">Without a clear problem statement, your solutions will miss the real need.</p>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-slide"
+                 role="group"
+                 aria-roledescription="slide"
+                 aria-label="Slide 3 of 4: Your Define tools"
+                 aria-hidden="true">
+              <div class="carousel-slide-illustration" aria-hidden="true">
+                <svg viewBox="0 0 80 80" fill="none"
+                     xmlns="http://www.w3.org/2000/svg"
+                     style="display:block;width:80px;height:80px">
+                  <rect x="20" y="14" width="40" height="50" rx="4" fill="#F5A623" opacity=".15" stroke="#F5A623" stroke-width="1.5"/>
+           <line x1="28" y1="28" x2="52" y2="28" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+           <line x1="28" y1="36" x2="52" y2="36" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+           <line x1="28" y1="44" x2="44" y2="44" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Your Define tools</p>
+                <p class="carousel-slide-text">Use the POV Statement and How Might We questions to frame the problem clearly.</p>
+              </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="carousel-slide"
+                 role="group"
+                 aria-roledescription="slide"
+                 aria-label="Slide 4 of 4: Your goal this phase"
+                 aria-hidden="true">
+              <div class="carousel-slide-illustration" aria-hidden="true">
+                <svg viewBox="0 0 80 80" fill="none"
+                     xmlns="http://www.w3.org/2000/svg"
+                     style="display:block;width:80px;height:80px">
+                  <path d="M12 20 Q12 12 40 12 Q68 12 68 32 Q68 52 40 52 L28 60 L32 52 Q12 52 12 32 Z" fill="#14B8A6" opacity=".15" stroke="#14B8A6" stroke-width="1.5"/>
+           <circle cx="32" cy="32" r="3" fill="#14B8A6"/>
+           <circle cx="40" cy="32" r="3" fill="#14B8A6"/>
+           <circle cx="48" cy="32" r="3" fill="#14B8A6"/>
+                </svg>
+              </div>
+              <div class="carousel-slide-content">
+                <p class="carousel-slide-title">Your goal this phase</p>
+                <p class="carousel-slide-text">Write one clear, user-centred problem statement and at least 5 HMW questions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dot-row" id="carousel-dots"
+             role="tablist" aria-label="Slide navigation">
+          <div class="dot active" aria-label="Slide 1" role="tab" aria-selected="true"></div>
+          <div class="dot"        aria-label="Slide 2" role="tab" aria-selected="false"></div>
+          <div class="dot"        aria-label="Slide 3" role="tab" aria-selected="false"></div>
+          <div class="dot"        aria-label="Slide 4" role="tab" aria-selected="false"></div>
+        </div>
+      </div>
+
+      <!-- Feature rows -->
+      <div class="feature-list" aria-label="Define phase key skills">
+        
+        <div class="feature-row">
+          <div class="feature-icon-box orange" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="#FFFFFF" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4l3 3"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <p class="feature-text-title">Focus on what matters</p>
+            <p class="feature-text-desc">Identify the core problem.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box teal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="#FFFFFF" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <p class="feature-text-title">Involve the right people</p>
+            <p class="feature-text-desc">Gather insights from users and stakeholders.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box yellow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="#FFFFFF" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <p class="feature-text-title">Frame the problem</p>
+            <p class="feature-text-desc">Turn insights into a clear problem statement.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.phase-content-grid -->
+
+
+    <!-- CTA row -->
+    <div class="cta-row">
+      <button class="btn-primary" id="cta-btn"
+              aria-label="Let's Continue with Phase 02 Define">
+        Let's Continue
+        <svg width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor"
+             stroke-width="2.5" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true"
+             style="flex-shrink:0">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+      <button class="btn-arrow-circle" id="cta-arrow-btn" aria-label="Let's Continue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.5" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+    </div>
+
+
+    <!-- Progress line -->
+    <div class="phase-progress-line" aria-label="Phase progress indicator">
+      
+      <div class="line-segment done" aria-label="Phase 1"></div>
+      <div class="line-segment done" aria-label="Phase 2"></div>
+      <div class="line-segment" aria-label="Phase 3"></div>
+      <div class="line-segment" aria-label="Phase 4"></div>
+      <div class="line-segment" aria-label="Phase 5"></div>
+    </div>
+
+  </main>
+
+  </div><!-- /#tab-info -->
+  <!-- TAB PANEL: QUIZ -->
+  <div class="tab-panel hidden" id="tab-quiz" role="tabpanel">
+    <div class="phase-content">
+      <div class="quiz-intro">
+        <p class="quiz-intro-title">Quick Check Quiz</p>
+        <p class="quiz-intro-sub">
+          Answer 5 questions about the Define phase.
+          Score <strong>3 out of 5</strong> to unlock your templates.
+        </p>
+      </div>
+      <div id="quiz-container"></div>
+    </div>
+  </div><!-- /#tab-quiz -->
+  <!-- TAB PANEL: TEMPLATES -->
+  <div class="tab-panel hidden" id="tab-templates" role="tabpanel">
+    <div class="phase-content">
+      <form id="template-form" novalidate>
+
+        <div style="background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.25);
+                    border-radius:var(--radius-md);padding:12px 14px;margin-bottom:16px">
+          <p style="font-size:12px;font-weight:700;color:var(--color-teal);margin-bottom:4px">
+            Define Phase Flow
+          </p>
+          <p style="font-size:12px;color:var(--color-text-dark);line-height:1.5">
+            Create a Persona, summarise user needs, write your Problem Statement / POV, then complete HMW as the final bridge to Ideation.
+          </p>
+        </div>
+
+
+
+
+        <!-- ═══════════════════════════════════════════════════
+             T03 — USER PERSONA
+             Composite profile of the target user built from
+             Empathy Map patterns and interview evidence.
+             ═══════════════════════════════════════════════════ -->
+        <section class="template-section" aria-label="T03 User Persona">
+          <div class="template-section-header">
+            <span class="template-badge">T03</span>
+            <p class="template-title">User Persona</p>
+          </div>
+
+          <!-- Identity fields -->
+          <div class="form-group">
+            <label class="form-label" for="t03_name">Persona Name
+              <span class="form-label-hint">(fictional name — e.g. Aiman, Nurul)</span>
+            </label>
+            <input id="t03_name" name="t03_name" type="text"
+                   class="form-input" placeholder="e.g. Aiman">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t03_age">Age</label>
+            <input id="t03_age" name="t03_age" type="text"
+                   class="form-input" placeholder="e.g. 20">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t03_tech_comfort">Tech Comfort Level</label>
+            <select id="t03_tech_comfort" name="t03_tech_comfort" class="form-select">
+              <option value="">Select level…</option>
+              <option value="Low">Low — struggles with apps and new technology</option>
+              <option value="Medium">Medium — comfortable with common apps</option>
+              <option value="High">High — early adopter, uses many apps daily</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t03_programme">Programme</label>
+            <input id="t03_programme" name="t03_programme" type="text"
+                   class="form-input" placeholder="e.g. Diploma in Electrical Engineering">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t03_quote">Persona Quote
+              <span class="form-label-hint">(one sentence that captures their mindset)</span>
+            </label>
+            <textarea id="t03_quote" name="t03_quote" class="form-textarea"
+                      style="min-height:60px"
+                      placeholder="e.g. "I just want things to be simple and fast — I do not have time to figure out complicated systems.""></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t03_background">Background</label>
+            <textarea id="t03_background" name="t03_background" class="form-textarea"
+                      placeholder="Describe the persona's study situation, lifestyle, and daily routine in 2–3 sentences."></textarea>
+          </div>
+
+          <!-- Goals -->
+          <div class="form-group">
+            <label class="form-label">Goals
+              <span class="form-label-hint">(what the user wants to achieve)</span>
+            </label>
+            <div class="form-numbered-list">
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">1</span>
+                <textarea name="t03_goal1" class="form-textarea"
+                          placeholder="e.g. Get lunch quickly without waiting in a long queue"></textarea>
+              </div>
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">2</span>
+                <textarea name="t03_goal2" class="form-textarea"
+                          placeholder="e.g. Know in advance what food is available today"></textarea>
+              </div>
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">3</span>
+                <textarea name="t03_goal3" class="form-textarea"
+                          placeholder="e.g. Save money by planning meals ahead of time"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pain points -->
+          <div class="form-group">
+            <label class="form-label">Pain Points
+              <span class="form-label-hint">(biggest frustrations)</span>
+            </label>
+            <div class="form-numbered-list">
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">1</span>
+                <textarea name="t03_pain1" class="form-textarea"
+                          placeholder="e.g. Queues at the canteen are too long during peak hours"></textarea>
+              </div>
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">2</span>
+                <textarea name="t03_pain2" class="form-textarea"
+                          placeholder="e.g. Favourite food runs out before they can get there"></textarea>
+              </div>
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">3</span>
+                <textarea name="t03_pain3" class="form-textarea"
+                          placeholder="e.g. No way to know which stalls are open on any given day"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t03_workaround">Current Workaround
+              <span class="form-label-hint">(how do they cope with the problem now?)</span>
+            </label>
+            <textarea id="t03_workaround" name="t03_workaround" class="form-textarea"
+                      placeholder="e.g. Goes to the canteen before peak hours, or skips lunch entirely on busy days."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t03_solution_need">What This Person Really Needs</label>
+            <textarea id="t03_solution_need" name="t03_solution_need" class="form-textarea"
+                      placeholder="Describe what a great solution would look like for this persona."></textarea>
+          </div>
+
+        </section><!-- /T03 -->
+
+
+
+        <!-- ═══════════════════════════════════════════════════
+             T04 — USER NEEDS SUMMARY
+             Cross-interview patterns, top 3 needs with evidence,
+             surprises, and a completion checklist.
+             ═══════════════════════════════════════════════════ -->
+        <section class="template-section" aria-label="T04 User Needs Summary">
+          <div class="template-section-header">
+            <span class="template-badge">T04</span>
+            <p class="template-title">User Needs Summary</p>
+          </div>
+
+          <!-- Research overview -->
+          <div class="form-group">
+            <label class="form-label" for="t04_interview_count">Number of Users Interviewed</label>
+            <input id="t04_interview_count" name="t04_interview_count" type="number"
+                   class="form-input" min="1" max="20" placeholder="e.g. 3">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t04_period">Research Period</label>
+            <input id="t04_period" name="t04_period" type="text"
+                   class="form-input" placeholder="e.g. 12–16 May 2026">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t04_context">Research Context
+              <span class="form-label-hint">(who did you interview and where?)</span>
+            </label>
+            <textarea id="t04_context" name="t04_context" class="form-textarea"
+                      placeholder="e.g. We interviewed 3 Diploma students at POLIPD who use the campus canteen daily. Interviews were conducted face-to-face in the library."></textarea>
+          </div>
+
+          <!-- Recurring patterns -->
+          <div class="form-group">
+            <label class="form-label">Recurring Patterns
+              <span class="form-label-hint">(themes that came up in 2 or more interviews)</span>
+            </label>
+            <div class="form-numbered-list">
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">1</span>
+                <textarea name="t04_pattern1" class="form-textarea"
+                          placeholder="e.g. All 3 users mentioned frustration with long queues during the 12–1pm period."></textarea>
+              </div>
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">2</span>
+                <textarea name="t04_pattern2" class="form-textarea"
+                          placeholder="e.g. 2 out of 3 users said they sometimes skip lunch because they run out of time."></textarea>
+              </div>
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">3</span>
+                <textarea name="t04_pattern3" class="form-textarea"
+                          placeholder="e.g. Users want to know what food is available before walking to the canteen."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top 3 needs with evidence -->
+          <div class="form-group">
+            <label class="form-label">Top 3 User Needs with Evidence</label>
+
+            <div class="form-paired-group">
+              <p class="form-paired-label">Need 1</p>
+              <textarea name="t04_need1" class="form-textarea"
+                        placeholder="State the need clearly. e.g. Users need to know which stalls are open before visiting the canteen."></textarea>
+              <p class="form-paired-label" style="margin-top:8px">Evidence</p>
+              <textarea name="t04_evidence1" class="form-textarea"
+                        placeholder="Quote or observation that supports this need. e.g. User 01 said: "I always have to walk there first to check — it wastes my time.""></textarea>
+            </div>
+
+            <div class="form-paired-group">
+              <p class="form-paired-label">Need 2</p>
+              <textarea name="t04_need2" class="form-textarea"
+                        placeholder="State the second key need."></textarea>
+              <p class="form-paired-label" style="margin-top:8px">Evidence</p>
+              <textarea name="t04_evidence2" class="form-textarea"
+                        placeholder="Supporting quote or observation."></textarea>
+            </div>
+
+            <div class="form-paired-group" style="margin-bottom:0">
+              <p class="form-paired-label">Need 3</p>
+              <textarea name="t04_need3" class="form-textarea"
+                        placeholder="State the third key need."></textarea>
+              <p class="form-paired-label" style="margin-top:8px">Evidence</p>
+              <textarea name="t04_evidence3" class="form-textarea"
+                        placeholder="Supporting quote or observation."></textarea>
+            </div>
+          </div>
+
+          <!-- Surprises -->
+          <div class="form-group">
+            <label class="form-label">What Surprised You?
+              <span class="form-label-hint">(findings you did not expect)</span>
+            </label>
+            <div class="form-numbered-list">
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">1</span>
+                <textarea name="t04_surprise1" class="form-textarea"
+                          placeholder="e.g. We did not expect users to say they prefer cash over digital payment."></textarea>
+              </div>
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">2</span>
+                <textarea name="t04_surprise2" class="form-textarea"
+                          placeholder="e.g. Students actually trust the canteen food quality — the problem is purely about time and information."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Completion checklist — handled by inline JS, not form autosave -->
+          <div class="form-group">
+            <label class="form-label">Completion Checklist</label>
+            <div class="form-checklist">
+              <label class="form-check-item">
+                <input type="checkbox" name="t04_chk_interviews" class="t04-checklist">
+                We interviewed at least 3 different users
+              </label>
+              <label class="form-check-item">
+                <input type="checkbox" name="t04_chk_empathy_map" class="t04-checklist">
+                T02 Empathy Map is fully completed
+              </label>
+              <label class="form-check-item">
+                <input type="checkbox" name="t04_chk_persona" class="t04-checklist">
+                T03 Persona is based on real interview data
+              </label>
+              <label class="form-check-item">
+                <input type="checkbox" name="t04_chk_needs" class="t04-checklist">
+                Top 3 needs all have supporting evidence
+              </label>
+              <label class="form-check-item">
+                <input type="checkbox" name="t04_chk_team" class="t04-checklist">
+                Team has reviewed all findings together
+              </label>
+            </div>
+          </div>
+
+        </section><!-- /T04 -->
+        <!-- ═══════════════════════════════════════════════════
+             T05 — PROBLEM STATEMENT (POV)
+             User · Need · Insight → full POV statement.
+             namespace: df_p02_  keys: t05_user, t05_need,
+             t05_insight, t05_pov, t05_in_scope, t05_out_scope
+             ═══════════════════════════════════════════════════ -->
+        <section class="template-section" aria-label="T05 Problem Statement">
+          <div class="template-section-header">
+            <span class="template-badge">T05</span>
+            <p class="template-title">Problem Statement</p>
+          </div>
+
+          <!-- Guided POV builder -->
+          <div class="form-group">
+            <label class="form-label" for="t05_user">
+              Who is the user?
+              <span class="form-label-hint">(describe them in a few words)</span>
+            </label>
+            <input id="t05_user" name="t05_user" type="text"
+                   class="form-input"
+                   placeholder="e.g. A Diploma student at POLIPD who uses the canteen daily">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t05_need">
+              What do they need?
+              <span class="form-label-hint">(start with a verb — what do they need to DO?)</span>
+            </label>
+            <input id="t05_need" name="t05_need" type="text"
+                   class="form-input"
+                   placeholder="e.g. know which canteen stalls are open before walking there">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t05_insight">
+              Why do they need it?
+              <span class="form-label-hint">(the deeper reason — from your Empathy research)</span>
+            </label>
+            <textarea id="t05_insight" name="t05_insight" class="form-textarea"
+                      placeholder="e.g. because they waste time walking to the canteen only to find their preferred stall closed or the queue too long during the 45-minute lunch break."></textarea>
+          </div>
+
+          <!-- Full POV assembled -->
+          <div class="form-group">
+            <label class="form-label" for="t05_pov">
+              Full POV Statement
+              <span class="form-label-hint">(write it all together: [user] needs [need] because [insight])</span>
+            </label>
+            <textarea id="t05_pov" name="t05_pov" class="form-textarea"
+                      style="min-height:100px"
+                      placeholder="e.g. A Diploma student at POLIPD who uses the canteen daily needs to know which stalls are open before walking there because they waste time walking only to find the queue too long during their 45-minute lunch break."></textarea>
+          </div>
+
+          <!-- Scope -->
+          <div class="form-group">
+            <label class="form-label" for="t05_in_scope">
+              What is IN scope?
+              <span class="form-label-hint">(what problems your solution WILL address)</span>
+            </label>
+            <textarea id="t05_in_scope" name="t05_in_scope" class="form-textarea"
+                      placeholder="e.g. Real-time stall availability, queue length information, daily menu display for students on campus."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t05_out_scope">
+              What is OUT of scope?
+              <span class="form-label-hint">(what your solution will NOT address)</span>
+            </label>
+            <textarea id="t05_out_scope" name="t05_out_scope" class="form-textarea"
+                      placeholder="e.g. Online food ordering, payment processing, canteen management systems for staff."></textarea>
+          </div>
+
+          <!-- Mistake checker -->
+          <div class="form-group">
+            <label class="form-label">
+              Problem Statement Check
+              <span class="form-label-hint">(tick each one before moving to T06 HMW)</span>
+            </label>
+            <div class="form-checklist">
+              <label class="form-check-item">
+                <input type="checkbox" name="t05_chk_no_solution" class="t05-checklist">
+                My problem statement does NOT include a solution
+              </label>
+              <label class="form-check-item">
+                <input type="checkbox" name="t05_chk_user_centred" class="t05-checklist">
+                It focuses on the user — not the technology or the team
+              </label>
+              <label class="form-check-item">
+                <input type="checkbox" name="t05_chk_based_on_research" class="t05-checklist">
+                It is based on real Empathy research — not assumptions
+              </label>
+              <label class="form-check-item">
+                <input type="checkbox" name="t05_chk_team_agreed" class="t05-checklist">
+                The whole team agrees with this problem statement
+              </label>
+            </div>
+          </div>
+
+        </section><!-- /T05 -->
+
+
+        <!-- ═══════════════════════════════════════════════════
+             T06 — HOW MIGHT WE (HMW) QUESTIONS
+             5 HMW questions → select the best one → justify.
+             namespace: df_p02_  keys: t06_hmw1–5,
+             t06_best_hmw, t06_justification
+             ═══════════════════════════════════════════════════ -->
+        <section class="template-section" aria-label="T06 How Might We Questions">
+          <div class="template-section-header">
+            <span class="template-badge">T06</span>
+            <p class="template-title">How Might We (HMW) Questions</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              5 HMW Questions
+              <span class="form-label-hint">(open-ended — no solutions yet. Start every question with "How might we…")</span>
+            </label>
+            <div class="form-numbered-list">
+
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">1</span>
+                <textarea name="t06_hmw1" class="form-textarea"
+                          placeholder="e.g. How might we help students know which stalls are open before they leave their classroom?"></textarea>
+              </div>
+
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">2</span>
+                <textarea name="t06_hmw2" class="form-textarea"
+                          placeholder="e.g. How might we reduce the time students spend queuing at the canteen?"></textarea>
+              </div>
+
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">3</span>
+                <textarea name="t06_hmw3" class="form-textarea"
+                          placeholder="e.g. How might we make canteen information available on students' phones?"></textarea>
+              </div>
+
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">4</span>
+                <textarea name="t06_hmw4" class="form-textarea"
+                          placeholder="e.g. How might we help students plan their lunch before the peak hour rush?"></textarea>
+              </div>
+
+              <div class="form-numbered-item">
+                <span class="form-number-badge" aria-hidden="true">5</span>
+                <textarea name="t06_hmw5" class="form-textarea"
+                          placeholder="e.g. How might we make the canteen experience less stressful for students with short breaks?"></textarea>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Best HMW selection -->
+          <div class="form-group">
+            <label class="form-label" for="t06_best_hmw">
+              Best HMW Question
+              <span class="form-label-hint">(copy the one question your team agreed is most useful)</span>
+            </label>
+            <textarea id="t06_best_hmw" name="t06_best_hmw" class="form-textarea"
+                      style="min-height:68px"
+                      placeholder="Copy your best HMW question here."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="t06_justification">
+              Why is this the best HMW?
+              <span class="form-label-hint">(explain why this question best guides your ideation)</span>
+            </label>
+            <textarea id="t06_justification" name="t06_justification" class="form-textarea"
+                      placeholder="e.g. This question is broad enough to explore many solutions but specific enough to keep us focused on the core user need we discovered in Empathy — students need information before they leave for the canteen."></textarea>
+          </div>
+
+        </section><!-- /T06 -->
+
+      </form><!-- /#template-form -->
+
+
+      <!-- PHASE SUBMIT ──────────────────────────────────────────────
+           Appears after quiz passed and templates are filled.
+           PhaseEngine.submitPhase() validates, sends to Sheets,
+           marks phase done, then redirects to dashboard.          -->
+      <div class="phase-submit-section">
+        <p class="phase-submit-title">Ready to Submit Phase 02?</p>
+        <p class="phase-submit-sub">
+          Make sure T03 Persona, T04 User Needs Summary, T05 Problem Statement, and T06 HMW are complete. This sends your Define work for Gate 1 review.
+        </p>
+        <button class="btn-primary"
+                onclick="PhaseEngine.submitPhase(2,
+                  'https://script.google.com/macros/s/AKfycbyM-5GQKEQCZlYUHeN46I0BaYIPeMo9mHpSPQTbd5VZqT6uu3oXraHKHgHZPKa8A8Y/exec',
+                  ['df_p02_'])"
+                aria-label="Submit Phase 02 Define">
+          Submit Phase 02 — Define →
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true" style="flex-shrink:0">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- SUPERVISOR GATE 1 — rendered by phase-engine.js -->
+      <div id="gate-container"></div>
+    </div>
+  </div><!-- /#tab-templates -->
+
+
+    <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+
+    <a href="dashboard.html" class="nav-item"
+       data-page="dashboard.html" aria-label="Dashboard">
+      <span class="nav-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </span>
+      <span class="nav-label">Dashboard</span>
+    </a>
+
+    <a href="dashboard.html" class="nav-item"
+       data-page="learn" aria-label="Learn">
+      <span class="nav-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 18h6M10 22h4"/>
+          <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/>
+        </svg>
+      </span>
+      <span class="nav-label">Learn</span>
+    </a>
+
+    <a href="phase02-define.html" class="nav-item"
+       data-page="projects" aria-label="Projects">
+      <span class="nav-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </span>
+      <span class="nav-label">Projects</span>
+    </a>
+
+    <a href="progress.html" class="nav-item"
+       data-page="progress.html" aria-label="Progress">
+      <span class="nav-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <polyline points="14 11 17 14 22 9"/>
+          <path d="M22 12v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>
+        </svg>
+      </span>
+      <span class="nav-label">Progress</span>
+    </a>
+
+    <a href="profile.html" class="nav-item"
+       data-page="profile.html" aria-label="Profile">
+      <span class="nav-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </span>
+      <span class="nav-label">Profile</span>
+    </a>
+
+  </nav>
+
+</div><!-- /.app-container -->
+
+
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/phase-engine.js"></script>
+
+<script>
+  'use strict';
+
+  
+  /* ── Safe init: waits for all scripts to fully load before calling
+     PhaseEngine.init(). Prevents 'PhaseEngine is not defined' errors
+     that occur when a script fails silently or loads slowly.          */
+  window.addEventListener('load', function () {
+    if (typeof window.PhaseEngine === 'undefined') {
+      console.error('Smart DT: phase-engine.js did not load. Check that js/phase-engine.js exists in your project folder.');
+      return;
+    }
+    PhaseEngine.init({
+    phaseNum:  2,
+    namespace: 'df_p02_',
+    hasGate:   true,
+    gateNum:   1,
+    sheetUrl:  'https://script.google.com/macros/s/AKfycbyM-5GQKEQCZlYUHeN46I0BaYIPeMo9mHpSPQTbd5VZqT6uu3oXraHKHgHZPKa8A8Y/exec',
+  });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    'use strict';
+
+    var cta   = document.getElementById('cta-btn');
+    var arrow = document.getElementById('cta-arrow-btn');
+    function goToQuiz() {
+      var t = document.querySelector('.tab-btn[data-tab="quiz"]');
+      if (t) t.click();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (cta)   cta.addEventListener('click', goToQuiz);
+    if (arrow) arrow.addEventListener('click', goToQuiz);
+
+    var hbtn = document.getElementById('hamburger-btn');
+    if (hbtn) {
+      hbtn.addEventListener('click', function () {
+        var e = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!e));
+      });
+    }
+    /* T04 checklist: save/restore checkbox state separately.
+       Checkboxes use their name as the localStorage key under Phase 02. */
+    document.querySelectorAll('.t04-checklist').forEach(function (cb) {
+      var key = 'df_p02_' + cb.name;
+      if (localStorage.getItem(key) === 'true') cb.checked = true;
+      cb.addEventListener('change', function () {
+        localStorage.setItem(key, cb.checked ? 'true' : 'false');
+      });
+    });
+
+    /* Gate 1 card is rendered automatically by PhaseEngine.init()
+       above — no duplicate call needed here. */
+  });
+</script>
+
+</body>
+</html>

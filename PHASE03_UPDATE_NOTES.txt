@@ -1,0 +1,30 @@
+PHASE 03 IDEATE UPDATE NOTES
+
+Updated / checked for general Smart DT template flow:
+
+Phase 03 Ideate should display:
+- T07 Ideation Techniques & Mind Map
+- T08 Sketching Template
+- T09 SCAMPER Template
+- T10 Idea Prioritisation Matrix
+
+Design direction:
+- General Smart DT Project style only
+- No CAMP21 wording
+- No craft/cultural case study
+- No supervisor gate or approval blocker
+- Flow: View Example -> Fill Template -> Save Draft -> Submit Final
+
+Files involved:
+- phase03-ideation.html
+- js/smartdt-general-templates.js
+- css/smartdt-general-templates.css
+- js/smartdt-no-supervisor.js
+
+Testing checklist:
+1. Open phase03-ideation.html
+2. Open Templates tab
+3. Check T07, T08, T09 and T10 tabs appear only
+4. Test View Example and Fill Template for each template
+5. Test Save Draft
+6. Click Submit Final Phase 03 and confirm it does not ask for supervisor approval
